@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 
   require 'authlogic'
 
+  	require 'application_helper'
+  	include ApplicationHelper 
+
     layout 'application_main'
    
     helper_method :current_admin_user_session, :current_user
