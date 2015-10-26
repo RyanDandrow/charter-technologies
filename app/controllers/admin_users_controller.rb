@@ -51,6 +51,37 @@ class AdminUsersController < ApplicationController
     end
   end
 
+  def update_password
+    @admin_user = AdminUser.find params[:id]
+    @page_title = @admin_user.name + " > Update password"
+     
+    if @admin_user.valid_password? params[:form_current_password]
+      if params[:admin_user][:password].blank? && params[:admin_user][:password_confirmation].blank?
+        flash[:warning] = "New password cannot be blank"
+      elsif @admin_user.update_attributes admin_user_params
+        flash[:notice] = "Your password has been changed"
+      else
+        flash[:warning] = "There were problems when trying to change your password"
+      end
+    else
+      flash[:warning] = "The current password is incorrect"
+    end
+    
+    redirect_to :action => :show
+  end
+
+  def reset_password
+    @admin_user = AdminUser.find params[:id]
+    @page_title = @admin_user.name + " > Reset password"
+     
+      if @admin_user.update_attributes admin_user_params
+          flash[:notice] = "Your password has been reset"
+      else
+        flash[:warning] = "There were problems when trying to reset this user's password"
+      end
+    redirect_to :action => :show
+  end
+
   def destroy
     user = AdminUser.find params[:id]
     if user.is_admin? == false || AdminUser.has_more_than_one_admin
