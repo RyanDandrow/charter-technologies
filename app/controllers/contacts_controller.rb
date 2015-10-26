@@ -1,0 +1,56 @@
+class ContactsController < ApplicationController
+
+	def index
+		@page_title = 'Contacts'
+		@contacts = Contact.all
+	end
+
+	def show
+		@page_title = 'View contact'
+		@contact = Contact.find params[:id]
+	end
+
+	def new
+		@page_title = 'Create a new contact'
+		@contact = Contact.new
+	end
+
+	def create
+		@contact = Contact.new contact_params
+
+		if @contact.save
+			flash[:notice] = 'Contact successfully created'
+			redirect_to contacts_path
+		else
+			flash.now[:warning] = 'There was a problem trying to create a new contact'
+			render :action => :new
+		end
+	end
+
+	def update
+		@page_title = 'Update contact'
+		@contact = Contact.find params[:id]
+
+		if @contact.update_attributes contact_params
+			flash[:notice] = 'Contact has been successfully updated'
+			redirect_to contacts_path
+		else
+			flash.now[:warning] = 'There was a problem trying to update this contact'
+			render :action => :new
+		end
+	end
+
+	def destroy
+		@contact = Contact.find params[:id]
+
+		@contact.destroy
+		flash[:notice] = 'Contact was successfully deleted'
+		redirect_to contacts_path
+	end
+
+	private
+
+		def contact_params
+			params.require(:contact).permit(:company, :goes_by, :cell_phone, :sf_id, :additional_info)
+		end
+end
