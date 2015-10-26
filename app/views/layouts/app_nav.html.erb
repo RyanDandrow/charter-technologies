@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   	<title><%= generate_page_title %></title>
+
+    <%= stylesheet_link_tag "bootstrap-overrides" %>
+    <%= stylesheet_link_tag "custom" %>
  
   	<%= csrf_meta_tag %>
 
@@ -25,8 +28,8 @@
               
 
               <% if @session_user.is_admin? %>
-                <li><%= link_to 'Users' %></li>
-                <li><%= link_to 'Profile' %></li>
+                <li><%= link_to 'Users', admin_users_path %></li>
+                <li><%= link_to 'Profile', admin_user_path(@session_user) %></li>
               <% end %>
 
               <li class="last-item signout"><%= link_to 'Sign out', admin_user_session_path, :method => :delete %></li>
