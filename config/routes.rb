@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   
-  match "/" => redirect("/admin_user_session/new"), :via => :get
-  
-  
-  
     resources :admin_users do
       member do
         patch :update_password, :reset_password
@@ -14,5 +10,6 @@ Rails.application.routes.draw do
     resource :password_reset, :only => [:create, :edit, :update]
         
 
-    root 'pages#dashboard'
+    root :to => 'pages#dashboard'
+    
 end

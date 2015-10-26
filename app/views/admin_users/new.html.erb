@@ -1,0 +1,37 @@
+<h2>Add a new user</h2>
+
+<%= form_for @admin_user do |f| %>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= f.text_field :email %>
+		</div>
+	</div>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= f.text_field :name %>
+		</div>
+
+  		<div class="col-lg-6">
+			<%= f.select :access_level, get_access_level_array, {:label => "Role"} %>
+		</div>
+		<div class="col-lg-6">
+		</div>
+	</div>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= f.password_field :password, {:label => "Password"} %>
+		</div>
+		<div class="col-lg-6">
+			<%= f.password_field :password_confirmation, {:label => "Repeat password"} %>
+		</div>
+	</div>
+
+	<p class="submits">
+		<%= link_to 'Cancel', admin_users_path, :class => 'btn btn-mini btn-danger' %>
+		<%= f.submit "Add new user", :class => "btn btn-mini btn-primary" %>
+	</p>
+
+<% end %>

@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   	<title><%= generate_page_title %></title>
-  	<% config_stylesheet_includes.each do |stylesheet| %>
-  		<%= stylesheet_link_tag(stylesheet) %>
-  	<% end %>
-  	
-  	<% config_javascript_includes.each do |javascript| %>
-  		<%= javascript_include_tag(javascript) %>
-  	<% end %>
-
+ 
   	<%= csrf_meta_tag %>
 
 
