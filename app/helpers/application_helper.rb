@@ -55,4 +55,16 @@ module ApplicationHelper
       "<div class='no-link'>#{contents}</div>".html_safe
     end
 
+    def span_icon icon_name
+      "<span class='glyphicon glyphicon-#{icon_name}' title='#{icon_name.titleize}'></span>"
+    end
+
+    def show_icon icon_name
+      "<div class='icon'>#{span_icon icon_name}</div>".html_safe
+    end
+
+    def show_row_icon icon_name
+      "<div class='iconRow'>#{span_icon icon_name}</div>".html_safe
+    end
+
 end
