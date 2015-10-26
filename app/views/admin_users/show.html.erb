@@ -1,0 +1,102 @@
+<h2>View user</h2>
+
+<%= form_for @admin_user do |f| %>
+
+	<div class="row">
+  		<div class="col-lg-6 col-lg-offset-4">
+  			<%= f.label "Email" %>
+			<%= f.text_field :email %>
+		</div>
+	
+  		<div class="col-lg-6 col-lg-offset-4">
+  			<%= f.label "Name" %>
+			<%= f.text_field :name %>
+		</div>
+	</div>
+
+
+	<% if @session_user.is_admin? && (@admin_user.is_admin? == false || AdminUser.has_more_than_one_admin) %>
+		<div class="row">
+  			<div class="col-lg-6 col-lg-offset-4">
+  				<%= f.label "Role" %>
+				<%= f.select :access_level, get_access_level_array %>
+			</div>
+		</div>
+	<% end %>
+
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-4">
+			<p class="submits">
+			  	<%= link_to 'Cancel', admin_users_path, :class => 'btn btn-mini btn-danger' %>
+				<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
+			</p>
+		</div>
+	</div>
+<% end %>
+
+
+<% if @session_user.is_admin? %>
+
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-3">
+			<h2>Reset password <small>(admin action &mdash; use carefully)</small></h2>
+		</div>
+	</div>
+
+	<%= form_for @admin_user, :url => reset_password_admin_user_path(@admin_user) do |f| %>
+
+		<div class="row">
+  			<div class="col-lg-6 col-lg-offset-4">
+  				<%= f.label "New password" %>
+				<%= f.password_field :password %>
+			</div>
+			<div class="col-lg-6 col-lg-offset-4">
+				<%= f.label "Repeat new password" %>
+				<%= f.password_field :password_confirmation %>
+			</div>
+		</div>
+		
+		<div class="row">
+  			<div class="col-lg-6 col-lg-offset-4">
+				<p class="submits">
+					<%= f.submit "Reset", :class => "btn btn-mini btn-warning" %>
+				</p>
+			</div>
+		</div>
+		
+	<% end %>
+	
+<% elsif @session_user.id == @admin_user.id %>
+
+	<h2>Change password</h2>
+
+	<%= form_for @admin_user, :url => update_password_admin_user_path(@admin_user) do |f| %>
+
+		<div class="row">
+  			<div class="col-lg-6">
+  				<div class="form-group">
+					<%= f.label :form_current_password, "Current password" %>
+					<%= f.password_field :form_current_password, class: 'form-control' %>
+				</div>
+			</div>
+			<div class="col-lg-6">
+			</div>
+		</div>
+
+		<div class="row">
+  			<div class="col-lg-6">
+  				<%= f.label "New password" %>
+				<%= f.password_field :password %>
+			</div>
+			<div class="col-lg-6">
+				<%= f.label "Repeat new password" %>
+				<%= f.password_field :password_confirmation %>
+			</div>
+		</div>
+		
+		<p class="submits">
+			<%= f.submit "Change", :class => "btn btn-mini btn-primary" %>
+		</p>
+
+	<% end %>
+<% end %>
