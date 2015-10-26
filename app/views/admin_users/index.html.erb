@@ -29,3 +29,7 @@
 		</tr>
 	<% end %>
 </table>
+
+<%= content_for :sidebar do %>
+  <li><%= link_to "#{show_icon('plus-sign')}Add a new user".html_safe, new_admin_user_path %></li>
+<% end %>
