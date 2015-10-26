@@ -26,4 +26,33 @@ module ApplicationHelper
   	  [["Administrator", $USER_ACCESS_LEVEL_ADMIN], ["User", $USER_ACCESS_LEVEL_USER]]
   	end
 
+    def sort_link title, column, options = {}
+      condition = options[:unless] if options.has_key?(:unless)
+      icon_to_show_html = "<div class='table-header-icon'>&nbsp;</div>".html_safe
+      if params[:c].to_s == column.to_s
+        icon_to_show = params[:d] == 'down' ? 'chevron-up' : 'chevron-down'
+        icon_to_show_html = "<div class='table-header-icon glyphicon glyphicon-#{icon_to_show}'></div>".html_safe
+      end
+      sort_dir = params[:d] == 'down' ? 'up' : 'down'
+      link_to_unless(condition, title, request.parameters.merge({:c => column, :d => sort_dir})) + icon_to_show_html
+    end
+
+    def table_cell_link contents, link, options = {}
+
+      if options.key? :truncate
+        contents = truncate(contents, :length => options[:truncate], :omission => "...")
+      end
+
+      link_to "#{contents}".html_safe, link, options
+    end
+
+    def table_cell_no_link contents, options = {}
+
+      if options.key? :truncate
+        contents = truncate(contents, :length => options[:truncate], :omission => "...")
+      end
+
+      "<div class='no-link'>#{contents}</div>".html_safe
+    end
+
 end

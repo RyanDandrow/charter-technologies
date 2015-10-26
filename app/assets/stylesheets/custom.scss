@@ -135,3 +135,94 @@ footer p a:hover {
 	padding: 0px;
 	vertical-align: baseline;
 }
+
+/* TABLES */
+
+#content .table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 13px;
+	border-bottom: 2px solid #ccc;
+}
+
+#content .table .center {
+	text-align: center;
+}
+
+#content .table .icon {
+	width: 16px;
+}
+
+#content .table thead {
+	border-bottom: 2px solid #ccc;
+}
+
+#content .table th div.table-header-icon {
+	display: inline-block;
+	margin-left: 5px;
+	width: 12px;
+	height: 12px;
+	color: #555;
+	position: relative;
+	top: 1px;
+}
+
+#content .table td {
+	padding: 0px;
+	font-size: 12px;
+	margin: 0px;
+	line-height: 18px;
+}
+
+#content .table td a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	padding: 15px 10px 15px 10px;
+}
+
+#content .table td .no-link {
+	display: block;
+	color: #333;
+	padding: 15px 10px 15px 10px;
+}
+
+.iconRow {
+	height: 16px;
+	width: 16px;
+	padding: 2px;
+	font-size: 12px;
+}
+
+#content .table td.delete {
+	width: 30px;
+}
+
+#content .table td.delete:hover .iconRow {
+	border-radius: 4px;
+	background-color: #da0404;
+	color: #ffffff;
+}
+
+#content .table td.delete a {
+	padding: 13px 10px 0px 10px;
+}
+
+#content .submits {
+	width: 100%;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 12px;
+	padding: 10px 10px;
+	background-color: #eee;
+	margin-bottom: 30px;
+}
+
+/* FORMS */
+
+label.control-label small {
+	font-weight: normal;
+	color: #666;
+	margin-left: 5px;
+	font-size: 0.8em; 
+}
