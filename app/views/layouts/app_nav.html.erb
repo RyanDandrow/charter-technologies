@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "bootstrap-overrides" %>
     <%= stylesheet_link_tag "custom" %>
+    <%= javascript_include_tag "custom" %>
  
   	<%= csrf_meta_tag %>
 
@@ -32,6 +33,7 @@
                 <li><%= link_to 'Profile', admin_user_path(@session_user) %></li>
               <% end %>
 
+              <li><%= link_to 'Contacts', contacts_path %></li>
               <li class="last-item signout"><%= link_to 'Sign out', admin_user_session_path, :method => :delete %></li>
             </ul>
           </div>
