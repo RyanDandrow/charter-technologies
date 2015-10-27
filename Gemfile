@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'authlogic', '3.4.6'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'acts_as_commentable_with_threading', '~> 2.0'
 
 
 
