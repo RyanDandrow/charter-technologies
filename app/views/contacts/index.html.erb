@@ -1,0 +1,27 @@
+<h2>Contacts</h2>
+
+<table class="table table-striped table-hover table-condensed">
+	<thead>
+		<tr>
+			<th><%= sort_link "Goes by", :goes_by %></th>
+			<th><%= sort_link "Cell Phone", :cell_phone %></th>
+			<th><%= sort_link "Company", :company %></th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	
+	<% @contacts.each do |contact| %>
+		<tr>
+			<td><%= table_cell_link contact.goes_by, contact_path(contact) %></td>
+			<td><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
+			<td><%= table_cell_link contact.company, contact_path(contact) %></td>
+			<td class="delete">
+				<%= link_to(show_row_icon("trash"), contact_path(contact), :method => :delete, :data => { :confirm => "Are you sure you want to delete this contact?" }) %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= content_for :sidebar do %>
+	<li><%= link_to "#{show_icon "plus-sign"}Add a new contact".html_safe, new_contact_path %></li>
+<% end %>
