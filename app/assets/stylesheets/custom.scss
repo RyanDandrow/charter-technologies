@@ -226,3 +226,72 @@ label.control-label small {
 	margin-left: 5px;
 	font-size: 0.8em; 
 }
+
+
+.form-control {
+	// width: 160px;
+	border: 1px solid;
+  font-size: 12.5px;
+  height: 80%;
+  border-radius: 0 !important;
+}
+
+.form-label {
+  width: 160px;
+  padding-left: 2px;
+  border-style: none;
+  }
+
+.form-label-3 {
+  width: 255px;
+  padding-left: 2px;
+  border-style: none;
+  }
+
+.button {
+  padding-top: 3%;
+}
+
+  // * {
+  //   border-radius: 0 !important;
+  // }
+
+  #addressBorder {
+	border: 1px solid;
+}
+
+.first {
+  width: 40%;
+  display: inline;
+}
+
+.middle {
+  width: 15%;
+  display: inline;
+}
+
+.last {
+  width: 40%;
+  display: inline;
+}
+
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  margin-top: 30px;
+}
+
+.urgent-button {
+  padding-top: 4%;
+}
+
+.suffix {
+  margin-top: 2.2%;
+  margin-left: -2.5%;
+  border-radius: 0 !important;
+  width: 11%;
+
+}
+

@@ -70,14 +70,55 @@
 	                </script>
 	            </div>
 	        </div>
+		</div>
+    <div class="row">
+        <div class="col-md-2 col-sm-4">
+			<div class="form-group">
+                <%= f.text_field :alt_phone_1_place, placeholder: 'Alt Phone 1:', class: "form-label" %>
+                <%= f.text_field :alt_phone_1, class: "form-control", id: "altphone" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#altphone').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+	        </div>
+	        <div class="form-group">
+                <%= f.text_field :alt_phone_2_place, placeholder: 'Alt Phone 2:', class: "form-label" %>
+                <%= f.text_field :alt_phone_2, class: "form-control", id: "altphone2" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#altphone2').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+	        </div>
+	        <div class="form-group">
+                <%= f.text_field :alt_phone_3_place, placeholder: 'Alt Phone 3:', class: "form-label" %>
+                <%= f.text_field :alt_phone_3, class: "form-control", id: "altphone3" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#altphone3').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+	        </div>
+	        <div class="form-group">
+                <%= f.text_field :alt_phone_4, placeholder: 'Alt Phone 4:', class: "form-label" %>
+                <%= f.text_field :alt_phone_4_place, class: "form-control", id: "altphone4" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#altphone4').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+	        </div>
+	    </div>
+
+
 	        <div class="col-lg-12">
 	            <div class="form-group">          
 	                <%= f.label :additional_info, "Additional Info:", class: "form-label" %>
 	                <%= f.text_field :additional_info, class: "form-control", :rows => 5 %>
 	            </div>
 	        </div>
-	    </div>
-	</div>
+		</div>
 
 	<p class="submits">
 		<%= link_to 'Cancel', contacts_path, :class => 'btn btn-mini btn-danger' %>

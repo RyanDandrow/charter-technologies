@@ -8,7 +8,6 @@
 				<%= f.text_field :name, class: "form-control" %>
 			</div>
 		</div>
-
   		<div class="col-lg-4 col-lg-offset-4">
   			<div class="form-group">
   				<%= f.label "Email:", class: "form-label" %>
@@ -42,15 +41,14 @@
 	<br>
 
 <% if @session_user.is_admin? %>
-
 	<div class="row">
 		<div class="col-lg-4 col-lg-offset-4">
 			<h2>Reset password <small>(admin action &mdash; use carefully)</small></h2>
 		</div>
 	</div>
 
-	<%= form_for @admin_user, :url => reset_password_admin_user_path(@admin_user) do |f| %>
 
+	<%= form_for @admin_user, :url => reset_password_admin_user_path(@admin_user) do |f| %>
 		<div class="row">
   			<div class="col-lg-4 col-lg-offset-4">
   				<div class="form-group">
@@ -58,15 +56,13 @@
 					<%= f.password_field :password, class: "form-control" %>
 				</div>
 			</div>
-
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="form-group">
-					<%= f.label "Confirm new password:", class: "form-label" %>
+					<%= f.label "Confirm password:", class: "form-label" %>
 					<%= f.password_field :password_confirmation, class: "form-control" %>
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
   			<div class="col-lg-4 col-lg-offset-4">
 				<p class="submits">
@@ -74,11 +70,10 @@
 				</p>
 			</div>
 		</div>
-		
 	<% end %>
 	
-<% elsif @session_user.id == @admin_user.id %>
 
+<% elsif @session_user.id == @admin_user.id %>
 	<div class="row">
 		<div class="col-lg-4 col-lg-offset-4">
 			<h2>Change password</h2>
@@ -94,14 +89,12 @@
 					<%= f.password_field :form_current_password, class: 'form-control' %>
 				</div>
 			</div>
-
   			<div class="col-lg-4 col-md-offset-4">
   				<div class="form-group">
   					<%= f.label "New password", class: "form-label" %>
 					<%= f.password_field :password, class: "form-control" %>
 				</div>
 			</div>
-
 			<div class="col-lg-4 col-md-offset-4">
 				<div class="form-group">
 					<%= f.label "Repeat new password", class: "form-group" %>
@@ -109,7 +102,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="form-group">
 			<div class="col-md-4 col-md-offset-4">
 				<p class="submits">
@@ -117,6 +109,5 @@
 				</p>
 			</div>
 		</div>
-
 	<% end %>
 <% end %>
