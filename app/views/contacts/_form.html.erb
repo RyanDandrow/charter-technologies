@@ -7,24 +7,6 @@
 	                <%= f.text_field :company, class: "form-control" %>
 	            </div>
 	        </div>
-	        <div class="col-lg-3">
-	            <div class="form-group">          
-	                <%= f.label "Cell Phone:", class: "form-label" %>
-	                <%= f.text_field :cell_phone, class: "form-control" %>
-	            </div>
-	        </div>
-	        <div class="col-lg-3">
-	            <div class="form-group">          
-	                <%= f.label "Goes by:", class: "form-label" %>
-	                <%= f.text_field :goes_by, class: "form-control" %>
-	            </div>
-	        </div>
-	        <div class="col-lg-3">
-	            <div class="form-group">          
-	                <%= f.label :sf_id, "SF ID#", class: "form-label" %>
-	                <%= f.text_field :sf_id, class: "form-control" %>
-	            </div>
-	        </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <%= f.label :tax_id, 'Tax ID#', class: "form-label" %>
@@ -42,9 +24,33 @@
                     <%= f.text_field :drivers_license, class: "form-control" %>
                  </div>
             </div>
+	        <div class="col-lg-3">
+	            <div class="form-group">          
+	                <%= f.label :sf_id, "SF ID#", class: "form-label" %>
+	                <%= f.text_field :sf_id, class: "form-control" %>
+	            </div>
+	        </div>
+	        <div class="col-lg-3">
+	            <div class="form-group">          
+	                <%= f.label "Cell Phone:", class: "form-label" %>
+	                <%= f.text_field :cell_phone, class: "form-control" %>
+	            </div>
+	        </div>
+	        <div class="col-lg-3">
+	            <div class="form-group">          
+	                <%= f.label "Spouse Cell Phone:", class: "form-label" %>
+	                <%= f.text_field :spouse_cell_phone, class: "form-control" %>
+	            </div>
+	        </div>	        
+	        <div class="col-lg-3">
+	            <div class="form-group">          
+	                <%= f.label "Goes by:", class: "form-label" %>
+	                <%= f.text_field :goes_by, class: "form-control" %>
+	            </div>
+	        </div>
             <div class="col-lg-3">
                 <div class="form-group">
-                    <%= f.label :spouse_goes_by, 'Goes By:', class: "form-label" %>
+                    <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
                     <%= f.text_field :spouse_goes_by, class: "form-control" %>
                 </div>
             </div>
