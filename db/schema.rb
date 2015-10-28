@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028153002) do
+ActiveRecord::Schema.define(version: 20151028154055) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151028153002) do
     t.string   "tax_id"
     t.string   "drivers_license"
     t.string   "spouse_goes_by"
+    t.string   "date_of_birth"
   end
 
 end
