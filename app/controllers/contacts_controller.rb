@@ -8,6 +8,8 @@ class ContactsController < ApplicationController
 	def show
 		@page_title = 'View contact'
 		@contact = Contact.find params[:id]
+		@comments = @contact.comment_threads.order('created_at desc')
+    	@new_comment = Comment.build_from(@contact, current_user.id, "")
 	end
 
 	def new

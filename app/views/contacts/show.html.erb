@@ -1,3 +1,8 @@
 <h2>View Contact</h2>
 
 	<%= render 'form' %>
+
+<h2>Notes</h2>
+
+	<%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
+	<%= render :partial => 'comments/comment', :collection => @comments, :as => :comment %>
