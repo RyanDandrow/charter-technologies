@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
 
     resources :contacts
+      resources :comments, :only => [:create, :destroy] do
+    end
     
     resource :admin_user_session, :only => [:new, :create, :destroy]
     resource :password_reset, :only => [:create, :edit, :update]
