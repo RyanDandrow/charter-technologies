@@ -1,10 +1,21 @@
 <h2>Contacts</h2>
 
+  <%= search_form_for @search do |f| %>
+    <div class="center">
+      <%= f.label :name_cont, "Search:" %>
+      <%= f.text_field :first_name_or_company_or_last_name_or_cell_phone_or_email_or_spouse_email_or_goes_by_or_spouse_first_name_or_spouse_last_name_or_spouse_goes_by_cont %>
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+
+  <br>
+
 <table class="table table-striped table-hover table-condensed">
 	<thead>
 		<tr>
 			<th><%= sort_link "Name", :full_name %></th>
 			<th><%= sort_link "Company", :company %></th>
+			<th><%= sort_link "Email", :email %></th>
 			<th><%= sort_link "Cell Phone", :cell_phone %></th>
 			<th>&nbsp;</th>
 		</tr>
@@ -14,6 +25,7 @@
 		<tr>
 			<td><%= table_cell_link contact.full_name, contact_path(contact) %></td>
 			<td><%= table_cell_link contact.company, contact_path(contact) %></td>
+			<td><%= table_cell_link contact.email, contact_path(contact) %></td>
 			<td><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
 			<td class="delete">
 				<%= link_to(show_row_icon("trash"), contact_path(contact), :method => :delete, :data => { :confirm => "Are you sure you want to delete this contact?" }) %>

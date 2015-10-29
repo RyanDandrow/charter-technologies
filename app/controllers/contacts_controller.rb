@@ -3,11 +3,15 @@ class ContactsController < ApplicationController
 	def index
 		@page_title = 'Contacts'
 		@contacts = Contact.all
+    	@search = Contact.search(params[:q])
+    	@contacts = @search.result
 	end
 
 	def show
 		@page_title = 'View contact'
 		@contact = Contact.find params[:id]
+    	@search = Contact.search(params[:q])
+    	@contacts = @search.result
 		@comments = @contact.comment_threads.order('created_at desc')
     	@new_comment = Comment.build_from(@contact, current_user.id, "")
 	end

@@ -1,5 +1,7 @@
 class Contact < ActiveRecord::Base
 
+	validates :full_name, presence: true
+
 	acts_as_commentable
 
 	belongs_to :user
