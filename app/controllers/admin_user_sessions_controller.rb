@@ -11,7 +11,7 @@ class AdminUserSessionsController < ApplicationController
     def create
       @admin_user_session = AdminUserSession.new params[:admin_user_session]
       if @admin_user_session.save
-        redirect_back_or_default :controller => :pages, :action => :dashboard
+        redirect_back_or_default :controller => :contacts, :action => :index
       else
         render :action => :new
       end
@@ -26,7 +26,7 @@ class AdminUserSessionsController < ApplicationController
   
     def requires_no_session_user
       if current_user
-        redirect_to :controller => :pages, :action => :dashboard
+        redirect_to :controller => :contacts, :action => :index
       end
     end
 end
