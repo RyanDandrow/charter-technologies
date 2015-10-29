@@ -1,7 +1,7 @@
 <%= form_for @contact do |f| %>
 	<div class="container-fluid">
 	    <div class="row">
-	        <div class="col-lg-4">
+	        <div class="col-lg-5">
 	            <div class="form-group">          
 	                <%= f.label "Company:", class: "form-label" %>
 	                <%= f.text_field :company, class: "form-control" %>
@@ -9,7 +9,7 @@
 	        </div>
             <div class="col-lg-2">
                 <div class="form-group">
-                    <%= f.label :tax_id, 'Tax ID#', class: "form-label" %>
+                    <%= f.label :tax_id, 'Tax ID #', class: "form-label" %>
                     <%= f.text_field :tax_id, class: "form-control", id: "tax_id" %>
                     <script type="text/javascript">
                         $(document).ready(function(){
@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-2">
                 <div class="form-group">
-                    <%= f.label :drivers_License, 'DL#', class: "form-label" %>
+                    <%= f.label :drivers_License, 'Drivers License #', class: "form-label" %>
                     <%= f.text_field :drivers_license, class: "form-control" %>
                  </div>
             </div>
@@ -30,6 +30,9 @@
 	                <%= f.text_field :sf_id, class: "form-control" %>
 	            </div>
 	        </div>
+	    </div>
+
+	    <div class="row">
 	        <div class="col-md-4 col-sm-4">
 	            <%= f.label :name, 'Name:', class: "form-label" %>
 	            <div class="form-group" id="highlight2">  
@@ -43,30 +46,12 @@
 	                <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'] %>
 	            </div>
 	        </div>
-	        <div class="col-lg-3">
-	            <div class="form-group">          
-	                <%= f.label "Cell Phone:", class: "form-label" %>
-	                <%= f.text_field :cell_phone, class: "form-control" %>
-	            </div>
-	        </div>
-	        <div class="col-lg-3">
-	            <div class="form-group">          
-	                <%= f.label "Spouse Cell Phone:", class: "form-label" %>
-	                <%= f.text_field :spouse_cell_phone, class: "form-control" %>
-	            </div>
-	        </div>	        
-	        <div class="col-lg-3">
+	        <div class="col-lg-2">
 	            <div class="form-group">          
 	                <%= f.label "Goes by:", class: "form-label" %>
 	                <%= f.text_field :goes_by, class: "form-control" %>
 	            </div>
 	        </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
-                    <%= f.text_field :spouse_goes_by, class: "form-control" %>
-                </div>
-            </div>
 	         <div class="col-lg-2">
 	            <div class="form-group">
 	                <%= f.label :date_of_birth, 'D.O.B.', class: "form-label" %>
@@ -78,9 +63,26 @@
 	                </script>
 	            </div>
 	        </div>
+	    </div>
+
+	    <div class="row">
+	        <div class="col-md-4 col-sm-4">
+	        <%= f.label 'Spouse Name:', class: "form-label" %>
+	            <div class="form-group">
+	                <%= f.text_field :spouse_first_name, class: "form-control first" %>
+	                <%= f.text_field :spouse_middle_name, class: "form-control middle" %>
+	                <%= f.text_field :spouse_last_name, class: "form-control last" %>
+	            </div>
+	        </div>
+            <div class="col-lg-2 col-md-offset-1">
+                <div class="form-group">
+                    <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
+                    <%= f.text_field :spouse_goes_by, class: "form-control" %>
+                </div>
+            </div>
 	         <div class="col-lg-2">
 	            <div class="form-group">
-	                <%= f.label :spouse_date_of_birth, 'D.O.B.', class: "form-label" %>
+	                <%= f.label :spouse_date_of_birth, 'Spouse D.O.B.', class: "form-label" %>
 	                <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
 	                <script type="text/javascript">
 	                    $(document).ready(function(){
@@ -90,8 +92,28 @@
 	            </div>
 	        </div>
 		</div>
+	</div>
+
     <div class="row">
-        <div class="col-md-2 col-sm-4">
+        <div class="col-lg-2">
+            <div class="form-group">          
+                <%= f.label "Cell:", class: "form-label" %>
+                <%= f.text_field :cell_phone, class: "form-control", id: "phone1" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#phone1').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+            </div>
+            <div class="form-group">          
+                <%= f.label "Spouse Cell:", class: "form-label" %>
+                <%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
+           		<script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#phone2').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                    });
+                </script>
+            </div>
 	        <div class="form-group">
 	            <%= f.label :company_phone, 'Company Phone:', class: "form-label" %>
 	            <%= f.text_field :company_phone, class: "form-control", id: "phone3" %>
