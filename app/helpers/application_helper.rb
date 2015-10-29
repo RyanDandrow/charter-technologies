@@ -26,6 +26,10 @@ module ApplicationHelper
   	  [["Administrator", $USER_ACCESS_LEVEL_ADMIN], ["User", $USER_ACCESS_LEVEL_USER]]
   	end
 
+    def get_urgent
+      [ ["yes"], ["no"] ]
+    end
+
     def sort_link title, column, options = {}
       condition = options[:unless] if options.has_key?(:unless)
       icon_to_show_html = "<div class='table-header-icon'>&nbsp;</div>".html_safe

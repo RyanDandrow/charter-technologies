@@ -17,6 +17,7 @@
 			<th><%= sort_link "Company", :company %></th>
 			<th><%= sort_link "Email", :email %></th>
 			<th><%= sort_link "Cell Phone", :cell_phone %></th>
+			<th><%= sort_link "Urgent", :urgent %></th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -27,6 +28,7 @@
 			<td><%= table_cell_link contact.company, contact_path(contact) %></td>
 			<td><%= table_cell_link contact.email, contact_path(contact) %></td>
 			<td><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
+			<td><%= table_cell_link contact.urgent, contact_path(contact) %></td>
 			<td class="delete">
 				<%= link_to(show_row_icon("trash"), contact_path(contact), :method => :delete, :data => { :confirm => "Are you sure you want to delete this contact?" }) %>
 			</td>
