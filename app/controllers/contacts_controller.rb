@@ -58,6 +58,6 @@ class ContactsController < ApplicationController
 											:alt_phone_3, :alt_phone_4, :alt_phone_1_place, :alt_phone_2_place, :alt_phone_3_place,
 											:alt_phone_4_place, :home_phone, :company_phone, :spouse_cell_phone, :first_name,
 											:middle_name, :last_name, :name_suffix, :spouse_first_name, :spouse_middle_name,
-											:spouse_last_name)
+											:spouse_last_name, :email, :spouse_email)
 		end
 end
