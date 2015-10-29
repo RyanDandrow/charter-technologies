@@ -35,7 +35,7 @@ class ContactsController < ApplicationController
 
 		if @contact.update_attributes contact_params
 			flash[:notice] = 'Contact has been successfully updated'
-			redirect_to contacts_path
+			redirect_to contact_path
 		else
 			flash.now[:warning] = 'There was a problem trying to update this contact'
 			render :action => :new

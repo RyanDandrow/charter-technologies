@@ -210,6 +210,17 @@
 		              <%= f.text_field :notes_box4, placeholder: 'Notes:', class: "form-control" %>
 		            </div>
 		        </div>
+		        <div class="col-md-3 col-md-offset-3">     
+
+		                <%= f.label "Select State:" %>
+		                <%= select_tag :us_states, options_for_select(us_states), class: "combobox form-control" %>
+		                <script type="text/javascript">
+		                  $(document).ready(function(){
+		                    $('.combobox').combobox();
+		                  });
+		                </script>
+
+		        </div>
 	   
 	</div>
 	
