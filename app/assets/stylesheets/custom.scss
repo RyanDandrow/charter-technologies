@@ -261,17 +261,17 @@ label.control-label small {
 }
 
 .first {
-  width: 40%;
+  width: 32%;
   display: inline;
 }
 
 .middle {
-  width: 15%;
+  width: 11%;
   display: inline;
 }
 
 .last {
-  width: 40%;
+  width: 32%;
   display: inline;
 }
 
@@ -288,11 +288,8 @@ label.control-label small {
 }
 
 .suffix {
-  margin-top: 2.2%;
-  margin-left: -2.5%;
-  border-radius: 0 !important;
-  width: 11%;
 
+  width: 10%;
 }
 
 
@@ -401,3 +398,7 @@ input.cmn-toggle-round:checked + label:after {
   }
 }
 
+#company {
+  width: 75%;
+  display: inline;
+}

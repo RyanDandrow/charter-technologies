@@ -35,13 +35,13 @@ class ApplicationController < ActionController::Base
   
     def needs_admin
       unless @session_user.is_admin?
-        redirect_to :controller => :pages, :action => :dashboard
+        redirect_to :controller => :contacts, :action => :index
       end
     end
   
     def needs_admin_or_current_user
       unless @session_user.is_admin? || params[:id].to_i == @session_user.id
-        redirect_to :controller => :pages, :action => :dashboard
+        redirect_to :controller => :contacts, :action => :index
       end
     end
     

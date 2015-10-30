@@ -25,12 +25,12 @@
         <div class="container">
           <div id="user-info">
             <ul>
-              <li class="hidden-xs hidden-sm">Hello, <%= @session_user.name %></li>
+              <li class="hidden-xs">Hello, <%= @session_user.name %></li>
               
 
               <% if @session_user.is_admin? %>
                 <li><%= link_to 'Users', admin_users_path %></li>
-                <li><%= link_to 'Profile', admin_user_path(@session_user) %></li>
+                <li class="hidden-xs"><%= link_to 'Profile', admin_user_path(@session_user) %></li>
               <% end %>
 
               <li><%= link_to 'Contacts', contacts_path %></li>

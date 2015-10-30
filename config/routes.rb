@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     resource :password_reset, :only => [:create, :edit, :update]
         
 
-    root :to => 'pages#dashboard'
+    root :to => 'contacts#index'
     
 end

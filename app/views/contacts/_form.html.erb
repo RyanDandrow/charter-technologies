@@ -1,17 +1,14 @@
 <%= form_for @contact do |f| %>
 	<div class="container-fluid">
 	    <div class="row">
-	        <div class="col-lg-4 col-md-4 col-sm-3">
+	        <div class="col-lg-5 col-md-4 col-sm-4">
 	            <div class="form-group">          
 	                <%= f.label "Company:", class: "form-label" %>
-	                <%= f.text_field :company, class: "form-control" %>
+	                <%= f.text_field :company, class: "form-control", id: "company" %>
+	                <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC'], class: "form-control suffix" %>
 	            </div>
 	        </div>
-	        <div class="col-md-1 col-sm-1 col-xs-1 suffix">
 
-	                <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC'] %>
-
-	        </div>
             <div class="col-lg-2 col-md-2 col-sm-3">
                 <div class="form-group">
                     <%= f.label :tax_id, 'Tax ID #', class: "form-label" %>
@@ -29,7 +26,7 @@
                     <%= f.text_field :drivers_license, class: "form-control" %>
                  </div>
             </div>
-	        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2">
+	        <div class="col-lg-2 col-md-2 col-sm-2">
 	            <div class="form-group">          
 	                <%= f.label :sf_id, "SF ID#", class: "form-label" %>
 	                <%= f.text_field :sf_id, class: "form-control" %>
@@ -38,17 +35,13 @@
 	    </div>
 
 	    <div class="row">
-	        <div class="col-md-4 col-sm-4">
+	        <div class="col-lg-5 col-md-4 col-sm-4">
 	            <%= f.label :name, 'Name:', class: "form-label" %>
 	            <div class="form-group" id="highlight2">  
 	                <%= f.text_field :first_name, class: "form-control first" %>
 	                <%= f.text_field :middle_name, class: "form-control middle" %>
 	                <%= f.text_field :last_name, class: "form-control last" %>
-	            </div>
-	        </div>
-	        <div class="col-md-1 suffix">
-	            <div class="form-group">
-	                <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'] %>
+	                <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
 	            </div>
 	        </div>
 	        <div class="col-lg-2 col-md-2 col-sm-3">
@@ -58,7 +51,7 @@
 	            </div>
 	        </div>
 
-	        <div class="col-md-2 col-sm-2 col-xs2">
+	        <div class="col-md-2 col-sm-3">
 	            <div class="form-group">
 	                <%= f.label :ssn, 'SSN#' %>
 	                <br>
@@ -77,7 +70,7 @@
 	                    </div>
 	                    <div class="modal-body">
 	                        <div class="row">
-	                             <div class="col-md-2 col-md-offset-3">
+	                             <div class="col-md-2 col-sm-2 col-md-offset-3">
 	                                <div class="form-inline">
 	                                    <%= f.text_field :ssn, class: "form-control", id: "social" %>
 	                                    <script type="text/javascript">
@@ -110,7 +103,7 @@
 	    </div>
 
 	    <div class="row">
-	        <div class="col-md-4 col-sm-3 col-xs-3">
+	        <div class="col-lg-5 col-md-4 col-sm-4">
 	        <%= f.label 'Spouse Name:', class: "form-label" %>
 	            <div class="form-group">
 	                <%= f.text_field :spouse_first_name, class: "form-control first" %>
@@ -118,14 +111,14 @@
 	                <%= f.text_field :spouse_last_name, class: "form-control last" %>
 	            </div>
 	        </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 col-md-offset-1">
+            <div class="col-lg-2 col-md-2 col-sm-3">
                 <div class="form-group">
                     <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
                     <%= f.text_field :spouse_goes_by, class: "form-control" %>
                 </div>
             </div>
 
-	        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+	        <div class="col-md-2 col-sm-3">
 	            <div class="form-group">
 	                <%= f.label :spouse_ssn, 'Spouse SSN#' %>
 	                <br>
@@ -144,7 +137,7 @@
 	                    </div>
 	                    <div class="modal-body">
 	                        <div class="row">
-	                             <div class="col-md-2 col-md-offset-3">
+	                             <div class="col-md-3 col-sm-3 col-md-offset-3">
 	                                <div class="form-inline">
 	                                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social" %>
 	                                    <script type="text/javascript">
@@ -163,9 +156,9 @@
 	            </div>
 	        </div>
 
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<div class="col-lg-2 col-md-2 col-sm-2">
 	            <div class="form-group">
-	                <%= f.label :spouse_date_of_birth, 'Spouse D.O.B.', class: "form-label" %>
+	                <%= f.label :spouse_date_of_birth, 'D.O.B.', class: "form-label" %>
 	                <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
 	                <script type="text/javascript">
 	                    $(document).ready(function(){
@@ -342,13 +335,13 @@
     </div>
 		
 	<div class="row">
-		<div class="col-lg-2">
+		<div class="col-lg-1">
 			<div class="form-group">
 					<%= f.label "Urgent:" %>
 				<%= f.select :urgent, ['No', 'Yes'] %>
 			</div>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-10">
 			<div class="form-group">
 				<%= f.label "Additional info:" %>
 				<%= f.text_area :additional_info, class: "form-control", :rows => 5 %>

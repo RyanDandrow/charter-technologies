@@ -5,7 +5,7 @@
 		<tr>
 			<th><%= sort_link 'Name', :name %></th>
 			<th><%= sort_link 'Email', :email %></th>
-			<th><%= sort_link 'Role', :access_level %></th>
+			<th class="hidden-xs hidden-sm"><%= sort_link 'Role', :access_level %></th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -14,7 +14,7 @@
 		<tr>
 			<td><%= table_cell_link user.name, admin_user_path(user) %></td>
 			<td><%= table_cell_link user.email, admin_user_path(user) %></td>
-			<td><%= table_cell_link get_access_level_text(user.access_level), admin_user_path(user) %></td>
+			<td class="hidden-xs hidden-sm"><%= table_cell_link get_access_level_text(user.access_level), admin_user_path(user) %></td>
 			<td class="delete">
 				<% if user.is_admin? == false || AdminUser.has_more_than_one_admin %>
 					<% confirm_message = "Are you sure you want to delete #{user.name}?" %>
