@@ -4,6 +4,8 @@ $USER_ACCESS_LEVEL_USER = 10
 
 class AdminUser < ActiveRecord::Base
 
+  has_many :comments, through: :contacts
+
   acts_as_authentic do |c|
       c.validate_email_field = true
       c.transition_from_crypto_providers = [Authlogic::CryptoProviders::Sha512]
