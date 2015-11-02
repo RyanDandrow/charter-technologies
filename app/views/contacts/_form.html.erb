@@ -263,9 +263,7 @@
 		        <%= f.label :companyNameBox1, "Address Box 1:" %>
 		            <div class="form-group" id="addressBorder">
 		            	  <%= f.text_field :companyNameBox1, placeholder: 'Company Name:', class: "form-control" %>
-		                  <%= f.text_field :address_line1_box1, placeholder: 'Address Line 1:', class: "form-control" %>
-		                  <%= f.text_field :address_line2_box1, placeholder: 'Address Line 2:', class: "form-control" %>
-		                  <%= f.text_field :address_line3_box1, placeholder: 'Address Line 3:', class: "form-control" %>
+					  	  <%= f.text_area :addressLinesBox1, class: "form-control", :rows => 3,  placeholder: "Address Line 1:\nAddress Line 2:\nAddress Line 3:" %>
 		                  <%= f.text_field :county_box1, placeholder: 'County:', class: "form-control" %>
 		                  <%= f.text_field :notes_box1, placeholder: 'Notes:', class: "form-control" %>
 		            </div>
@@ -274,9 +272,7 @@
 		        <%= f.label :companyNameBox1, "Address Box 2:" %>
 		            <div class="form-group" id="addressBorder">
 		            	  <%= f.text_field :contactNamesBox2, placeholder: 'Names on Address:', class: "form-control" %>
-		                  <%= f.text_field :address_line1_box2, placeholder: 'Address Line 1:', class: "form-control" %>
-		                  <%= f.text_field :address_line2_box2, placeholder: 'Address Line 2:', class: "form-control" %>
-		                  <%= f.text_field :address_line3_box2, placeholder: 'Address Line 3:', class: "form-control" %>
+					  	  <%= f.text_area :addressLinesBox2, class: "form-control", :rows => 3,  placeholder: "Address Line 1:\nAddress Line 2:\nAddress Line 3:" %>
 		                  <%= f.text_field :county_box2, placeholder: 'County:', class: "form-control" %>
 		                  <%= f.text_field :notes_box2, placeholder: 'Notes:', class: "form-control" %>
 		            </div>
@@ -285,9 +281,7 @@
 		        <%= f.label :companyNameBox1, "Address Box 3:" %>
 		            <div class="form-group" id="addressBorder">
 		              <%= f.text_field :additionalAddressBox3, placeholder: 'Additional Address:', class: "form-control" %>
-		              <%= f.text_field :address_line1_box3, placeholder: 'Address Line 1:', class: "form-control" %>
-		              <%= f.text_field :address_line2_box3, placeholder: 'Address Line 2:', class: "form-control" %>
-		              <%= f.text_field :address_line3_box3, placeholder: 'Address Line 3:', class: "form-control" %>
+					  <%= f.text_area :addressLinesBox3, class: "form-control", :rows => 3,  placeholder: "Address Line 1:\nAddress Line 2:\nAddress Line 3:" %>
 		              <%= f.text_field :county_box3, placeholder: 'County:', class: "form-control" %>
 		              <%= f.text_field :notes_box3, placeholder: 'Notes:', class: "form-control" %>
 		            </div>
@@ -296,9 +290,7 @@
 		        <%= f.label :companyNameBox1, "Address Box 4:" %>
 		            <div class="form-group" id="addressBorder">
 		              <%= f.text_field :additionalAddressBox3, placeholder: 'Additional Address:', class: "form-control" %>
-		              <%= f.text_field :address_line1_box4, placeholder: 'Address Line 1:', class: "form-control" %>
-		              <%= f.text_field :address_line2_box4, placeholder: 'Address Line 2:', class: "form-control" %>
-		              <%= f.text_field :address_line3_box4, placeholder: 'Address Line 3:', class: "form-control" %>
+					  <%= f.text_area :addressLinesBox4, class: "form-control", :rows => 3,  placeholder: "Address Line 1:\nAddress Line 2:\nAddress Line 3:" %>
 		              <%= f.text_field :county_box4, placeholder: 'County:', class: "form-control" %>
 		              <%= f.text_field :notes_box4, placeholder: 'Notes:', class: "form-control" %>
 		            </div>
@@ -365,7 +357,7 @@
 
 	<p class="submits">
 		<%= link_to 'Cancel', contacts_path, :class => 'btn btn-mini btn-danger' %>
-		<%= f.submit "Add new contact", :class => "btn btn-mini btn-primary" %>
+		<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
 	</p>
 
 <% end %>
