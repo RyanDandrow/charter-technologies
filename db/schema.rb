@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104062342) do
+ActiveRecord::Schema.define(version: 20151104170114) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20151104062342) do
     t.text     "addressLinesBox2"
     t.text     "addressLinesBox3"
     t.text     "addressLinesBox4"
+    t.string   "name"
   end
 
 end
