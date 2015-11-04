@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
     helper_method :current_admin_user_session, :current_user
     before_filter :authorise
 
+    ActionView::Base.field_error_proc = proc { |input, instance| "#{input}".html_safe }
+
   private
   
     def authorise    

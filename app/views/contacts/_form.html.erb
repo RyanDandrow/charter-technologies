@@ -12,7 +12,7 @@
 	  </div>
 	<% end %>
 
-	<div class="container-fluid">
+	<div class="container">
 	    <div class="row">
 	        <div class="col-lg-5 col-md-4 col-sm-4">
 	            <div class="form-group">          
@@ -190,7 +190,7 @@
                 <%= f.text_field :cell_phone, class: "form-control", id: "phone1" %>
                 <script type="text/javascript">
                     $(document).ready(function(){
-                        $('#phone1').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+                        $('#phone1').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
                     });
                 </script>
             </div>
@@ -356,7 +356,7 @@
 
 
 	<p class="submits">
-		<%= link_to 'Cancel', contacts_path, :class => 'btn btn-mini btn-danger' %>
+		<%= link_to 'Cancel', contacts_path, :class => 'btn btn-mini btn-danger', :data => { :confirm => "Are you sure you want to go back?" } %>
 		<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
 	</p>
 

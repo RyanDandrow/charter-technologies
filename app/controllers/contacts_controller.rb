@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
 
 		if @contact.save
 			flash[:notice] = 'Contact successfully created'
-			redirect_to contacts_path
+			redirect_to @contact
 		else
 			flash.now[:warning] = 'There was a problem trying to create a new contact'
 			render :action => :new

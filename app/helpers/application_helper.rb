@@ -50,14 +50,6 @@ module ApplicationHelper
     end
 
 
-    def table_cell_no_link contents, options = {}
-      if options.key? :truncate
-        contents = truncate(contents, :length => options[:truncate], :omission => "...")
-      end
-      "<div class='no-link'>#{contents}</div>".html_safe
-    end
-
-
     def span_icon icon_name
       "<span class='glyphicon glyphicon-#{icon_name}' title='#{icon_name.titleize}'></span>"
     end

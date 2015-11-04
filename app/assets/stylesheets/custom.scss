@@ -402,3 +402,7 @@ input.cmn-toggle-round:checked + label:after {
   width: 75%;
   display: inline;
 }
+
+.line-break {
+  white-space: pre-line;
+}
