@@ -66,7 +66,11 @@
 
 	        <div class="col-md-2 col-sm-3">
 	            <div class="form-group">
-	                <%= f.label :ssn, 'SSN#' %>
+					<% if @contact.goes_by.blank? %>
+						<strong><%= @contact.name %> SSN#</strong>
+					<% else %>
+						<strong><%= @contact.goes_by %> SSN#</strong>
+					<% end %>
 	                <br>
 	                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
 	                     Social Security Number
@@ -104,7 +108,11 @@
 
 	         <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	            <div class="form-group">
-	                <%= f.label :date_of_birth, 'D.O.B.', class: "form-label" %>
+				<% if @contact.goes_by.blank? %>
+					<strong><%= @contact.name %> D.O.B.</strong>
+				<% else %>
+					<strong><%= @contact.goes_by %> D.O.B.</strong>
+				<% end %>
 	                <%= f.text_field :date_of_birth, class: "form-control", id: "date" %>
 	                <script type="text/javascript">
 	                    $(document).ready(function(){
@@ -133,7 +141,11 @@
 
 	        <div class="col-md-2 col-sm-3">
 	            <div class="form-group">
-	                <%= f.label :spouse_ssn, 'Spouse SSN#' %>
+					<% if @contact.spouse_goes_by.blank? %>
+						<strong><%= @contact.spouse_first_name %> SSN#</strong>
+					<% else %>
+						<strong><%= @contact.spouse_goes_by %> SSN#</strong>
+					<% end %>
 	                <br>
 	                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
 	                     Social Security Number
@@ -171,7 +183,11 @@
 
 			<div class="col-lg-2 col-md-2 col-sm-2">
 	            <div class="form-group">
-	                <%= f.label :spouse_date_of_birth, 'D.O.B.', class: "form-label" %>
+					<% if @contact.spouse_goes_by.blank? %>
+						<strong><%= @contact.spouse_first_name %> D.O.B.</strong>
+					<% else %>
+						<strong><%= @contact.spouse_goes_by %> D.O.B.</strong>
+					<% end %>
 	                <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
 	                <script type="text/javascript">
 	                    $(document).ready(function(){
@@ -186,7 +202,11 @@
     <div class="row">
         <div class="col-lg-2 col-md-2">
             <div class="form-group">          
-                <%= f.label "Cell:", class: "form-label" %>
+				<% if @contact.goes_by.blank? %>
+					<strong><%= @contact.name %> Cell:</strong>
+				<% else %>
+					<strong><%= @contact.goes_by %> Cell:</strong>
+				<% end %>
                 <%= f.text_field :cell_phone, class: "form-control", id: "phone1" %>
                 <script type="text/javascript">
                     $(document).ready(function(){
@@ -195,7 +215,11 @@
                 </script>
             </div>
             <div class="form-group">          
-                <%= f.label "Spouse Cell:", class: "form-label" %>
+				<% if @contact.spouse_goes_by.blank? %>
+					<strong><%= @contact.spouse_first_name %> Cell:</strong>
+				<% else %>
+					<strong><%= @contact.spouse_goes_by %> Cell:</strong>
+				<% end %>
                 <%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
            		<script type="text/javascript">
                     $(document).ready(function(){
@@ -312,13 +336,21 @@
     <div class="row">
         <div class="col-md-5 col-sm-4">
             <div class="form-group">
-                <%= f.label :email, 'Email:', class: "form-label" %>
+				<% if @contact.goes_by.blank? %>
+					<strong><%= @contact.name %> Email:</strong>
+				<% else %>
+					<strong><%= @contact.goes_by %> Email:</strong>
+				<% end %>
                 <%= f.text_field :email, class: "form-control" %>
             </div>
         </div>         
         <div class="col-md-5 col-sm-4 col-lg-offset-1">
             <div class="form-group">
-                <%= f.label :spouse_email, 'Spouse Email:', class: "form-label" %>
+				<% if @contact.spouse_goes_by.blank? %>
+					<strong><%= @contact.spouse_first_name %> Email:</strong>
+				<% else %>
+					<strong><%= @contact.spouse_goes_by %> Email:</strong>
+				<% end %>
                 <%= f.text_field :spouse_email, class: "form-control" %>
             </div>
         </div> 
