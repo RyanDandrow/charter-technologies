@@ -30,3 +30,55 @@ toggleDiv = function(div) {
 		break;
 	}	
 }
+
+
+
+// INPUT MASKS FOR CONTACTS
+
+$(document).ready(function(){
+    $('#tax_id').mask('00-0000000', {placeholder: "00-0000000"});
+});
+
+$(document).ready(function(){
+    $('#date').mask('00/00/0000', {placeholder: "mm/dd/yyyy"});
+});
+
+$(document).ready(function(){
+    $('#date2').mask('00/00/0000', {placeholder: "mm/dd/yyyy"});
+});
+
+$(document).ready(function(){
+    $('#phone1').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
+});
+
+$(document).ready(function(){
+    $('#phone1').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
+});
+
+$(document).ready(function(){
+    $('#phone2').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#phone3').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#phone4').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#altphone').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#altphone2').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#altphone3').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
+
+$(document).ready(function(){
+    $('#altphone4').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+});
