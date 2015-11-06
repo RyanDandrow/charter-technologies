@@ -6,12 +6,10 @@ class AdminUsersController < ApplicationController
   before_filter :needs_admin_or_current_user, :only => [:show, :destroy, :update, :update_password]
 
   def index
-    @page_title = "Users"
     @admin_users = AdminUser.all
   end
 
   def new
-    @page_title = "Add a new user"
   	@admin_user = AdminUser.new
   end
 
@@ -29,12 +27,10 @@ class AdminUsersController < ApplicationController
 
   def show
   	@admin_user = AdminUser.find params[:id]
-  	@page_title = @admin_user.name + " > View user"
   end
 
   def update
     @admin_user = AdminUser.find params[:id]
-    @page_title = @admin_user.name + " > Update user"
 
     if @admin_user.update_attributes admin_user_params
       flash[:notice] = @admin_user.name + " has been updated"
@@ -53,7 +49,6 @@ class AdminUsersController < ApplicationController
 
   def update_password
     @admin_user = AdminUser.find params[:id]
-    @page_title = @admin_user.name + " > Update password"
      
     if @admin_user.valid_password? params[:form_current_password]
       if params[:admin_user][:password].blank? && params[:admin_user][:password_confirmation].blank?
@@ -72,7 +67,6 @@ class AdminUsersController < ApplicationController
 
   def reset_password
     @admin_user = AdminUser.find params[:id]
-    @page_title = @admin_user.name + " > Reset password"
      
       if @admin_user.update_attributes admin_user_params
           flash[:notice] = "Your password has been reset"
