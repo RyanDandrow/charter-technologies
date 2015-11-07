@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment_hash = params[:comment]
     @obj = @comment_hash[:commentable_type].constantize.find(@comment_hash[:commentable_id])
 
-    @comment = Comment.build_from(@obj, current_user.id, @comment_hash[:body])
+    @comment = Comment.build_from(@obj, current_user.id, current_user.name, @comment_hash[:body])
     if @comment.save
       render :partial => "comments/comment", :locals => { :comment => @comment }, :layout => false, :status => :created
     else

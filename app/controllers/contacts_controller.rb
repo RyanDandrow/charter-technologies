@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
    	@search = Contact.search(params[:q])
    	@contacts = @search.result
 		@comments = @contact.comment_threads.order('created_at desc')
-   	@new_comment = Comment.build_from(@contact, current_user.id, "")
+   	@new_comment = Comment.build_from(@contact, current_user.id, current_user.name,  "")
 	end
 
 	def new
