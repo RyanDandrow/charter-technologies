@@ -77,32 +77,32 @@
 	    </div>
 
 	    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	            <div class="modal-dialog" role="document">
-	                <div class="modal-content">
-	                    <div class="modal-header">
-	                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                        <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
-	                    </div>
-	                    <div class="modal-body">
-	                        <div class="row">
-	                             <div class="col-md-2 col-sm-2 col-md-offset-3">
-	                                <div class="form-inline">
-	                                    <%= f.text_field :ssn, class: "form-control", id: "social" %>
-	                                    <script type="text/javascript">
-	                                        $(document).ready(function(){
-	                                            $('#social').mask('000-00-0000', {placeholder: "000-00-0000"});
-	                                        });
-	                                    </script>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="modal-footer">
-	                        <button type="button" class="btn btn-primary">Save changes</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
+	          </div>
+		        <div class="modal-body">
+		          <div class="row">
+		            <div class="col-md-2 col-sm-2 col-md-offset-3">
+		              <div class="form-inline">
+		                <%= f.text_field :ssn, class: "form-control", id: "social" %>
+	                    <script type="text/javascript">
+	                      $(document).ready(function(){
+	                        $('#social').mask('000-00-0000', {placeholder: "000-00-0000"});
+	                      });
+	                    </script>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-primary">Save changes</button>
+	          </div>
+		      </div>
+		    </div>
+		  </div>
 
 	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	      <div class="form-group">
@@ -141,39 +141,40 @@
 					  <strong><%= @contact.spouse_goes_by %> SSN#</strong>
 					<% end %>
 	          <br>
-          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
             Social Security Number
           </button>
 	      </div>
 	    </div>
 
-	        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	            <div class="modal-dialog" role="document">
-	                <div class="modal-content">
-	                    <div class="modal-header">
-	                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                        <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
-	                    </div>
-	                    <div class="modal-body">
-	                        <div class="row">
-	                             <div class="col-md-3 col-sm-3 col-md-offset-3">
-	                                <div class="form-inline">
-	                                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social" %>
-	                                    <script type="text/javascript">
-	                                        $(document).ready(function(){
-	                                            $('#social').mask('000-00-0000', {placeholder: "000-00-0000"});
-	                                        });
-	                                    </script>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="modal-footer">
-	                        <button type="button" class="btn btn-primary">Save changes</button>
-	                    </div>
-	                </div>
+	      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	        <div class="modal-dialog" role="document">
+	          <div class="modal-content">
+	            <div class="modal-header">
+	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
 	            </div>
+
+	            <div class="modal-body">
+	              <div class="row">
+	                <div class="col-md-3 col-sm-3 col-md-offset-3">
+	                  <div class="form-inline">
+	                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social-2" %>
+                        <script type="text/javascript">
+                          $(document).ready(function(){
+                            $('#social-2').mask('000-00-0000', {placeholder: "000-00-0000"});
+                          });
+                        </script>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary">Save changes</button>
+	            </div>
+	          </div>
 	        </div>
+	      </div>
 
 			<div class="col-lg-2 col-md-2 col-sm-2">
 	      <div class="form-group">
