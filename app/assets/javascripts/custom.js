@@ -1,8 +1,3 @@
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap
-//= require_tree .
-
 jQuery(document).ready(function() {
 
 	if (current_controller) {
@@ -30,7 +25,6 @@ toggleDiv = function(div) {
 		break;
 	}	
 }
-
 
 
 // INPUT MASKS FOR CONTACTS

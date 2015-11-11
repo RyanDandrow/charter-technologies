@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
 
   	require 'application_helper'
   	include ApplicationHelper 
-
-    layout 'app_nav'
    
     helper_method :current_admin_user_session, :current_user
     before_filter :authorise

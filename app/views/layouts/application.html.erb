@@ -1,14 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CharterTechnologies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  	<title><%= generate_page_title %></title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    var current_controller = "<%= controller_name %>";
+  </script>
+
 </head>
-<body>
+  <body>
 
-<%= yield %>
+    <nav class="navbar navbar-default" role="navigation">
+      <% if @session_user != nil %>
+        <div class="container">
+          <div id="user-info">
+            <ul>
+              <li class="hidden-xs">Hello, <%= @session_user.name %></li>
+              <% if @session_user.is_admin? %>
+              	<li class="hidden-xs"><%= link_to 'Profile', admin_user_path(@session_user) %></li>
+                <li><%= link_to 'Users', admin_users_path %></li>
+              <% end %>
+                <li><%= link_to 'Contacts', contacts_path %></li>
+                <li class="last-item signout"><%= link_to 'Sign out', admin_user_session_path, :method => :delete %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </nav>
 
-</body>
+    <div class="container">
+      <div id="content">
+        <div class="row">
+          <% if content_for?(:sidebar) %>
+             <div id="right-column" class="col-md-2">
+                <ul class="nav nav-pills nav-stacked content-bottom-padding">
+                  <%= yield :sidebar %>
+                </ul>
+            </div>
+
+            <div id="left-column" class="col-md-10 content-bottom-padding">
+          <% else %>
+            <div class="col-lg-12 content-bottom-padding">
+          <% end %>
+
+            <% if flash[:warning] %>
+              <div id="error" class="alert alert-danger">
+                <%= flash[:warning] %>
+              </div>
+            <% end %>
+
+            <% if flash[:notice] %>
+              <div id="notice" class="alert alert-success">
+                <%= flash[:notice] %>
+              </div>
+            <% end %>
+
+            <% if content_for?(:help) %>
+              <div id="help" class="alert alert-info">
+                <%= yield :help %>
+              </div>
+            <% end %>
+            
+            <%= yield %>
+            
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+
 </html>
