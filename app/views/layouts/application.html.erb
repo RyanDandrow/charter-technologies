@@ -17,23 +17,7 @@
 </head>
   <body>
 
-    <nav class="navbar navbar-default" role="navigation">
-      <% if @session_user != nil %>
-        <div class="container">
-          <div id="user-info">
-            <ul>
-              <li class="hidden-xs">Hello, <%= @session_user.name %></li>
-              <% if @session_user.is_admin? %>
-              	<li class="hidden-xs"><%= link_to 'Profile', admin_user_path(@session_user) %></li>
-                <li><%= link_to 'Users', admin_users_path %></li>
-              <% end %>
-                <li><%= link_to 'Contacts', contacts_path %></li>
-                <li class="last-item signout"><%= link_to 'Sign out', admin_user_session_path, :method => :delete %></li>
-            </ul>
-          </div>
-        </div>
-      <% end %>
-    </nav>
+  <%= render 'layouts/application_nav' %>
 
     <div class="container">
       <div id="content">
