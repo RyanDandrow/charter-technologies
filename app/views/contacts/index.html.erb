@@ -1,12 +1,6 @@
 <h2>Contacts</h2>
 
-  <%= search_form_for @search do |f| %>
-    <div class="center">
-      <%= f.label :name_cont, "Search:" %>
-      <%= f.text_field :first_name_or_company_or_last_name_or_cell_phone_or_email_or_spouse_email_or_goes_by_or_spouse_first_name_or_spouse_last_name_or_spouse_goes_by_cont %>
-      <%= f.submit "Submit" %>
-    </div>
-  <% end %>
+<%= render 'layouts/contact_nav' %>
 
   <br>
 
@@ -35,7 +29,3 @@
 		</tr>
 	<% end %>
 </table>
-
-<%= content_for :sidebar do %>
-	<li><%= link_to "#{show_icon "plus-sign"}Add a new contact".html_safe, new_contact_path %></li>
-<% end %>
