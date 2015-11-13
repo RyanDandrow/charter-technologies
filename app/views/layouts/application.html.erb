@@ -34,23 +34,14 @@
             <div class="col-lg-12 content-bottom-padding">
           <% end %>
 
-            <% if flash[:warning] %>
-              <div id="error" class="alert alert-danger">
-                <%= flash[:warning] %>
-              </div>
-            <% end %>
-
-            <% if flash[:notice] %>
-              <div id="notice" class="alert alert-success">
-                <%= flash[:notice] %>
-              </div>
-            <% end %>
-
-            <% if content_for?(:help) %>
-              <div id="help" class="alert alert-info">
-                <%= yield :help %>
-              </div>
-            <% end %>
+           <% unless flash.empty? %>
+            <script type="text/javascript">
+                <% flash.each do |f| %>
+                <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+                 toastr['<%= type %>']('<%= f[1] %>');
+                <% end %>
+            </script>
+           <% end %>
             
             <%= yield %>
             

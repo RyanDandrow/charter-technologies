@@ -10,6 +10,7 @@ Rails.application.config.assets.precompile += %w( custom.js )
 Rails.application.config.assets.precompile += %w( comments.js.coffee )
 Rails.application.config.assets.precompile += %w( jquery.mask.min.js )
 Rails.application.config.assets.precompile += %w( login.css )
+Rails.application.config.assets.precompile += %w( bootstrap_custom.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

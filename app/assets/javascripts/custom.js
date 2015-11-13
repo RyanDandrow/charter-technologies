@@ -76,3 +76,25 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#altphone4').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
 });
+
+
+
+$(document).ready(function() {
+	
+	
+	 toastr.options = {
+	                  "closeButton": false,
+	                  "debug": false,
+	                  "positionClass": "toast-bottom-right",
+	                  "onclick": null,
+	                  "showDuration": "500",
+	                  "hideDuration": "1000",
+	                  "timeOut": "5000",
+	                  "extendedTimeOut": "1000",
+	                  "showEasing": "swing",
+	                  "hideEasing": "linear",
+	                  "showMethod": "fadeIn",
+	                  "hideMethod": "fadeOut"
+	              }
+	
+	});

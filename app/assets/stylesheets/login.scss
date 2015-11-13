@@ -11,6 +11,7 @@ body {
 .container-narrow {
   margin: 0 auto;
   max-width: 400px;
+  padding-top: 50px;
 }
 
 .alert {
@@ -22,17 +23,7 @@ body {
   margin-bottom: 40px;
 }
 
-.form-group .checkbox-inline label {
-  margin-top: 5px;
-  margin-bottom: 20px;
-  font-weight: normal;
-}
-
-.form-group .checkbox-inline input[type="checkbox"] {
-  margin-top: 1px;
-}
-
-.form-group input {
+#center {
   text-align: center;
 }
 
@@ -46,20 +37,6 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
-footer p {
-  font-size: 13px;
-  text-align: center;
-  color: #888;
-}
-
-footer p a {
-  color: #555;
-}
-
-footer p a:hover {
-  color: #000;
-  text-decoration: none;
-}
 
 @media screen and (min-width: 768px) {
   .jumbotron {
@@ -69,7 +46,6 @@ footer p a:hover {
   }
 
   body {
-    padding-top: 40px;
     padding-bottom: 20px;
   }
 } 
