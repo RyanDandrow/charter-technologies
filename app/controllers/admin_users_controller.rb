@@ -20,7 +20,7 @@ class AdminUsersController < ApplicationController
       flash[:notice] = "New user " + @admin_user.name + " has been successfully created."
       redirect_to admin_users_path
     else
-      flash.now[:warning] = "There were problems when trying to create a new user"
+      flash.now[:error] = "There were problems when trying to create a new user"
       render :action => :new
     end
   end
@@ -35,7 +35,7 @@ class AdminUsersController < ApplicationController
     if @admin_user.update_attributes admin_user_params
       flash[:notice] = @admin_user.name + " has been updated"
     else
-      flash.now[:warning] = "There were problems when trying to update this user"
+      flash.now[:error] = "There were problems when trying to update this user"
       render :action => :show
       return
     end
@@ -52,14 +52,14 @@ class AdminUsersController < ApplicationController
      
     if @admin_user.valid_password? params[:form_current_password]
       if params[:admin_user][:password].blank? && params[:admin_user][:password_confirmation].blank?
-        flash[:warning] = "New password cannot be blank"
+        flash[:error] = "New password cannot be blank"
       elsif @admin_user.update_attributes admin_user_params
         flash[:notice] = "Your password has been changed"
       else
-        flash[:warning] = "There were problems when trying to change your password"
+        flash[:error] = "There were problems when trying to change your password"
       end
     else
-      flash[:warning] = "The current password is incorrect"
+      flash[:error] = "The current password is incorrect"
     end
     
     redirect_to :action => :show
@@ -71,7 +71,7 @@ class AdminUsersController < ApplicationController
       if @admin_user.update_attributes admin_user_params
           flash[:notice] = "Your password has been reset"
       else
-        flash[:warning] = "There were problems when trying to reset this user's password"
+        flash[:error] = "There were problems when trying to reset this user's password"
       end
     redirect_to :action => :show
   end

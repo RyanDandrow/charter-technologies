@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
 			flash[:notice] = 'Contact successfully created'
 			redirect_to @contact
 		else
-			flash.now[:warning] = 'There was a problem trying to create a new contact'
+			flash.now[:error] = 'There was a problem trying to create a new contact'
 			render :action => :new
 		end
 	end
@@ -37,7 +37,7 @@ class ContactsController < ApplicationController
 			flash[:notice] = 'Contact has been successfully updated'
 			redirect_to contact_path
 		else
-			flash.now[:warning] = 'There was a problem trying to update this contact'
+			flash.now[:error] = 'There was a problem trying to update this contact'
 			render :action => :new
 		end
 	end
