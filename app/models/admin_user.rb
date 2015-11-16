@@ -33,7 +33,7 @@ class AdminUser < ActiveRecord::Base
   private
 
   def capitalize_name
-    self.name = self.name.capitalize if self.name.present?
+    self.name = self.name.split.map(&:capitalize).join(' ') if self.name.present?
   end
 
 end

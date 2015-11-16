@@ -14,9 +14,8 @@
         <li>
           <%= search_form_for @search do |f| %>
             <div class="form-inline button">
-              <%= f.label :name_cont, "Search:" %>
-              <%= f.text_field :name_or_company_or_last_name_or_cell_phone_or_email_or_spouse_email_or_goes_by_or_spouse_first_name_or_spouse_last_name_or_spouse_goes_by_cont, class: "form-control" %>
-              <%= f.submit "Submit", class: "btn btn-default" %>
+              <%= f.text_field :name_or_company_or_last_name_or_cell_phone_or_email_or_spouse_email_or_goes_by_or_spouse_first_name_or_spouse_last_name_or_spouse_goes_by_cont, class: "form-control", placeholder: "Search Contacts:" %>
+              <%= f.submit "Search", class: "btn btn-default" %>
             </div>
           <% end %>
         </li>
