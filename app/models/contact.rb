@@ -26,6 +26,16 @@ class Contact < ActiveRecord::Base
 	  [spouse_first_name, spouse_middle_name, spouse_last_name].join(' ')
 	end
 
+	def self.to_csv(options = {})
+	  CSV.generate(options) do |csv|
+	    csv.add_row column_names
+	    all.each do |contacts|
+	      values = contacts.attributes.values
+	      csv.add_row values
+	    end
+	  end
+	end
+
 	private
 
 		def capitalize_name

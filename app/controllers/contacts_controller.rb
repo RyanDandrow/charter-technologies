@@ -50,6 +50,14 @@ class ContactsController < ApplicationController
 		redirect_to contacts_path
 	end
 
+	def export
+	  @data = Contact.order(:created_at)
+	  respond_to do |format|
+	    format.html { redirect_to contacts_path }
+	    format.csv { send_data @data.to_csv }
+	  end
+	end
+
 	private
 
 		def contact_params
