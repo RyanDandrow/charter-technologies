@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require sweet-alert
+//= require sweet-alert-confirm
 //= require toastr_rails
 //= require_tree .

@@ -15,6 +15,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'acts_as_commentable_with_threading', '~> 2.0'
 gem 'ransack'
 gem 'toastr_rails'
+gem 'sweet-alert'
+gem 'sweet-alert-confirm'
 
 
 group :development, :test do

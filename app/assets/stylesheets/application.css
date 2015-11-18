@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require sweet-alert
  *= require toastr_rails
  *= require_tree .
  */
