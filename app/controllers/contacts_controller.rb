@@ -70,6 +70,7 @@ class ContactsController < ApplicationController
 											:county_box1, :county_box2, :county_box3, :county_box4, :notes_box1, :notes_box2,
 											:notes_box3, :notes_box4, :company_type, :companyNameBox1, :contactNamesBox2,
 											:additionalAddressBox3, :additionalAddressBox4, :ssn, :spouse_ssn, :urgent,
-											:addressLinesBox1, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4, :name)
+											:addressLinesBox1, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4,
+											:name, :spouse_drivers_license)
 		end
 end
