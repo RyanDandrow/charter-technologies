@@ -41,6 +41,10 @@ module ApplicationHelper
       link_to "#{contents}".html_safe, link, options
     end
 
+    def pagination_details objs
+      " <small class='pagination-details'>/ page #{objs.current_page} of #{objs.total_pages}</small>".html_safe if objs.current_page && objs.total_pages > 1
+    end
+
     def span_icon icon_name
       "<span class='glyphicon glyphicon-#{icon_name}' title='#{icon_name.titleize}'></span>"
     end

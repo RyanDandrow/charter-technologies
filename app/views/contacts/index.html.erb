@@ -1,4 +1,4 @@
-<h2>Contacts</h2>
+<h2>Contacts<%= pagination_details @contacts %></h2>
 
 <%= render 'layouts/contact_nav' %>
 
@@ -29,3 +29,8 @@
 		</tr>
 	<% end %>
 </table>
+
+<div class="text-center">
+  <%= will_paginate @contacts %>
+</div>
+
