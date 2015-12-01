@@ -6,7 +6,7 @@ class AdminUsersController < ApplicationController
   before_filter :needs_admin_or_current_user, :only => [:show, :destroy, :update, :update_password]
 
   def index
-    @admin_users = AdminUser.all
+    @admin_users = AdminUser.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
