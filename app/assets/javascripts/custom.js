@@ -46,7 +46,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('#phone1').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
+    $('#sf_id').mask('000', {placeholder: "000"});
 });
 
 $(document).ready(function(){

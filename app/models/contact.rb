@@ -12,6 +12,7 @@ class Contact < ActiveRecord::Base
 	validates_length_of :spouse_date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
 	validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "ID is invalid"
 	validates :company_type, presence: true
+	validates :sf_id, uniqueness: true
 	
 
 	acts_as_commentable
