@@ -15,7 +15,7 @@
   <%= stylesheet_link_tag 'bootstrap_custom' %>
 
 	<div class="container">
-	  <div class="row">
+		<div class="row">
 	    <div class="col-lg-5 col-md-4 col-sm-4">
 	      <div class="form-group">          
 	        <%= f.label "Company:", class: "form-label" %>
@@ -187,6 +187,24 @@
 	      </div>
 	    </div>
 		</div>  <!-- row -->
+
+	  <div class="row">
+	    <div class="col-lg-5 col-md-4 col-sm-4">
+	      <div class="form-group">          
+	        <%= f.label "Company 2:", class: "form-label" %>
+	        <%= f.text_field :company2, class: "form-control", id: "company" %>
+	        <%= f.select :company_type2, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+	      </div>
+	    </div>
+
+	    <div class="col-lg-5 col-md-4 col-sm-4">
+	      <div class="form-group">          
+	        <%= f.label "Company 3:", class: "form-label" %>
+	        <%= f.text_field :company3, class: "form-control", id: "company" %>
+	        <%= f.select :company_type3, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+	      </div>
+	    </div>
+	  </div>
 
     <div class="row">
       <div class="col-lg-2 col-md-2">

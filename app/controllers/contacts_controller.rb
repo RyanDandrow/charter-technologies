@@ -72,6 +72,6 @@ class ContactsController < ApplicationController
 											:notes_box3, :notes_box4, :company_type, :companyNameBox10, :contactNamesBox2,
 											:additionalAddressBox3, :additionalAddressBox4, :ssn, :spouse_ssn, :urgent,
 											:addressLinesBox10, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4,
-											:name, :spouse_drivers_license)
+											:name, :spouse_drivers_license, :company2, :company3, :company_type2, :company_type3)
 		end
 end
