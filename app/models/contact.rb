@@ -10,10 +10,15 @@ class Contact < ActiveRecord::Base
 	validates :alt_email, :allow_blank => true, format: { with: EMAIL_REGEX }
 	validates_length_of :date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
 	validates_length_of :spouse_date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
-	validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "ID is invalid"
+	validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
+	validates :company, presence: true
 	validates :company_type, presence: true
-	validates :sf_id, uniqueness: true
-	
+	validates_uniqueness_of :sf_id, message: "is already in use"
+	validates_length_of :cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	validates_length_of :home_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	validates_length_of :spouse_cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	validates_length_of :company_phone, :minimum => 14, :maximum => 22, :allow_blank => true, message: "is invalid"
+
 
 	acts_as_commentable
 

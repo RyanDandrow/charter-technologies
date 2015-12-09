@@ -63,7 +63,7 @@ class ContactsController < ApplicationController
 
 		def contact_params
 			params.require(:contact).permit(:company, :goes_by, :cell_phone, :sf_id, :additional_info, :tax_id, :drivers_license,
-											:spouse_goes_by, :date_of_birth, :spouse_date_of_birth, :alt_phone_10, :alt_phone_2,
+											:spouse_goes_by, :date_of_birth, :spouse_date_of_birth, :alt_phone_1, :alt_phone_2,
 											:alt_phone_3, :alt_phone_4, :alt_phone_10_place, :alt_phone_2_place, :alt_phone_3_place,
 											:alt_phone_4_place, :home_phone, :company_phone, :spouse_cell_phone, :first_name,
 											:middle_name, :last_name, :name_suffix, :spouse_first_name, :spouse_middle_name,
