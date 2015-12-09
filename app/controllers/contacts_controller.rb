@@ -62,16 +62,15 @@ class ContactsController < ApplicationController
 	private
 
 		def contact_params
-			params.require(:contact).permit(:company, :goes_by, :cell_phone, :sf_id, :additional_info, :tax_id, :drivers_license,
-											:spouse_goes_by, :date_of_birth, :spouse_date_of_birth, :alt_phone_1, :alt_phone_2,
-											:alt_phone_3, :alt_phone_4, :alt_phone_10_place, :alt_phone_2_place, :alt_phone_3_place,
-											:alt_phone_4_place, :home_phone, :company_phone, :spouse_cell_phone, :first_name,
-											:middle_name, :last_name, :name_suffix, :spouse_first_name, :spouse_middle_name,
-											:spouse_last_name, :email, :spouse_email, :alt_email, :alt_email_label, :web_address,
-											:county_box10, :county_box2, :county_box3, :county_box4, :notes_box10, :notes_box2,
-											:notes_box3, :notes_box4, :company_type, :companyNameBox10, :contactNamesBox2,
-											:additionalAddressBox3, :additionalAddressBox4, :ssn, :spouse_ssn, :urgent,
-											:addressLinesBox10, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4,
-											:name, :spouse_drivers_license, :company2, :company3, :company_type2, :company_type3)
+			params.require(:contact).permit(:company, :goes_by, :cell_phone, :sf_id, :additional_info, :tax_id,
+										  :drivers_license, :spouse_goes_by, :date_of_birth, :spouse_date_of_birth, :alt_phone_1,
+										  :alt_phone_2, :alt_phone_3, :alt_phone_4, :alt_phone_1_place, :alt_phone_2_place,
+										  :alt_phone_3_place, :alt_phone_4_place, :home_phone, :company_phone, :spouse_cell_phone, 
+										  :first_name, :last_name, :name_suffix, :spouse_first_name, :spouse_last_name, :email, 
+										  :spouse_email, :alt_email, :alt_email_label, :web_address, :county_box1, :county_box2, 
+										  :county_box3, :county_box4, :company_type, :companyNameBox10, :contactNamesBox2, 
+										  :additionalAddressBox3, :additionalAddressBox4, :ssn, :spouse_ssn, :urgent,
+											:addressLinesBox10, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4, :name,
+											:spouse_drivers_license, :company2, :company3, :company_type2, :company_type3)
 		end
 end

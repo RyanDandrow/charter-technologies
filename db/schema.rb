@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209214010) do
+ActiveRecord::Schema.define(version: 20151209215642) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -90,10 +90,6 @@ ActiveRecord::Schema.define(version: 20151209214010) do
     t.string   "county_box2"
     t.string   "county_box3"
     t.string   "county_box4"
-    t.string   "notes_box1"
-    t.string   "notes_box2"
-    t.string   "notes_box3"
-    t.string   "notes_box4"
     t.string   "company_type"
     t.string   "companyNameBox1"
     t.string   "contactNamesBox2"
