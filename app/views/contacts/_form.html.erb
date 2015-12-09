@@ -189,7 +189,7 @@
 		</div>  <!-- row -->
 
 	  <div class="row">
-	    <div class="col-lg-5 col-md-4 col-sm-4">
+	    <div class="col-lg-4 col-md-4 col-sm-4">
 	      <div class="form-group">          
 	        <%= f.label "Company 2:", class: "form-label" %>
 	        <%= f.text_field :company2, class: "form-control", id: "company" %>
@@ -197,12 +197,23 @@
 	      </div>
 	    </div>
 
-	    <div class="col-lg-5 col-md-4 col-sm-4">
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-md-offset-1">
 	      <div class="form-group">          
 	        <%= f.label "Company 3:", class: "form-label" %>
 	        <%= f.text_field :company3, class: "form-control", id: "company" %>
 	        <%= f.select :company_type3, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
 	      </div>
+	    </div>
+
+	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+	      <div class="form-group">
+				  <% if @contact.goes_by.blank? %>
+					  <strong><%= @contact.spouse_first_name %> DL#</strong>
+				  <% else %>
+					  <strong><%= @contact.spouse_goes_by %> DL#</strong>
+				  <% end %>
+	          <%= f.text_field :spouse_drivers_license, class: "form-control", id: "date" %>
+	       </div>
 	    </div>
 	  </div>
 
