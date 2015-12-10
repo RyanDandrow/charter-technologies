@@ -70,6 +70,7 @@ class ContactsController < ApplicationController
 										  :spouse_email, :alt_email, :alt_email_label, :web_address, :county_box1, :county_box2, 
 										  :county_box3, :county_box4, :company_type, :ssn, :spouse_ssn, :urgent, :name,
 											:spouse_drivers_license, :company2, :company3, :company_type2, :company_type3,
-											:address_box_1, :address_box_2, :address_box_3, :address_box_4)
+											:address_box_1, :address_box_2, :address_box_3, :address_box_4, :address_box_1_label,
+											:address_box_2_label, :address_box_3_label, :address_box_4_label)
 		end
 end
