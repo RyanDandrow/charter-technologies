@@ -68,9 +68,7 @@ class ContactsController < ApplicationController
 										  :alt_phone_3_place, :alt_phone_4_place, :home_phone, :company_phone, :spouse_cell_phone, 
 										  :first_name, :last_name, :name_suffix, :spouse_first_name, :spouse_last_name, :email, 
 										  :spouse_email, :alt_email, :alt_email_label, :web_address, :county_box1, :county_box2, 
-										  :county_box3, :county_box4, :company_type, :companyNameBox10, :contactNamesBox2, 
-										  :additionalAddressBox3, :additionalAddressBox4, :ssn, :spouse_ssn, :urgent,
-											:addressLinesBox10, :addressLinesBox2, :addressLinesBox3, :addressLinesBox4, :name,
+										  :county_box3, :county_box4, :company_type, :ssn, :spouse_ssn, :urgent, :name,
 											:spouse_drivers_license, :company2, :company3, :company_type2, :company_type3)
 		end
 end
