@@ -212,12 +212,14 @@ div#content {
   width: 160px;
   padding-left: 2px;
   border-style: none;
+  font-weight: bold;
   }
 
 .form-label-3 {
   width: 255px;
   padding-left: 2px;
   border-style: none;
+  font-weight: bold;
   }
 
 .button {
@@ -230,11 +232,6 @@ div#content {
 
 .first {
   width: 40%;
-  display: inline;
-}
-
-.middle {
-  width: 11%;
   display: inline;
 }
 
@@ -286,6 +283,15 @@ div#content {
 .line-break {
   white-space: pre-line;
 }
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
 
 /* Bootstrap Combobox */
 
