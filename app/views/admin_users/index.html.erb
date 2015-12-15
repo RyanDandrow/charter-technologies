@@ -1,5 +1,7 @@
 <h2>Users<%= pagination_details @admin_users %></h2>
 
+<%= render 'layouts/contact_nav' %>
+
 <table class="table table-striped table-hover table-condensed">
 	<thead>
 		<tr>
@@ -29,10 +31,6 @@
 		</tr>
 	<% end %>
 </table>
-
-<%= content_for :sidebar do %>
-  <li><%= link_to "#{show_icon('plus-sign')}Add a new user".html_safe, new_admin_user_path %></li>
-<% end %>
 
 <div class="text-center">
   <%= will_paginate @admin_users %>

@@ -6,6 +6,8 @@ class AdminUsersController < ApplicationController
   before_filter :needs_admin_or_current_user, :only => [:show, :destroy, :update, :update_password]
 
   def index
+    @search = Contact.search(params[:q])
+    @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
     @admin_users = AdminUser.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
   end
 
