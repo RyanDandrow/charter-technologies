@@ -7,7 +7,12 @@ class ContactTest < ActiveSupport::TestCase
 						name: "Ryan", 
 						last_name: "Dandrow",
 						email: "ryandandrow@gmail.com",
-						cell_phone: "609-312-6771")
+						cell_phone: "609-312-6771",
+						sf_id: "001",
+						tax_id: "00-0000000",
+						home_phone: "609-992-5041",
+						ssn: "000-00-0000",
+						spouse_ssn: "000-00-0000")
 	end
 
 	test "name should be present" do
@@ -63,7 +68,7 @@ class ContactTest < ActiveSupport::TestCase
 	end
 
 	test "cell phone should reject invalid number" do
-  	invalid_number = %w[609-32-6771 60-000-4444 609-312-000]
+  	invalid_number = %w[0 00 000 000-0 000-00 000-000 000-000-0 000-000-00 000-000-000]
   	invalid_number.each do |invalid_number|
     		@contact.cell_phone = invalid_number
     		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
@@ -71,7 +76,7 @@ class ContactTest < ActiveSupport::TestCase
 	end
 
 	test "home phone should reject invalid number" do
-  	invalid_number = %w[609-32-6771 60-000-4444 609-312-000]
+  	invalid_number = %w[0 00 000 000-0 000-00 000-000 000-000-0 000-000-00 000-000-000]
   	invalid_number.each do |invalid_number|
     		@contact.home_phone = invalid_number
     		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
@@ -85,11 +90,57 @@ class ContactTest < ActiveSupport::TestCase
 		assert_not duplicate_contact.valid?
 	end
 
+	test "SF ID should reject invalid number" do
+  	invalid_number = %w[00 0]
+  	invalid_number.each do |invalid_number|
+    		@contact.sf_id = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
+	end
+
 	test "Tax ID should be unique" do
 		duplicate_contact = @contact.dup
 		duplicate_contact.tax_id = @contact.tax_id
 		@contact.save
 		assert_not duplicate_contact.valid?
+	end
+
+	test "Tax ID should reject invalid number" do
+  	invalid_number = %w[0 00 00-0 00-00 00-000 00-0000 00-00000 00-000000]
+  	invalid_number.each do |invalid_number|
+    		@contact.tax_id = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
+	end
+
+	test "SSN should be unique" do
+		duplicate_contact = @contact.dup
+		duplicate_contact.ssn = @contact.ssn
+		@contact.save
+		assert_not duplicate_contact.valid?
+	end
+
+	test "SSN should reject invalid number" do
+  	invalid_number = %w[0 00 000 000-0 000-00 000-00-0 000-00-00 000-00-000]
+  	invalid_number.each do |invalid_number|
+    		@contact.ssn = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
+	end
+
+	test "Spouse SSN should be unique" do
+		duplicate_contact = @contact.dup
+		duplicate_contact.spouse_ssn = @contact.spouse_ssn
+		@contact.save
+		assert_not duplicate_contact.valid?
+	end
+
+	test "Spouse SSN should reject invalid number" do
+  	invalid_number = %w[0 00 000 000-0 000-00 000-00-0 000-00-00 000-00-000]
+  	invalid_number.each do |invalid_number|
+    		@contact.spouse_ssn = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
 	end
 
 end
