@@ -143,4 +143,20 @@ class ContactTest < ActiveSupport::TestCase
   	end
 	end
 
+	test "date of birth should reject invalid number" do
+  	invalid_number = %w[0 00/ 00/0 00/00 00/00/0 00/00/00 00/00/000]
+  	invalid_number.each do |invalid_number|
+    		@contact.date_of_birth = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
+	end
+
+	test "spouse date of birth should reject invalid number" do
+  	invalid_number = %w[0 00/ 00/0 00/00 00/00/0 00/00/00 00/00/000]
+  	invalid_number.each do |invalid_number|
+    		@contact.spouse_date_of_birth = invalid_number
+    		assert_not @contact.valid?, "#{invalid_number.inspect} should be invalid"
+  	end
+	end
+
 end

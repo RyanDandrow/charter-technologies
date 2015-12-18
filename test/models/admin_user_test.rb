@@ -43,4 +43,9 @@ class AdminUserTest < ActiveSupport::TestCase
   	end
 	end
 
+  	test "password should be present (nonblank)" do
+    	@admin_user.password = @admin_user.password_confirmation = " " * 6
+    	assert_not @admin_user.valid?
+  	end
+
 end
