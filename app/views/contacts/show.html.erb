@@ -1,7 +1,672 @@
 <h2>View Contact</h2>
 
 	<%= render 'layouts/contact_nav' %>
-	<%= render 'form' %>
+
+<%= form_for @contact do |f| %>
+
+	<% if @contact.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+	 
+	    <ul>
+	    <% @contact.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+  <%= stylesheet_link_tag 'bootstrap_custom' %>
+
+	<div class="container">
+		<div class="row">
+			<% if @contact.company.blank? %>
+			    <div class="col-lg-5 col-md-4 col-sm-4">
+			      <div class="form-group">          
+							<%= f.text_field :company_label, placeholder: 'Company:', class: "form-label-3 null" %>
+			        <%= f.text_field :company, class: "form-control", id: "company" %>
+			        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix null" %>
+			      </div>
+			    </div>
+		  <% else %>
+		    <div class="col-lg-5 col-md-4 col-sm-4">
+		      <div class="form-group">          
+						<%= f.text_field :company_label, placeholder: 'Company:', class: "form-label-3" %>
+		        <%= f.text_field :company, class: "form-control", id: "company" %>
+		        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+		      </div>
+		    </div>
+			<% end %>
+
+		<% if @contact.tax_id.blank? %>
+			<div class="null">
+	      <div class="col-lg-2 col-md-2 col-sm-3">
+	        <div class="form-group">
+	          <%= f_text_field f, @contact, :tax_id, :class => "form-control", :id => "tax_id", :f_label => "Tax ID" %>
+	        </div>
+	      </div>
+      </div>
+    <% else %>
+      <div class="col-lg-2 col-md-2 col-sm-3">
+        <div class="form-group">
+          <%= f_text_field f, @contact, :tax_id, :class => "form-control", :id => "tax_id", :f_label => "Tax ID" %>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if @contact.drivers_license.blank? %>  
+    	<div class="null">
+		    <div class="col-lg-2 col-md-2 col-sm-3">
+		      <div class="form-group">
+		        <%= f.label :drivers_License, 'Drivers License #', class: "form-label" %>
+		        <%= f.text_field :drivers_license, class: "form-control" %>
+		      </div>
+		    </div>
+      </div>
+     <% else %>
+		    <div class="col-lg-2 col-md-2 col-sm-3">
+		      <div class="form-group">
+		        <%= f.label :drivers_License, 'Drivers License #', class: "form-label" %>
+		        <%= f.text_field :drivers_license, class: "form-control" %>
+		      </div>
+		    </div>
+		   <% end %>
+
+	    <div class="col-lg-2 col-md-2 col-sm-2">
+	      <div class="form-group">          
+	        <%= f_text_field f, @contact, :sf_id, :class => "form-control", :id => "sf_id", :f_label => "SF ID" %>
+	      </div>
+	    </div>	    
+	  </div> <!-- row -->
+
+	  <div class="row">
+	    <div class="col-lg-5 col-md-4 col-sm-4">
+        <%= f.label :name, 'Name:', class: "form-label" %>
+        <div class="form-group" id="highlight2">  
+          <%= f.text_field :name, class: "form-control first" %>
+          <%= f.text_field :last_name, class: "form-control last" %>
+          <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
+        </div>
+	    </div>
+
+		<% if @contact.goes_by.blank? %>
+			<div class="null">
+		    <div class="col-lg-2 col-md-2 col-sm-3">
+		      <div class="form-group">          
+		        <%= f.label "Goes by:", class: "form-label" %>
+		        <%= f.text_field :goes_by, class: "form-control" %>
+		      </div>
+		    </div>
+	    </div>
+		<% else %>
+	    <div class="col-lg-2 col-md-2 col-sm-3">
+	      <div class="form-group">          
+	        <%= f.label "Goes by:", class: "form-label" %>
+	        <%= f.text_field :goes_by, class: "form-control" %>
+	      </div>
+	    </div>
+	  <% end %>
+
+		<% if @contact.ssn.blank? %>
+			<div class="null">
+		    <div class="col-md-2 col-sm-3">
+		      <div class="form-group">
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> SSN#</strong>
+						<% else %>
+						  <strong><%= @contact.goes_by %> SSN#</strong>
+						<% end %>
+		          <br>
+		        <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal">
+		          Social Security Number
+		        </button>
+		      </div>
+		    </div>
+	    </div>
+	  <% else %>
+	    <div class="col-md-2 col-sm-3">
+	      <div class="form-group">
+				  <% if @contact.goes_by.blank? %>
+					  <strong><%= @contact.name %> SSN#</strong>
+					<% else %>
+					  <strong><%= @contact.goes_by %> SSN#</strong>
+					<% end %>
+	          <br>
+	        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+	          Social Security Number
+	        </button>
+	      </div>
+	    </div>
+	  <% end %>
+
+	    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	      <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
+	          </div>
+		        <div class="modal-body">
+		          <div class="row">
+		            <div class="col-md-2 col-sm-2 col-md-offset-3">
+		              <div class="form-inline">
+		                <%= f.text_field :ssn, class: "form-control", id: "social" %>
+	                    <script type="text/javascript">
+	                      $(document).ready(function(){
+	                        $('#social').mask('000-00-0000', {placeholder: "000-00-0000"});
+	                      });
+	                    </script>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-primary">Save changes</button>
+	          </div>
+		      </div>
+		    </div>
+		  </div>
+
+		<% if @contact.date_of_birth.blank? %>
+			<div class="null">
+		    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+		      <div class="form-group">
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> D.O.B.</strong>
+					  <% else %>
+						  <strong><%= @contact.goes_by %> D.O.B.</strong>
+					  <% end %>
+		          <%= f.text_field :date_of_birth, class: "form-control", id: "date" %>
+		       </div>
+		    </div>
+	    </div>
+		<% else %>
+		    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+		      <div class="form-group">
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> D.O.B.</strong>
+					  <% else %>
+						  <strong><%= @contact.goes_by %> D.O.B.</strong>
+					  <% end %>
+		          <%= f.text_field :date_of_birth, class: "form-control", id: "date" %>
+		       </div>
+		    </div>
+		  <% end %>
+	  </div>  <!-- row -->
+
+	  <div class="row">
+	  	<% if @contact.spouse_first_name.blank? && @contact.spouse_last_name.blank? %>
+		    <div class="col-lg-5 col-md-4 col-sm-4">
+		      <%= f.label 'Spouse Name:', class: "form-label null" %>
+	        <div class="form-group">
+	          <%= f.text_field :spouse_first_name, class: "form-control first null" %>
+	          <%= f.text_field :spouse_last_name, class: "form-control last null" %>
+	        </div>
+		    </div>
+		  <% else %>
+		    <div class="col-lg-5 col-md-4 col-sm-4">
+		      <%= f.label 'Spouse Name:', class: "form-label" %>
+	        <div class="form-group">
+	          <%= f.text_field :spouse_first_name, class: "form-control first" %>
+	          <%= f.text_field :spouse_last_name, class: "form-control last" %>
+	        </div>
+		    </div>
+		  <% end %>
+
+		<% if @contact.spouse_goes_by.blank? %>
+			<div class="null">
+	      <div class="col-lg-2 col-md-2 col-sm-3">
+	        <div class="form-group">
+	          <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
+	          <%= f.text_field :spouse_goes_by, class: "form-control" %>
+	        </div>
+	      </div>
+      </div>
+    <% else %>
+				<div class="col-lg-2 col-md-2 col-sm-3">
+	        <div class="form-group">
+	          <%= f.label :spouse_goes_by, 'Spouse Goes By:', class: "form-label" %>
+	          <%= f.text_field :spouse_goes_by, class: "form-control" %>
+	        </div>
+	      </div>
+	    <% end %>
+
+		<% if @contact.spouse_ssn.blank? %>
+			<div class="null">
+		    <div class="col-md-2 col-sm-3">
+		      <div class="form-group">
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> SSN#</strong>
+						<% else %>
+						  <strong><%= @contact.spouse_goes_by %> SSN#</strong>
+						<% end %>
+		          <br>
+	          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal2">
+	            Social Security Number
+	          </button>
+		      </div>
+		    </div>
+	    </div>
+	  <% else %>
+	    <div class="col-md-2 col-sm-3">
+	      <div class="form-group">
+				  <% if @contact.spouse_goes_by.blank? %>
+					  <strong><%= @contact.spouse_first_name %> SSN#</strong>
+					<% else %>
+					  <strong><%= @contact.spouse_goes_by %> SSN#</strong>
+					<% end %>
+	          <br>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
+            Social Security Number
+          </button>
+	      </div>
+	    </div>
+	  <% end %>
+
+	      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	        <div class="modal-dialog" role="document">
+	          <div class="modal-content">
+	            <div class="modal-header">
+	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              <h4 class="modal-title" id="myModalLabel">Social Security Social</h4>
+	            </div>
+
+	            <div class="modal-body">
+	              <div class="row">
+	                <div class="col-md-3 col-sm-3 col-md-offset-3">
+	                  <div class="form-inline">
+	                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social-2" %>
+                        <script type="text/javascript">
+                          $(document).ready(function(){
+                            $('#social-2').mask('000-00-0000', {placeholder: "000-00-0000"});
+                          });
+                        </script>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary">Save changes</button>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+
+		<% if @contact.spouse_date_of_birth.blank? %>
+			<div class="null">
+				<div class="col-lg-2 col-md-2 col-sm-2">
+		      <div class="form-group">
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> D.O.B.</strong>
+						<% else %>
+						  <strong><%= @contact.spouse_goes_by %> D.O.B.</strong>
+						<% end %>
+		          <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
+		      </div>
+		    </div>
+			</div>
+		<% else %>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+		      <div class="form-group">
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> D.O.B.</strong>
+						<% else %>
+						  <strong><%= @contact.spouse_goes_by %> D.O.B.</strong>
+						<% end %>
+		          <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
+		      </div>
+		    </div>
+		  <% end %>
+		</div>  <!-- row -->
+
+	  <div class="row">
+	    <div class="col-lg-4 col-md-4 col-sm-4">
+	      <div class="form-group">          
+	        <%= f.label "Company 2:", class: "form-label" %>
+	        <%= f.text_field :company2, class: "form-control", id: "company" %>
+	        <%= f.select :company_type2, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+	      </div>
+	    </div>
+
+	    <div class="col-lg-4 col-md-4 col-sm-4 col-md-offset-1">
+	      <div class="form-group">          
+	        <%= f.label "Company 3:", class: "form-label" %>
+	        <%= f.text_field :company3, class: "form-control", id: "company" %>
+	        <%= f.select :company_type3, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+	      </div>
+	    </div>
+
+	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+	      <div class="form-group">
+				  <% if @contact.goes_by.blank? %>
+					  <strong><%= @contact.spouse_first_name %> Drivers License #</strong>
+				  <% else %>
+					  <strong><%= @contact.spouse_goes_by %> DL#</strong>
+				  <% end %>
+	          <%= f.text_field :spouse_drivers_license, class: "form-control", id: "date" %>
+	       </div>
+	    </div>
+	  </div>
+
+    <div class="row">
+      <div class="col-lg-2 col-md-2">
+      	<% if @contact.cell_phone.blank? %>
+	        <div class="form-group null">          
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> Cell:</strong>
+					  <% else %>
+						  <strong><%= @contact.goes_by %> Cell:</strong>
+					  <% end %>
+	          <%= f.text_field :cell_phone, class: "form-control", id: "phone3" %>
+	        </div>
+				<% else %>
+	        <div class="form-group">          
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> Cell:</strong>
+					  <% else %>
+						  <strong><%= @contact.goes_by %> Cell:</strong>
+					  <% end %>
+	          <%= f.text_field :cell_phone, class: "form-control", id: "phone3" %>
+	        </div>
+	      <% end %>
+
+				<% if @contact.spouse_cell_phone.blank? %>
+	        <div class="form-group null">          
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> Cell:</strong>
+					  <% else %>
+						  <strong><%= @contact.spouse_goes_by %> Cell:</strong>
+					  <% end %>
+	          <%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
+	        </div>
+	      <% else %>
+	        <div class="form-group">          
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> Cell:</strong>
+					  <% else %>
+						  <strong><%= @contact.spouse_goes_by %> Cell:</strong>
+					  <% end %>
+	          <%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
+	        </div>
+	      <% end %>
+
+				<% if @contact.company_phone.blank? %>
+		      <div class="form-group null">
+		        <%= f_text_field f, @contact, :company_phone, :class => "form-control", :id => "phone1", :f_label => "Company Phone" %>
+		      </div>
+				<% else %>
+		      <div class="form-group">
+		        <%= f_text_field f, @contact, :company_phone, :class => "form-control", :id => "phone1", :f_label => "Company Phone" %>
+		      </div>
+		    <% end %>
+
+				<% if @contact.home_phone.blank? && @contact.home_phone_label.blank? %>
+		      <div class="form-group null">
+		        <%= f.text_field :home_phone_label, class: "form-label null", placeholder: "Home Phone:" %>
+		        <%= f.text_field :home_phone, class: "form-control null", id: "phone4" %>
+					</div>
+				<% else %>
+		      <div class="form-group">
+		        <%= f.text_field :home_phone_label, class: "form-label", placeholder: "Home Phone:" %>
+		        <%= f.text_field :home_phone, class: "form-control", id: "phone4" %>
+					</div>
+				<% end %>
+				
+				<% if @contact.alt_phone_1.blank? && @contact.alt_phone_1_place.blank? %>
+				  <div class="form-group null">
+	          <%= f.text_field :alt_phone_1_place, placeholder: 'Alt Phone 1:', class: "form-label null" %>
+	          <%= f.text_field :alt_phone_1, class: "form-control null", id: "altphone" %>
+		      </div>
+		    <% else %>
+				  <div class="form-group">
+	          <%= f.text_field :alt_phone_1_place, placeholder: 'Alt Phone 1:', class: "form-label" %>
+	          <%= f.text_field :alt_phone_1, class: "form-control", id: "altphone" %>
+		      </div>
+		    <% end %>
+				
+				<% if @contact.alt_phone_2.blank? && @contact.alt_phone_2_place.blank? %>
+		      <div class="form-group null">
+	          <%= f.text_field :alt_phone_2_place, placeholder: 'Alt Phone 2:', class: "form-label null" %>
+	          <%= f.text_field :alt_phone_2, class: "form-control null", id: "altphone2" %>
+		      </div>
+		    <% else %>
+	      <div class="form-group">
+	          <%= f.text_field :alt_phone_2_place, placeholder: 'Alt Phone 2:', class: "form-label" %>
+	          <%= f.text_field :alt_phone_2, class: "form-control", id: "altphone2" %>
+		      </div>
+		    <% end %>
+
+				<% if @contact.alt_phone_3.blank? && @contact.alt_phone_3_place.blank? %>
+		      <div class="form-group null">
+	          <%= f.text_field :alt_phone_3_place, placeholder: 'Alt Phone 3:', class: "form-label null" %>
+	          <%= f.text_field :alt_phone_3, class: "form-control null", id: "altphone3" %>
+		      </div>
+	      <% else %>
+		      <div class="form-group">
+	          <%= f.text_field :alt_phone_3_place, placeholder: 'Alt Phone 3:', class: "form-label" %>
+	          <%= f.text_field :alt_phone_3, class: "form-control", id: "altphone3" %>
+		      </div>
+		    <% end %>
+
+				<% if @contact.alt_phone_4.blank? && @contact.alt_phone_4_place.blank? %>
+		      <div class="form-group null">
+	          <%= f.text_field :alt_phone_4, placeholder: 'Alt Phone 4:', class: "form-label null" %>
+	          <%= f.text_field :alt_phone_4_place, class: "form-control null", id: "altphone4" %>
+		      </div>
+		    <% else %>
+	      	<div class="form-group">
+	          <%= f.text_field :alt_phone_4, placeholder: 'Alt Phone 4:', class: "form-label" %>
+	          <%= f.text_field :alt_phone_4_place, class: "form-control", id: "altphone4" %>
+		      </div>
+		    <% end %>
+	    </div> <!-- col-lg-2 col-md-2 -->
+
+			<% if @contact.address_box_1.blank? %>
+				<div class="col-md-3 col-sm-4 col-md-offset-1 null">
+			    <%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label" %>
+			    <div class="form-group" id="addressBorder">
+						<%= f.text_area :address_box_1, class: "form-control", :rows => 4,  placeholder: "Company Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box1, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% else %>
+			<div class="col-md-3 col-sm-4 col-md-offset-1 null">
+			    <%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label" %>
+			    <div class="form-group" id="addressBorder">
+						<%= f.text_area :address_box_1, class: "form-control", :rows => 4,  placeholder: "Company Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box1, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% end %>
+
+			<% if @contact.address_box_2.blank? %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1 null">
+					<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label" %>
+		      <div class="form-group" id="addressBorder">
+					  <%= f.text_area :address_box_2, class: "form-control", :rows => 4,  placeholder: "Contact Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		        <%= f.text_field :county_box2, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% else %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1 null">
+					<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label" %>
+		      <div class="form-group" id="addressBorder">
+					  <%= f.text_area :address_box_2, class: "form-control", :rows => 4,  placeholder: "Contact Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		        <%= f.text_field :county_box2, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% end %>
+			
+			<% if @contact.address_box_3.blank? %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1 null">
+			    <%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label" %>
+			    <div class="form-group" id="addressBorder">
+						<%= f.text_area :address_box_3, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box3, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% else %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1">
+			    <%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label" %>
+			    <div class="form-group" id="addressBorder">
+						<%= f.text_area :address_box_3, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box3, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% end %>
+
+		  <% if @contact.address_box_4.blank? %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1 null">
+					<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label null" %>
+			    <div class="form-group" id="addressBorder">
+				    <%= f.text_area :address_box_4, class: "form-control null", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box4, placeholder: 'County:', class: "form-control null" %>
+			    </div>
+			  </div>
+			<% else %>
+			  <div class="col-md-3 col-sm-4 col-md-offset-1">
+					<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label" %>
+			    <div class="form-group" id="addressBorder">
+				    <%= f.text_area :address_box_4, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      <%= f.text_field :county_box4, placeholder: 'County:', class: "form-control" %>
+			    </div>
+			  </div>
+			<% end %>
+
+		  <div class="col-md-3 col-md-offset-3">     
+		    <%= f.label "Select State:" %>
+		    <%= select_tag :us_states, options_for_select(us_states), class: "combobox form-control" %>
+	        <script type="text/javascript">
+	          $(document).ready(function(){
+	            $('.combobox').combobox();
+	          });
+	        </script>
+		  </div>
+	  </div> <!-- row -->
+	
+    <div class="row">
+    	<% if @contact.email.blank? %>
+    		<div class="null">
+		      <div class="col-md-5 col-sm-4">
+		        <div class="form-group">
+						  <% if @contact.goes_by.blank? %>
+							  <strong><%= @contact.name %> Email:</strong>
+						  <% else %>
+							  <strong><%= @contact.goes_by %> Email:</strong>
+						  <% end %>
+		            <%= f.text_field :email, class: "form-control" %>
+		        </div>
+		      </div>   
+		    </div>
+		  <% else %>
+	      <div class="col-md-5 col-sm-4">
+	        <div class="form-group">
+					  <% if @contact.goes_by.blank? %>
+						  <strong><%= @contact.name %> Email:</strong>
+					  <% else %>
+						  <strong><%= @contact.goes_by %> Email:</strong>
+					  <% end %>
+	            <%= f.text_field :email, class: "form-control" %>
+	        </div>
+	      </div>   
+	    <% end %>
+
+			<% if @contact.spouse_email.blank? %>
+				<div class="null">
+		      <div class="col-md-5 col-sm-4 col-lg-offset-1">
+		        <div class="form-group">
+						  <% if @contact.spouse_goes_by.blank? %>
+							  <strong><%= @contact.spouse_first_name %> Email:</strong>
+						  <% else %>
+							  <strong><%= @contact.spouse_goes_by %> Email:</strong>
+						  <% end %>
+		            <%= f.text_field :spouse_email, class: "form-control" %>
+		        </div>
+		      </div> 
+		    </div>
+		  <% else %>
+	      <div class="col-md-5 col-sm-4 col-lg-offset-1">
+	        <div class="form-group">
+					  <% if @contact.spouse_goes_by.blank? %>
+						  <strong><%= @contact.spouse_first_name %> Email:</strong>
+					  <% else %>
+						  <strong><%= @contact.spouse_goes_by %> Email:</strong>
+					  <% end %>
+	            <%= f.text_field :spouse_email, class: "form-control" %>
+	        </div>
+	      </div> 
+	    <% end %>
+    </div>  <!-- row -->
+
+    <div class="row">
+    	<% if @contact.web_address.blank? %>
+	      <div class="col-md-5 col-sm-4">
+	        <div class="form-group null">
+	          <%= f.text_field :web_address_label, placeholder: 'Web Address:', class: "form-label-3 null" %>
+	          <%= f.text_field :web_address, class: "form-control null" %>
+	        </div>
+	      </div>  
+			<% else %> 
+	      <div class="col-md-5 col-sm-4">
+	        <div class="form-group">
+	          <%= f.text_field :web_address_label, placeholder: 'Web Address:', class: "form-label-3" %>
+	          <%= f.text_field :web_address, class: "form-control" %>
+	        </div>
+	      </div>  
+	    <% end %>
+
+			<% if @contact.alt_email.blank? %>
+	      <div class="col-md-5 col-sm-4 col-lg-offset-1">
+	        <div class="form-group null">
+	          <%= f.text_field :alt_email_label, placeholder: 'Alt Email:', class: "form-label-3 null" %>
+	          <%= f.text_field :alt_email, class: "form-control null" %>
+	        </div>
+	      </div>   
+	    <% else %> 
+	      <div class="col-md-5 col-sm-4 col-lg-offset-1">
+	        <div class="form-group null">
+	          <%= f.text_field :alt_email_label, placeholder: 'Alt Email:', class: "form-label-3 null" %>
+	          <%= f.text_field :alt_email, class: "form-control null" %>
+	        </div>
+	      </div>   
+	    <% end %>
+    </div>  <!-- row -->
+		
+	  <div class="row">
+		  <div class="col-lg-1">
+			  <div class="form-group">
+				  <%= f.label "Urgent:" %>
+				  <%= f.select :urgent, ['false', 'true'] %>
+			  </div>
+		  </div>
+
+			<% if @contact.additional_info.blank? %>
+			  <div class="col-md-10">
+				  <div class="form-group">
+					  <%= f.label "Additional info:", class: "null" %>
+					  <%= f.text_area :additional_info, class: "form-control null", :rows => 5 %>
+				  </div>
+			  </div>
+			<% else %>
+			  <div class="col-md-10">
+				  <div class="form-group">
+					  <%= f.label "Additional info:" %>
+					  <%= f.text_area :additional_info, class: "form-control null", :rows => 5 %>
+				  </div>
+			  </div>
+			<% end %>
+	  </div>  <!-- row -->
+
+		<p class="submits">
+			<%= link_to 'Cancel', contacts_path, :class => 'btn btn-mini btn-danger', :data => { :confirm => "Are you sure you want to go back?" } %>
+			<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
+		</p>
+
+  </div>  <!-- CONTAINER -->
+
+<% end %>
+
 
 <h2>Notes</h2>
 

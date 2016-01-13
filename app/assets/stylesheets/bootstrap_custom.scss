@@ -311,3 +311,43 @@ div#content {
 .control-group.success .combobox-container .caret {
   border-top-color: #468847;
 }
+
+
+
+
+
+
+
+.urgent {
+	color: red;
+
+	::-webkit-input-placeholder {
+	   color: red;
+	}
+
+	:-ms-input-placeholder {  
+	   color: red;  
+	}
+}
+
+
+
+.null {
+	color: #D4DBDF;
+
+	input, select, textarea, textfield{
+	    color: #D4DBDF;
+	}
+
+	textarea:focus, input:focus {
+	    color: #D4DBDF;
+	}
+
+	::-webkit-input-placeholder {
+	   color: #D4DBDF;
+	}
+
+	:-ms-input-placeholder {  
+	   color: black;  
+	}
+}
