@@ -11,8 +11,6 @@ class Contact < ActiveRecord::Base
 	validates_length_of :date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
 	validates_length_of :spouse_date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
 	validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
-	validates :company, presence: true
-	validates :company_type, presence: true
 	validates_uniqueness_of :sf_id, message: "is already in use"
 	validates_length_of :cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
 	validates_length_of :home_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
@@ -41,6 +39,22 @@ class Contact < ActiveRecord::Base
 	      csv.add_row values
 	    end
 	  end
+	end
+
+	def correct_name
+		if goes_by.blank?
+			name
+		else
+			goes_by
+		end
+	end
+
+	def spouse_correct_name
+		if spouse_goes_by.blank?
+			spouse_first_name
+		else
+			spouse_goes_by
+		end
 	end
 
 	private
