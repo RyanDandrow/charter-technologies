@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114213443) do
+ActiveRecord::Schema.define(version: 20160115233456) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -117,6 +117,9 @@ ActiveRecord::Schema.define(version: 20160114213443) do
     t.string   "drivers_license_label"
     t.string   "cell_phone_label"
     t.string   "spouse_cell_phone_label"
+    t.string   "spouse_drivers_license_label"
+    t.string   "date_of_birth_label"
+    t.string   "spouse_date_of_birth_label"
   end
 
 end

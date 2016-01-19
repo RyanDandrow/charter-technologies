@@ -74,6 +74,7 @@ class ContactsController < ApplicationController
 											:address_box_2_label, :address_box_3_label, :address_box_4_label, :company_label,
 											:web_address_label, :home_phone_label, :spouse_email_label, :email_label,
 											:drivers_license_label, :cell_phone_label, :spouse_cell_phone_label,
-											:company_phone_label)
+											:company_phone_label, :spouse_drivers_license_label, :date_of_birth_label,
+											:spouse_date_of_birth_label)
 		end
 end

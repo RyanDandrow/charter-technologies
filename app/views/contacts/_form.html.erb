@@ -32,8 +32,8 @@
 
       <div class="col-lg-2 col-md-2 col-sm-3">
         <div class="form-group">
-          <%= f.label :drivers_License, 'Drivers License #', class: "form-label" %>
-          <%= f.text_field :drivers_license, class: "form-control" %>
+		        <%= f.text_field :drivers_license_label, placeholder: "#{@contact.correct_name} DL#:", class: "form-label" %>
+		        <%= f.text_field :drivers_license, class: "form-control" %>
         </div>
       </div>
 
@@ -105,11 +105,7 @@
 
 	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	      <div class="form-group">
-				  <% if @contact.goes_by.blank? %>
-					  <strong><%= @contact.name %> D.O.B.</strong>
-				  <% else %>
-					  <strong><%= @contact.goes_by %> D.O.B.</strong>
-				  <% end %>
+						<%= f.text_field :date_of_birth_label, placeholder: "#{@contact.correct_name} D.O.B", class: "form-label" %>
 	          <%= f.text_field :date_of_birth, class: "form-control", id: "date" %>
 	       </div>
 	    </div>
@@ -134,9 +130,9 @@
 	    <div class="col-md-2 col-sm-3">
 	      <div class="form-group">
 				  <% if @contact.spouse_goes_by.blank? %>
-					  <strong><%= @contact.spouse_first_name %> SSN#</strong>
+					  <strong><%= @contact.spouse_first_name %> Spouse SSN#</strong>
 					<% else %>
-					  <strong><%= @contact.spouse_goes_by %> SSN#</strong>
+					  <strong><%= @contact.spouse_goes_by %> Spouse SSN#</strong>
 					<% end %>
 	          <br>
           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
@@ -176,11 +172,7 @@
 
 			<div class="col-lg-2 col-md-2 col-sm-2">
 	      <div class="form-group">
-				  <% if @contact.spouse_goes_by.blank? %>
-					  <strong><%= @contact.spouse_first_name %> D.O.B.</strong>
-					<% else %>
-					  <strong><%= @contact.spouse_goes_by %> D.O.B.</strong>
-					<% end %>
+						<%= f.text_field :spouse_date_of_birth_label, placeholder: "#{@contact.spouse_correct_name} Spouse D.O.B", class: "form-label" %>
 	          <%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
 	      </div>
 	    </div>
@@ -205,11 +197,7 @@
 
 	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	      <div class="form-group">
-				  <% if @contact.goes_by.blank? %>
-					  <strong><%= @contact.spouse_first_name %> DL#</strong>
-				  <% else %>
-					  <strong><%= @contact.spouse_goes_by %> DL#</strong>
-				  <% end %>
+						<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} Spouse DL#", class: "form-label" %>
 	          <%= f.text_field :spouse_drivers_license, class: "form-control", id: "date" %>
 	       </div>
 	    </div>
@@ -218,25 +206,18 @@
     <div class="row">
       <div class="col-lg-2 col-md-2">
         <div class="form-group">          
-				  <% if @contact.goes_by.blank? %>
-					  <strong><%= @contact.name %> Cell:</strong>
-				  <% else %>
-					  <strong><%= @contact.goes_by %> Cell:</strong>
-				  <% end %>
+					<%= f.text_field :cell_phone_label, placeholder: "#{@contact.correct_name} Cell:", class: "form-label" %>
           <%= f.text_field :cell_phone, class: "form-control", id: "phone3" %>
         </div>
 
         <div class="form-group">          
-				  <% if @contact.spouse_goes_by.blank? %>
-					  <strong><%= @contact.spouse_first_name %> Cell:</strong>
-				  <% else %>
-					  <strong><%= @contact.spouse_goes_by %> Cell:</strong>
-				  <% end %>
+					<%= f.text_field :spouse_cell_phone_label, placeholder: "#{@contact.spouse_correct_name} Spouse Cell:", class: "form-label" %>
           <%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
         </div>
 
 	      <div class="form-group">
-	        <%= f_text_field f, @contact, :company_phone, :class => "form-control", :id => "phone1", :f_label => "Company Phone" %>
+					<%= f.text_field :company_phone_label, placeholder: "Company Phone:", class: "form-label" %>
+	        <%= f.text_field :company_phone, class: "form-control", id: "phone1" %>
 	      </div>
 
 	      <div class="form-group">
@@ -311,22 +292,14 @@
     <div class="row">
       <div class="col-md-5 col-sm-4">
         <div class="form-group">
-				  <% if @contact.goes_by.blank? %>
-					  <strong><%= @contact.name %> Email:</strong>
-				  <% else %>
-					  <strong><%= @contact.goes_by %> Email:</strong>
-				  <% end %>
+				  	<%= f.text_field :email_label, placeholder: "#{@contact.correct_name} Email:", class: "form-label-3" %>
             <%= f.text_field :email, class: "form-control" %>
         </div>
       </div>   
 
       <div class="col-md-5 col-sm-4 col-lg-offset-1">
         <div class="form-group">
-				  <% if @contact.spouse_goes_by.blank? %>
-					  <strong><%= @contact.spouse_first_name %> Email:</strong>
-				  <% else %>
-					  <strong><%= @contact.spouse_goes_by %> Email:</strong>
-				  <% end %>
+						<%= f.text_field :spouse_email_label, placeholder: "#{@contact.spouse_correct_name} Email:", class: "form-label-3" %>
             <%= f.text_field :spouse_email, class: "form-control" %>
         </div>
       </div> 
