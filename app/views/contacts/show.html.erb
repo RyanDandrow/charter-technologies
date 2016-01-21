@@ -114,7 +114,7 @@
 			<div class="null">
 		    <div class="col-md-2 col-sm-3">
 		      <div class="form-group">
-						<%= f.label :ssn, "#{@contact.correct_name} SSN" %>
+						<%= f.text_field :ssn_label, placeholder: "#{@contact.correct_name} SSN:", class: "form-label" %>
 		          <br>
 		        <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal">
 		          Social Security Number
@@ -125,7 +125,7 @@
 	  <% else %>
 	    <div class="col-md-2 col-sm-3">
 	      <div class="form-group">
-						<%= f.label :ssn, "#{@contact.correct_name} SSN" %>
+					<%= f.text_field :ssn_label, placeholder: "#{@contact.correct_name} SSN:", class: "form-label" %>
 	          <br>
 	        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
 	          Social Security Number
@@ -222,7 +222,7 @@
 			<div class="null">
 		    <div class="col-md-2 col-sm-3">
 		      <div class="form-group">
-						<%= f.label :spouse_ssn, "#{@contact.spouse_correct_name} SSN" %>
+						<%= f.text_field :spouse_ssn_label, placeholder: "#{@contact.spouse_correct_name} SSN:", class: "form-label" %>
 		          <br>
 	          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal2">
 	            Social Security Number
@@ -233,7 +233,7 @@
 	  <% else %>
 	    <div class="col-md-2 col-sm-3">
 	      <div class="form-group">
-					<%= f.label :spouse_ssn, "#{@contact.spouse_correct_name} SSN" %>
+					<%= f.text_field :spouse_ssn_label, placeholder: "#{@contact.spouse_correct_name} SSN:", class: "form-label" %>
 	          <br>
           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
             Social Security Number
