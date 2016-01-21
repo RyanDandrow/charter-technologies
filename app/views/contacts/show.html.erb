@@ -631,14 +631,19 @@
 
 
 	<div class="col-md-6">
-		<h2>Notes</h2>
-
-			<%= render :partial => 'comments/form', :locals => { :comment => @new_comment } %>
+		<div class="center">
+			<h2>Notes</h2>
+		</div>
+		<div class="scroll">
+			<%= render :partial => 'comments/form', :locals => { :comment => @new_comment }, class: "scroll" %>
 			<%= render :partial => 'comments/comment', :collection => @comments, :as => :comment %>
+		</div>
 	</div>
 
 	<div class="col-md-6">
-		<h2>Dropbox</h2>
+		<div class="center">
+			<h2>Dropbox</h2>
+		</div>
 			<div class="col-md-3 col-md-offset-5">
 				<br>
 				<%= link_to '~ A - Z', '#', :target => '_blank' %>
