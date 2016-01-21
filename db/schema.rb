@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115233456) do
+ActiveRecord::Schema.define(version: 20160120060258) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160115233456) do
     t.string   "spouse_drivers_license_label"
     t.string   "date_of_birth_label"
     t.string   "spouse_date_of_birth_label"
+    t.boolean  "urg"
   end
 
 end

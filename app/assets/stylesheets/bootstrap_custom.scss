@@ -328,6 +328,27 @@ div#content {
 	:-ms-input-placeholder {  
 	   color: red;  
 	}
+
+	input, select, textarea, textfield{
+	    color: red;
+	}
+
+	textarea:focus, input:focus {
+	    color: red;
+	}
+
+	::-webkit-input-placeholder {
+	   color: red;
+	}
+
+	:-ms-input-placeholder {  
+	   color: black;  
+	}
+
+	tr, td {
+		color: red;
+	}
+
 }
 
 
@@ -340,7 +361,7 @@ div#content {
 	}
 
 	textarea:focus, input:focus {
-	    color: #D4DBDF;
+	    color: black;
 	}
 
 	::-webkit-input-placeholder {
