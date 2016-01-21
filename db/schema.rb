@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121071309) do
+ActiveRecord::Schema.define(version: 20160121152057) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20160121071309) do
     t.boolean  "urg"
     t.string   "ssn_label"
     t.string   "spouse_ssn_label"
+    t.string   "additional_info_label"
   end
 
 end

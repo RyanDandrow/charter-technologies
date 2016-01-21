@@ -213,6 +213,8 @@ div#content {
   padding-left: 2px;
   border-style: none;
   font-weight: bold;
+  height: 80%;
+  margin-bottom: 3px;
   }
 
 .form-label-3 {
@@ -220,6 +222,8 @@ div#content {
   padding-left: 2px;
   border-style: none;
   font-weight: bold;
+  height: 80%;
+  margin-bottom: 3px;
   }
 
 .button {
@@ -319,35 +323,44 @@ div#content {
 
 
 .urgent {
-	color: red;
+	color: #da0404;
 
 	::-webkit-input-placeholder {
-	   color: red;
+	   color: #da0404;
 	}
 
 	:-ms-input-placeholder {  
-	   color: red;  
+	   color: #da0404;  
 	}
 
 	input, select, textarea, textfield{
-	    color: red;
+	    color: #da0404;
 	}
 
 	textarea:focus, input:focus {
-	    color: red;
+	    color: #da0404;
 	}
 
 	::-webkit-input-placeholder {
-	   color: red;
+	   color: #da0404;
 	}
 
 	:-ms-input-placeholder {  
 	   color: black;  
 	}
 
-	tr, td {
-		color: red;
-	}
+#content .table td a {
+	display: block;
+	color: #da0404;
+	text-decoration: none;
+	padding: 15px 10px 15px 10px;
+}
+
+#content .table td .no-link {
+	display: block;
+	color: #da0404;
+	padding: 15px 10px 15px 10px;
+}
 
 }
 

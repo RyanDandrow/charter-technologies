@@ -23,10 +23,10 @@
 		<div class="row">
 			<% if @contact.company.blank? && @contact.company_label.blank? %>
 			    <div class="col-lg-5 col-md-4 col-sm-4">
-			      <div class="form-group">          
-							<%= f.text_field :company_label, placeholder: "#{@contact.correct_name} Company:", class: "form-label-3" %>
-			        <%= f.text_field :company, class: "form-control", id: "company" %>
-			        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+			      <div class="form-group null">          
+							<%= f.text_field :company_label, placeholder: "#{@contact.correct_name} Company:", class: "form-label-3 null" %>
+			        <%= f.text_field :company, class: "form-control null", id: "company" %>
+			        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix null" %>
 			      </div>
 			    </div>
 		  <% else %>
@@ -56,7 +56,7 @@
     <% end %>
 
 
-    <% if @contact.drivers_license.blank? %>  
+    <% if @contact.drivers_license.blank? && @contact.spouse_drivers_license_label.blank? %>  
     	<div class="null">
 		    <div class="col-lg-2 col-md-2 col-sm-3">
 		      <div class="form-group">
@@ -74,11 +74,29 @@
 		    </div>
 		   <% end %>
 
-	    <div class="col-lg-2 col-md-2 col-sm-2">
+		<% if @contact.spouse_drivers_license.blank? && @contact.spouse_drivers_license_label.blank? %>  
+	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+	      <div class="form-group null">
+						<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} DL#", class: "form-label null" %>
+	          <%= f.text_field :spouse_drivers_license, class: "form-control null" %>
+	       </div>
+	    </div>
+	  <% else %>
+	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+	      <div class="form-group">
+						<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} DL#", class: "form-label" %>
+	          <%= f.text_field :spouse_drivers_license, class: "form-control" %>
+	       </div>
+	    </div>
+	  <% end %>
+
+
+	    <div class="col-lg-1 col-md-1 col-sm-2">
 	      <div class="form-group">          
 	        <%= f_text_field f, @contact, :sf_id, :class => "form-control", :id => "sf_id", :f_label => "SF ID" %>
 	      </div>
 	    </div>	    
+
 	  </div> <!-- row -->
 	</div>
 
@@ -290,6 +308,7 @@
 		  <% end %>
 		</div>  <!-- row -->
 
+	<section class="companies">
 	  <div class="row">
 	    <div class="col-lg-4 col-md-4 col-sm-4">
 	      <div class="form-group">          
@@ -306,14 +325,18 @@
 	        <%= f.select :company_type3, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
 	      </div>
 	    </div>
-
-	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
-	      <div class="form-group">
-						<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} DL#", class: "form-label" %>
-	          <%= f.text_field :spouse_drivers_license, class: "form-control", id: "date" %>
-	       </div>
-	    </div>
 	  </div>
+
+</section>
+
+	<script type="text/javascript">     
+	     $(document).ready(function() {
+	       $('.companies').hide();
+	        $('.btn-primary').click(function() {
+	         $('.companies').show();
+	     });
+	   });
+	 </script>
 
     <div class="row">
       <div class="col-lg-2 col-md-2">
@@ -486,6 +509,8 @@
 			  </div>
 			<% end %>
 
+			<%= link_to "Add Company", 'javascript:void(0)', class: "btn btn-sm btn-primary" %>
+
 		  <div class="col-md-3 col-md-offset-3">     
 		    <%= f.label "Select State:" %>
 		    <%= select_tag :us_states, options_for_select(us_states), class: "combobox form-control" %>
@@ -577,13 +602,21 @@
 			  </div>
 		  </div>
 
-
+			<% if @contact.additional_info.blank? && @contact.additional_info_label.blank? %>
+			  <div class="col-md-10">
+				  <div class="form-group null">
+					  <%= f.text_field :additional_info_label, placeholder: 'Additional Info:', class: "form-label-3 null" %>
+					  <%= f.text_area :additional_info, class: "form-control null", :rows => 5 %>
+				  </div>
+			  </div>
+			<% else %>
 			  <div class="col-md-10">
 				  <div class="form-group">
-					  <%= f.label "Additional info:", class: "" %>
+					  <%= f.text_field :additional_info_label, placeholder: 'Additional Info:', class: "form-label-3" %>
 					  <%= f.text_area :additional_info, class: "form-control", :rows => 5 %>
 				  </div>
 			  </div>
+			<% end %>
 
 	  </div>  <!-- row -->
 
