@@ -25,7 +25,8 @@
 
 				<div class="<%= 'null' if @contact.company.blank? && @contact.company_label.blank? %>">
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
-		      	<div class="form-group">          
+		      	<div class="form-group">
+		      		<%= link_to "+", 'javascript:void(0)', class: "btn btn-sm btn-primary" %>
 							<%= f.text_field :company_label, placeholder: "#{@contact.correct_name} Company:", class: "form-label-3" %>
 		        	<%= f.text_field :company, class: "form-control", id: "company" %>
 		        	<%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
@@ -350,8 +351,6 @@
 			  	</div>
 			  </div>
 
-					<%= link_to "Add Company", 'javascript:void(0)', class: "btn btn-sm btn-primary" %>
-
 		  	<div class="col-md-3 col-md-offset-3">     
 		    	<%= f.label "Select State:" %>
 		    	<%= select_tag :us_states, options_for_select(us_states), class: "combobox form-control" %>
@@ -407,8 +406,7 @@
 		  <div class="row">
 			  <div class="col-lg-1">
 				  <div class="form-group">
-					  <%= f.label "Urgent:" %>
-					  <%= f.select :urg, ['false', 'true'] %>
+						<%= f_select f, @contact, :urg, get_urg_array, {:f_label => "Role:"} %>
 				  </div>
 			  </div>
 
@@ -455,4 +453,5 @@
 			</div>
 	</div>
 
-	<!-- <%= Contact.column_names.collect { |col_name| "#{col_name.capitalize}: <li>#{@contact[col_name]}</li>" }.join("\n") %> -->
+	<div class="col-md-12" split></div>
+
