@@ -62,6 +62,7 @@ class ContactsController < ApplicationController
 	def export_options
 		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
     @search = Contact.search(params[:q])
+    @search.build_condition if @search.conditions.empty?
     @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 	end
 
