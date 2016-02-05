@@ -349,21 +349,29 @@ div#content {
 	   color: black;  
 	}
 
-#content .table td a {
-	display: block;
+	#content .table td a {
+		display: block;
+		color: #da0404;
+		text-decoration: none;
+		padding: 15px 10px 15px 10px;
+	}
+
+	#content .table td .no-link {
+		display: block;
+		color: #da0404;
+		padding: 15px 10px 15px 10px;
+	}
+}
+
+#content .table td.urgent {
 	color: #da0404;
-	text-decoration: none;
-	padding: 15px 10px 15px 10px;
 }
 
-#content .table td .no-link {
-	display: block;
-	color: #da0404;
-	padding: 15px 10px 15px 10px;
+#content .table td.urgent .iconRow {
+	border-radius: 4px;
+	background-color: #da0404;
+	color: #D4DBDF;
 }
-
-}
-
 
 .scroll {
 	height: 650px;
