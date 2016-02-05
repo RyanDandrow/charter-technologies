@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
 
     get 'export', to: 'contacts#export', as: :contacts_export
+    get 'export_options', to: 'contacts#export_options', as: :contacts_export_options
     
     resource :admin_user_session, :only => [:new, :create, :destroy]
     resource :password_reset, :only => [:create, :edit, :update]

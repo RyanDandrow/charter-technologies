@@ -31,6 +31,7 @@
             <li><%= link_to "#{show_icon('list')}Users List".html_safe, admin_users_path, :data => { :confirm => "Are you sure you want to go back without saving this contact?" } %></li>
           <% end %>
         <% else%>
+          <li><%= link_to "#{show_icon "plus-sign"}Export Options".html_safe, contacts_export_options_path %></li>
           <li><%= link_to "#{show_icon "download-alt"}Export Data".html_safe, contacts_export_path(format: "csv") %></li>
           <li><%= link_to "#{show_icon "plus-sign"}New Contact".html_safe, new_contact_path %></li>
           <li><%= link_to "#{show_icon "list"}Contacts List".html_safe, contacts_path %></li>
