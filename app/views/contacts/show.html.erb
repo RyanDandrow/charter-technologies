@@ -23,11 +23,11 @@
 
 			<div class="row">
 
-				<div class="<%= 'null' if @contact.company.blank? && @contact.company_label.blank? %>">
+				<div class="<%= 'null' if @contact.company.blank?	 %>">
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
 		      	<div class="form-group">
 		      		<%= link_to "+", 'javascript:void(0)', class: "btn btn-sm btn-primary" %>
-							<%= f.text_field :company_label, placeholder: "#{@contact.correct_name} Company:", class: "form-label-3" %>
+							<%= f.text_field :company_label, :value => @contact.company_label.blank? ? "Company:" : @contact.company_label, class: "form-label-3" %>
 		        	<%= f.text_field :company, class: "form-control", id: "company" %>
 		        	<%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
 		      	</div>
@@ -42,19 +42,19 @@
       		</div>
 				</div>
 
-				<div class="<%= 'null' if @contact.drivers_license.blank? && @contact.drivers_license_label.blank? %>">
+				<div class="<%= 'null' if @contact.drivers_license.blank? %>">
 		    	<div class="col-lg-2 col-md-2 col-sm-3">
 		      	<div class="form-group">
-		        	<%= f.text_field :drivers_license_label, placeholder: "#{@contact.correct_name} DL#:", class: "form-label" %>
+		        	<%= f.text_field :drivers_license_label, :value => @contact.drivers_license_label.blank? ? "#{@contact.correct_name} DL#:" : @contact.drivers_license_label, class: "form-label" %>
 		        	<%= f.text_field :drivers_license, class: "form-control" %>
 		      	</div>
 		    	</div>
 		    </div>
 
-				<div class="<%= 'null' if @contact.spouse_drivers_license.blank? && @contact.spouse_drivers_license_label.blank? %>">
+				<div class="<%= 'null' if @contact.spouse_drivers_license.blank?  %>">
 	    		<div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	     			<div class="form-group">
-							<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} DL#", class: "form-label" %>
+							<%= f.text_field :spouse_drivers_license_label, :value => @contact.spouse_drivers_license_label.blank? ? "#{@contact.spouse_correct_name} DL#" : @contact.spouse_drivers_license_label, class: "form-label" %>
 	          	<%= f.text_field :spouse_drivers_license, class: "form-control" %>
 	       		</div>
 	    		</div>
@@ -92,7 +92,7 @@
 				<div class="<%= 'null' if @contact.ssn.blank? %>">
 	    		<div class="col-md-2 col-sm-3">
 	      		<div class="form-group">
-							<%= f.text_field :ssn_label, placeholder: "#{@contact.correct_name} SSN:", class: "form-label" %>
+							<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
 
 	        		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
 	          		Social Security Number
@@ -129,7 +129,7 @@
 			    </div>
 			  </div>
 
-				<div class="<%= 'null' if @contact.date_of_birth.blank? && @contact.date_of_birth_label.blank? %>">
+				<div class="<%= 'null' if @contact.date_of_birth.blank? %>">
 		    	<div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 		      	<div class="form-group">
 							<%= f.text_field :date_of_birth_label, placeholder: "#{@contact.correct_name} D.O.B", class: "form-label" %>
@@ -163,7 +163,7 @@
 					<div class="null">
 				    <div class="col-md-2 col-sm-3">
 				      <div class="form-group">
-								<%= f.text_field :spouse_ssn_label, placeholder: "#{@contact.spouse_correct_name} SSN:", class: "form-label" %>
+								<%= f.text_field :spouse_ssn_label, :value => @contact.spouse_ssn_label.blank? ? "#{@contact.spouse_correct_name} SSN:" : @contact.spouse_ssn_label, class: "form-label" %>
 				          <br>
 			          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal2">
 			            Social Security Number
@@ -212,10 +212,10 @@
 	        </div>
 	      </div>
 
-				<div class="<%= 'null' if @contact.spouse_date_of_birth.blank? && @contact.spouse_date_of_birth_label.blank? %>">
+				<div class="<%= 'null' if @contact.spouse_date_of_birth.blank? %>">
 					<div class="col-lg-2 col-md-2 col-sm-2">
 		      	<div class="form-group">
-							<%= f.text_field :spouse_date_of_birth_label, placeholder: "#{@contact.spouse_correct_name} D.O.B", class: "form-label" %>
+							<%= f.text_field :spouse_date_of_birth_label, :value => @contact.spouse_date_of_birth_label.blank? ? "#{@contact.spouse_correct_name} D.O.B" : @contact.spouse_date_of_birth_label, class: "form-label" %>
 	          	<%= f.text_field :spouse_date_of_birth, class: "form-control", id: "date2" %>
 		      	</div>
 		    	</div>
@@ -223,65 +223,65 @@
 			</div>  <!-- row -->
 
 	    <div class="row">
-	    	<div class="<%= 'null' if @contact.cell_phone.blank? && @contact.cell_phone_label.blank? %>">
+	    	<div class="<%= 'null' if @contact.cell_phone.blank? %>">
       		<div class="col-lg-2 col-md-2">
 	        	<div class="form-group">          
-							<%= f.text_field :cell_phone_label, placeholder: "#{@contact.correct_name} Cell:", class: "form-label null" %>
+							<%= f.text_field :cell_phone_label, :value => @contact.cell_phone_label.blank? ? "#{@contact.correct_name} Cell:" : @contact.cell_phone_label, class: "form-label" %>
 	          	<%= f.text_field :cell_phone, class: "form-control", id: "phone3" %>
 						</div>
 
 
-						<div class="<%= 'null' if @contact.spouse_cell_phone.blank? && @contact.spouse_cell_phone_label.blank? %>">
+						<div class="<%= 'null' if @contact.spouse_cell_phone.blank?  %>">
 	        		<div class="form-group">
-								<%= f.text_field :spouse_cell_phone_label, placeholder: "#{@contact.spouse_correct_name} Cell:", class: "form-label" %>
+								<%= f.text_field :spouse_cell_phone_label, :value => @contact.spouse_cell_phone_label.blank? ? "#{@contact.spouse_correct_name} Cell:" : @contact.spouse_cell_phone_label, class: "form-label" %>
 	          		<%= f.text_field :spouse_cell_phone, class: "form-control", id: "phone2" %>
 	        		</div>
 	      		</div>
 
-						<div class="<%= 'null' if @contact.company_phone.blank? && @contact.company_phone_label.blank? %>">
+						<div class="<%= 'null' if @contact.company_phone.blank?  %>">
 		      		<div class="form-group">
-		      			<%= f.text_field :company_phone_label, placeholder: "Company Phone:", class: "form-label" %>
+		      			<%= f.text_field :company_phone_label, :value => @contact.company_phone_label.blank? ? "Company Phone:" : @contact.company_phone_label, class: "form-label" %>
 		        		<%= f.text_field :company_phone, class: "form-control", id: "phone1" %>
 		      		</div>
 		      	</div>
 
-						<div class="<%= 'null' if @contact.home_phone.blank? && @contact.home_phone_label.blank? %>">
+						<div class="<%= 'null' if @contact.home_phone.blank? %>">
 		      		<div class="form-group">
-				        <%= f.text_field :home_phone_label, class: "form-label", placeholder: "Home Phone:" %>
+				        <%= f.text_field :home_phone_label, class: "form-label", :value => @contact.home_phone_label.blank? ? "Home Phone:" : @contact.home_phone_label %>
 				        <%= f.text_field :home_phone, class: "form-control", id: "phone4" %>
 							</div>
 						</div>
 
-						<div class="<%= 'null' if @contact.alt_phone_1.blank? && @contact.alt_phone_1_place.blank? %>">
+						<div class="<%= 'null' if @contact.alt_phone_1.blank? %>">
 				  		<div class="form-group">
-	          		<%= f.text_field :alt_phone_1_place, placeholder: 'Alt Phone 1:', class: "form-label" %>
+	          		<%= f.text_field :alt_phone_1_place, :value => @contact.alt_phone_1_place.blank? ? "Alt Phone 1:" : @contact.alt_phone_1_place, class: "form-label" %>
 	          		<%= f.text_field :alt_phone_1, class: "form-control", id: "altphone" %>
 		      		</div>
 						</div>
 				
-						<div class="<%= 'null' if @contact.alt_phone_2.blank? && @contact.alt_phone_2_place.blank? %>">
+						<div class="<%= 'null' if @contact.alt_phone_2.blank? %>">
 		      		<div class="form-group">
-	          		<%= f.text_field :alt_phone_2_place, placeholder: 'Alt Phone 2:', class: "form-label" %>
+	          		<%= f.text_field :alt_phone_2_place, :value => @contact.alt_phone_2_place.blank? ? "Alt Phone 2:" : @contact.alt_phone_2_place, class: "form-label" %>
 	          		<%= f.text_field :alt_phone_2, class: "form-control", id: "altphone2" %>
 		      		</div>
 						</div>
 
-						<div class="<%= 'null' if @contact.alt_phone_3.blank? && @contact.alt_phone_3_place.blank? %>">
+						<div class="<%= 'null' if @contact.alt_phone_3.blank? %>">
 		      		<div class="form-group">
-	          		<%= f.text_field :alt_phone_3_place, placeholder: 'Alt Phone 3:', class: "form-label" %>
+	          		<%= f.text_field :alt_phone_3_place, :value => @contact.alt_phone_3_place.blank? ? "Alt Phone 3:" : @contact.alt_phone_3_place, class: "form-label" %>
 	          		<%= f.text_field :alt_phone_3, class: "form-control", id: "altphone3" %>
 		      		</div>
 		      	</div>
 
-						<div class="<%= 'null' if @contact.alt_phone_4.blank? && @contact.alt_phone_4_place.blank? %>">
+						<div class="<%= 'null' if @contact.alt_phone_4.blank? %>">
 		      		<div class="form-group">
-	   		       <%= f.text_field :alt_phone_4, placeholder: 'Alt Phone 4:', class: "form-label" %>
-	      		    <%= f.text_field :alt_phone_4_place, class: "form-control", id: "altphone4" %>
+	   		       <%= f.text_field :alt_phone_4_place, :value => @contact.alt_phone_4_place.blank? ? "Alt Phone 4:" : @contact.alt_phone_4_place, class: "form-label" %>
+	      		    <%= f.text_field :alt_phone_4, class: "form-control", id: "altphone4" %>
 		      		</div>
 		      	</div>
 	    		</div> <!-- col-lg-2 col-md-2 -->
 
-					<div class="<%= 'null' if @contact.address_box_1.blank? && @contact.address_box_1_label.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_1.blank? %>">
 						<div class="col-md-3 col-sm-4 col-md-offset-1">
 			    		<%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label-3" %>
 			    		<div class="form-group" id="addressBorder">
@@ -291,7 +291,7 @@
 			  		</div>
 			  	</div>
 
-					<div class="<%= 'null' if @contact.address_box_2.blank? && @contact.address_box_2_label.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_2.blank? %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 							<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label-3" %>
 		      		<div class="form-group" id="addressBorder">
@@ -301,7 +301,7 @@
 			  		</div>
 			  	</div>
 			
-					<div class="<%= 'null' if @contact.address_box_3.blank? && @contact.address_box_3_label.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_3.blank? %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 			    		<%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label-3" %>
 			    		<div class="form-group" id="addressBorder">
@@ -311,7 +311,7 @@
 			  		</div>
 			  	</div>
 
-					<div class="<%= 'null' if @contact.address_box_4.blank? && @contact.address_box_4_label.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_4.blank? %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 							<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label-3 null" %>
 			    		<div class="form-group" id="addressBorder">
@@ -335,19 +335,19 @@
 	  	</div> <!-- row -->
 	
     	<div class="row">
-    		<div class="<%= 'null' if @contact.email.blank? && @contact.email_label.blank? %>">
+    		<div class="<%= 'null' if @contact.email.blank? %>">
 		      <div class="col-md-5 col-sm-4">
 		        <div class="form-group">
-							<%= f.text_field :email_label, placeholder: "#{@contact.correct_name} Email:", class: "form-label-3 null" %>
+							<%= f.text_field :email_label, :value => @contact.email_label.blank? ? "#{@contact.correct_name} Email:" : @contact.email_label, class: "form-label-3 null" %>
 		          <%= f.text_field :email, class: "form-control" %>
 		        </div>
 		      </div>   
 		    </div>
 
-				<div class="<%= 'null' if @contact.spouse_email.blank? && @contact.spouse_email_label.blank? %>">
+				<div class="<%= 'null' if @contact.spouse_email.blank? %>">
 		      <div class="col-md-5 col-sm-4 col-lg-offset-1">
 		        <div class="form-group">
-							<%= f.text_field :spouse_email_label, placeholder: "#{@contact.spouse_correct_name} Email:", class: "form-label-3" %>
+							<%= f.text_field :spouse_email_label, :value => @contact.spouse_email_label.blank? ? "#{@contact.spouse_correct_name} Email:" : @contact.spouse_email_label, class: "form-label-3" %>
 	            <%= f.text_field :spouse_email, class: "form-control" %>
 		        </div>
 		      </div> 
@@ -355,19 +355,19 @@
    	 	</div>  <!-- row -->
 
     	<div class="row">
-    		<div class="<%= 'null' if @contact.web_address.blank? && @contact.web_address_label.blank? %>">
+    		<div class="<%= 'null' if @contact.web_address.blank? %>">
 	      	<div class="col-md-5 col-sm-4">
 	        	<div class="form-group">
-	          	<%= f.text_field :web_address_label, placeholder: 'Web Address:', class: "form-label-3" %>
+	          	<%= f.text_field :web_address_label, :value => @contact.web_address_label.blank? ? "Web Address" : @contact.web_address_label, class: "form-label-3" %>
 	          	<%= f.text_field :web_address, class: "form-control" %>
 	        	</div>
 	      	</div>
 	      </div>
 
-				<div class="<%= 'null' if @contact.alt_email.blank? && @contact.alt_email_label.blank? %>">
+				<div class="<%= 'null' if @contact.alt_email.blank? %>">
 	      	<div class="col-md-5 col-sm-4 col-lg-offset-1">
 	        	<div class="form-group">
-	          	<%= f.text_field :alt_email_label, placeholder: 'Alt Email:', class: "form-label-3" %>
+	          	<%= f.text_field :alt_email_label, :value => @contact.alt_email_label.blank? ? "Alt Email:" : @contact.alt_email_label, class: "form-label-3" %>
 	          	<%= f.text_field :alt_email, class: "form-control" %>
 	        	</div>
 	      	</div>  
