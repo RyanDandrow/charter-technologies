@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121152057) do
+ActiveRecord::Schema.define(version: 20160219165542) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20160121152057) do
   add_index "comments", ["user_name"], name: "index_comments_on_user_name"
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "company"
     t.string   "goes_by"
     t.string   "cell_phone"
     t.string   "sf_id"
@@ -90,16 +89,11 @@ ActiveRecord::Schema.define(version: 20160121152057) do
     t.string   "county_box2"
     t.string   "county_box3"
     t.string   "county_box4"
-    t.string   "company_type"
     t.string   "ssn"
     t.string   "spouse_ssn"
     t.string   "urgent"
     t.string   "name"
     t.string   "spouse_drivers_license"
-    t.string   "company2"
-    t.string   "company3"
-    t.string   "company_type2"
-    t.string   "company_type3"
     t.text     "address_box_1"
     t.text     "address_box_2"
     t.text     "address_box_3"
@@ -124,6 +118,8 @@ ActiveRecord::Schema.define(version: 20160121152057) do
     t.string   "ssn_label"
     t.string   "spouse_ssn_label"
     t.string   "additional_info_label"
+    t.string   "company_type"
+    t.string   "company"
   end
 
 end

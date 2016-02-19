@@ -222,35 +222,6 @@
 				</div>
 			</div>  <!-- row -->
 
-			<section class="companies">
-	  		<div class="row">
-	    		<div class="col-lg-4 col-md-4 col-sm-4">
-	      		<div class="form-group">          
-	        		<%= f.label "Company 2:", class: "form-label" %>
-	        		<%= f.text_field :company2, class: "form-control", id: "company" %>
-	        		<%= f.select :company_type2, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
-	      		</div>
-	    		</div>
-
-	    		<div class="col-lg-4 col-md-4 col-sm-4 col-md-offset-1">
-	      		<div class="form-group">          
-	        		<%= f.label "Company 3:", class: "form-label" %>
-	        		<%= f.text_field :company3, class: "form-control", id: "company" %>
-	        		<%= f.select :company_type3, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
-	      		</div>
-	    		</div>
-	  		</div>
-			</section>
-
-			<script type="text/javascript">     
-	     $(document).ready(function() {
-	       $('.companies').hide();
-	        $('.btn-primary').click(function() {
-	         $('.companies').show();
-	     		});
-	   		});
-	 		</script>
-
 	    <div class="row">
 	    	<div class="<%= 'null' if @contact.cell_phone.blank? && @contact.cell_phone_label.blank? %>">
       		<div class="col-lg-2 col-md-2">
