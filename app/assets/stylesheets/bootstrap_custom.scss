@@ -398,3 +398,23 @@ div#content {
 	   color: black;  
 	}
 }
+
+.null:hover {
+	color: black;
+
+	input, select, textarea, textfield{
+	    color: black;
+	}
+
+	textarea:focus, input:focus {
+	    color: black;
+	}
+
+	::-webkit-input-placeholder {
+	   color: black;
+	}
+
+	:-ms-input-placeholder {  
+	   color: black;  
+	}
+}
