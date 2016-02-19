@@ -23,6 +23,15 @@
 
 			<div class="row">
 
+	<div id='comps'>
+    <%= f.fields_for :comps do |comp| %>
+      <%= render 'comp_fields', :f => comp %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add company', f, :comps %>
+    </div>
+  </div>
+
 				<div class="<%= 'null' if @contact.company.blank?	 %>">
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
 		      	<div class="form-group">

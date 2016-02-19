@@ -81,6 +81,6 @@ class ContactsController < ApplicationController
 											:company_label, :web_address_label, :home_phone_label, :spouse_email_label, :email_label,
 											:drivers_license_label, :cell_phone_label, :spouse_cell_phone_label, :company_phone_label, 
 											:spouse_drivers_license_label, :date_of_birth_label, :spouse_date_of_birth_label, 
-											:urg, :ssn_label, :spouse_ssn_label, :additional_info_label)
+											:urg, :ssn_label, :spouse_ssn_label, :additional_info_label, comps_attributes: [:id, :comp, :comp_type, :done, :_destroy])
 		end
 end

@@ -18,6 +18,7 @@ gem 'toastr_rails'
 gem 'sweet-alert'
 gem 'sweet-alert-confirm'
 gem 'will_paginate', '~> 3.0.6'
+gem "cocoon"
 
 
 group :test do

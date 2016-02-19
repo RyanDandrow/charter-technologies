@@ -23,6 +23,9 @@ class Contact < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments
 
+  has_many :comps
+  accepts_nested_attributes_for :comps, reject_if: :all_blank, allow_destroy: true
+
 	def full_name
 	  [name, last_name, name_suffix].join(' ')
 	end

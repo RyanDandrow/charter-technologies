@@ -98,3 +98,25 @@ $(document).ready(function() {
 	              }
 	
 	});
+
+
+$(function() {
+  // limits the number of categories
+  $('#categories').bind('cocoon:after-insert', function() {
+    check_to_hide_or_show_add_link();
+  });
+
+  $('#categories').bind('cocoon:after-remove', function() {
+    check_to_hide_or_show_add_link();
+  });
+
+  check_to_hide_or_show_add_link();
+
+  function check_to_hide_or_show_add_link() {
+    if ($('#categories .nested-fields').length == 3) {
+      $('#add-category a').hide();
+    } else {
+      $('#add-category a').show();
+    }
+  }
+})

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219165542) do
+ActiveRecord::Schema.define(version: 20160219190456) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20160219165542) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
   add_index "comments", ["user_name"], name: "index_comments_on_user_name"
+
+  create_table "comps", force: :cascade do |t|
+    t.string   "comp"
+    t.string   "comp_type"
+    t.boolean  "done"
+    t.integer  "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comps", ["contact_id"], name: "index_comps_on_contact_id"
 
   create_table "contacts", force: :cascade do |t|
     t.string   "goes_by"

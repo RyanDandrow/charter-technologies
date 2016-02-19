@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comp: MyString
+  comp_type: MyString
+  done: false
+  contact_id: 
+
+two:
+  comp: MyString
+  comp_type: MyString
+  done: false
+  contact_id: 
