@@ -27,10 +27,7 @@
     <%= f.fields_for :comps do |comp| %>
       <%= render 'comp_fields', :f => comp %>
     <% end %>
-
-<%= link_to_add_association '<span class="glyphicon glyphicon-plus white"></span>'.html_safe, f,
- :comps, class: 'btn btn-primary btn-sm pull-left' %>
-
+			<%= link_to_add_association '<span class="glyphicon glyphicon-plus white"></span>'.html_safe, f, :comps, class: 'btn btn-primary btn-sm' %>
   </div>
 
 				<div class="<%= 'null' if @contact.company.blank?	 %>">
