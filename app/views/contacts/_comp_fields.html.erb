@@ -1,5 +1,6 @@
 <div class='nested-fields'>
     <%= f.text_field :comp, placeholder: "Company:" %>
 		<%= f.select :comp_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
-    <%= link_to_remove_association "remove Company", f, remote: true %>
+
+    <%= link_to_remove_association '<span class="glyphicon glyphicon-trash"></span>'.html_safe, f, class: 'btn btn-default btn-sm' %>
 </div>

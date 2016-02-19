@@ -27,15 +27,15 @@
     <%= f.fields_for :comps do |comp| %>
       <%= render 'comp_fields', :f => comp %>
     <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add company', f, :comps %>
-    </div>
+
+<%= link_to_add_association '<span class="glyphicon glyphicon-plus white"></span>'.html_safe, f,
+ :comps, class: 'btn btn-primary btn-sm pull-left' %>
+
   </div>
 
 				<div class="<%= 'null' if @contact.company.blank?	 %>">
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
 		      	<div class="form-group">
-		      		<%= link_to "+", 'javascript:void(0)', class: "btn btn-sm btn-primary" %>
 							<%= f.text_field :company_label, :value => @contact.company_label.blank? ? "Company:" : @contact.company_label, class: "form-label-3" %>
 		        	<%= f.text_field :company, class: "form-control", id: "company" %>
 		        	<%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
