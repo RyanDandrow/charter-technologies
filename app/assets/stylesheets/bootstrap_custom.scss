@@ -401,20 +401,25 @@ div#content {
 
 .null:hover {
 	color: black;
+  transition: all .7s ease 0s; 
 
 	input, select, textarea, textfield{
 	    color: black;
+      transition: all .7s ease 0s; 
 	}
 
 	textarea:focus, input:focus {
 	    color: black;
+      transition: all .7s ease 0s; 
 	}
 
 	::-webkit-input-placeholder {
 	   color: black;
+     transition: all .7s ease 0s; 
 	}
 
 	:-ms-input-placeholder {  
 	   color: black;  
+     transition: all .7s ease 0s; 
 	}
 }
