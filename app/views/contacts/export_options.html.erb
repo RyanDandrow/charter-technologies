@@ -11,6 +11,22 @@
     	<form class="form-horizontal">
         <div class="form-group">
 
+          <input type="checkbox" id="selectAll" value="selectAll"> Select / Deselect All<br/><br/>
+
+          <script>
+            $('#selectAll').click(function() {
+               if(this.checked) {
+                   $(':checkbox').each(function() {
+                       this.checked = true;                        
+                   });
+               } else {
+                  $(':checkbox').each(function() {
+                       this.checked = false;                        
+                   });
+               } 
+            });
+          </script>
+
           <div class="checkbox">
             <label>
               <input type="checkbox" name="checkbox"> Contact ID:
@@ -339,8 +355,8 @@
   </div>
 
   <div class="form-group">
-      <div class="col-md-6 col-md-offset-5">
-        <%= link_to "#{show_icon "download-alt"}Export Data".html_safe, contacts_export_path(format: "csv"), class: "btn btn-primary" %>
+      <div class="col-md-6 submits">
+        <%= link_to "#{show_icon "download-alt"}Export to CSV".html_safe, contacts_export_path(format: "csv"), class: "btn btn-primary" %>
       </div>
   </div>
 
