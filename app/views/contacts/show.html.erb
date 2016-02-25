@@ -19,17 +19,17 @@
   <%= stylesheet_link_tag 'bootstrap_custom' %>
 
 	<div class="container">
-		<div class="<%= 'urgent' if @contact.urg %>">
 
 			<div class="row">
 
-	<div id='comps'>
-    <%= f.fields_for :comps do |comp| %>
-      <%= render 'comp_fields', :f => comp %>
-    <% end %>
-			<%= link_to_add_association '<span class="glyphicon glyphicon-plus white"></span>'.html_safe, f, :comps, class: 'btn btn-primary btn-sm' %>
-  </div>
-
+      	<div id='comps'>
+          <%= f.fields_for :comps do |comp| %>
+            <%= render 'comp_fields', :f => comp %>
+          <% end %>
+      			<%= link_to_add_association '<span class="glyphicon glyphicon-plus white"></span>'.html_safe, f, :comps, class: 'btn btn-primary btn-sm' %>
+        </div>
+  
+      <div class="<%= 'urgent' if @contact.urg %>">
 				<div class="<%= 'null' if @contact.company.blank?	 %>">
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
 		      	<div class="form-group">
@@ -39,6 +39,7 @@
 		      	</div>
 		    	</div>
 		  	</div>
+      </div> <!-- URGENT -->
 
 				<div class="<%= 'null' if @contact.tax_id.blank? %>">
       		<div class="col-lg-2 col-md-2 col-sm-3">
@@ -72,19 +73,17 @@
 	      	</div>
 	    	</div>	    
 	  	</div> <!-- ROW -->
-		</div> <!-- URGENT -->
 		
-	  	<div class="row">
-	  		<div class="<%= 'urgent' if @contact.urg %>">
-		    	<div class="col-lg-5 col-md-4 col-sm-4">
-	        	<%= f.label :name, 'Name:', class: "form-label" %>
-	        	<div class="form-group" id="highlight2">  
-	          	<%= f.text_field :name, class: "form-control first" %>
-	          	<%= f.text_field :last_name, class: "form-control last" %>
-	          	<%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
-	        	</div>
-		    	</div>
-		    </div>
+		
+  	  <div class="row">
+	    	<div class="col-lg-5 col-md-4 col-sm-4">
+        	<%= f.label :name, 'Name:', class: "form-label" %>
+        	<div class="form-group" id="highlight2">  
+          	<%= f.text_field :name, class: "form-control first" %>
+          	<%= f.text_field :last_name, class: "form-control last" %>
+          	<%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
+        	</div>
+	    	</div>
 
 				<div class="<%= 'null' if @contact.goes_by.blank? %>">
 		    	<div class="col-lg-2 col-md-2 col-sm-3">
