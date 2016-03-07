@@ -203,7 +203,7 @@ div#content {
 	// width: 160px;
 	border: 1px solid;
   font-size: 12.5px;
-  height: 80%;
+  // height: 80%;
   border-radius: 0 !important;
   text-align: left;
 }
@@ -422,4 +422,8 @@ div#content {
 	   color: black;  
      transition: all .7s ease 0s; 
 	}
+}
+
+.flush {
+  margin-left: 15px;
 }

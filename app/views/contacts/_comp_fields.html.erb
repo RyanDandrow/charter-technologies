@@ -1,6 +1,12 @@
-<div class='nested-fields'>
-    <%= f.text_field :comp, placeholder: "Company:" %>
-		<%= f.select :comp_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
-
-    <%= link_to_remove_association '<span class="glyphicon glyphicon-trash"></span>'.html_safe, f, class: 'btn btn-default btn-sm' %>
+<div class="row">
+  <div class='nested-fields'>
+    <%= f.text_field :comp_label, placeholder: "Additional Company:", class: "form-label flush" %>
+    <div class="form-group">
+      <div class="col-md-4">
+        <%= f.text_field :comp, class: "form-control first" %>
+    		<%= select_tag :comp_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control last" %>
+        <%= link_to_remove_association '<span class="glyphicon glyphicon-trash"></span>'.html_safe, f, class: " btn btn-sm btn-primary suffix" %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220003213) do
+ActiveRecord::Schema.define(version: 20160304202716) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160220003213) do
     t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "comp_label"
   end
 
   add_index "comps", ["contact_id"], name: "index_comps_on_contact_id"
