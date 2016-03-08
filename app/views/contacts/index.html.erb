@@ -22,10 +22,10 @@
 			<td><%= table_cell_link contact.company, contact_path(contact) %></td>
 			<td class="hidden-xs hidden-sm"><%= table_cell_link contact.email, contact_path(contact) %></td>
 			<td class="hidden-xs hidden-sm"><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
-			<td><%= table_cell_link get_urg_text(contact.urg), contact_path(contact) %> </td>
+			<!-- <td><%= table_cell_link get_urg_text(contact.urg), contact_path(contact) %> </td> -->
 
 			<td class="<%= 'urgent' if contact.urg %>">
-				<%= link_to(show_row_icon(""), contact_path(contact) ) %>
+				 <%= get_urg_text(contact.urg) %>
 			</td>
 
 			<td class="delete">
