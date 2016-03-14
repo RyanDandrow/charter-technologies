@@ -536,14 +536,19 @@
 		<div class="center">
 			<h2>Dropbox</h2>
 		</div>
-			<div class="col-md-3 col-md-offset-5">
-				<br>
-					<%= link_to "#{show_icon "folder-open"}~ A - Z".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20A-Z', target: '_blank' %>
-				<br>
-				<br>
-				<% if @contact.sf_id.blank? %>
-				<% else %>
-					<%= link_to "#{show_icon "folder-open"}~ SF ID".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20SF%20ID#', target: '_blank' %>
-				<% end %>
-			</div>
-	</div>
+      <div class="col-md-3 col-md-offset-5">
+        <br>
+        <% if @contact.sf_id.blank? %>
+          <%= link_to "#{show_icon "folder-open"}~ A - Z".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20A-Z', target: '_blank'  %>
+            <br>
+            <br>
+          <!--  <%= link_to "#{show_icon "folder-open"}~ SF ID".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20SF%20ID#', target: '_blank', class: "null" %> -->
+        <% else %>
+          <%= link_to "#{show_icon "folder-open"}~ SF ID".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20SF%20ID#', target: '_blank' %>
+            <br>
+            <br>
+          <%= link_to "#{show_icon "folder-open"}~ A - Z".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20A-Z', target: '_blank', class: "null"  %>
+        <% end %>
+        <br>
+      </div>
+  </div>
