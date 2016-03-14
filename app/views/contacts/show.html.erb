@@ -541,6 +541,9 @@
 					<%= link_to "#{show_icon "folder-open"}~ A - Z".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20A-Z', target: '_blank' %>
 				<br>
 				<br>
-					<%= link_to "#{show_icon "folder-open"}~ SF ID".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20SF%20ID', target: '_blank' %>
+				<% if @contact.sf_id.blank? %>
+				<% else %>
+					<%= link_to "#{show_icon "folder-open"}~ SF ID".html_safe, 'https://www.dropbox.com/home/STERLING%20FINANCIAL/~%20SF%20ID#', target: '_blank' %>
+				<% end %>
 			</div>
 	</div>

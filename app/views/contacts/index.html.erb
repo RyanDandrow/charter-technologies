@@ -24,7 +24,7 @@
 			<td class="hidden-xs hidden-sm"><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
 			<!-- <td><%= table_cell_link get_urg_text(contact.urg), contact_path(contact) %> </td> -->
 
-			<td class="<%= 'urgent' if contact.urg %>">
+			<td class="<%= 'urgent' if contact.urg %> center-urgent">
 				 <%= get_urg_text(contact.urg) %>
 			</td>
 

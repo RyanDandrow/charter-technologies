@@ -435,3 +435,10 @@ div#content {
 #dl_state {
   width: 25%;
 }
+
+#content .table .center-urgent {
+    display: block;
+    text-decoration: none;
+    padding: 15px 10px 15px 10px;
+    text-align: left;
+}
