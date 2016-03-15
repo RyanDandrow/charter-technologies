@@ -1,10 +1,10 @@
 <div class="comment-form">
   <%= form_for comment, :url => comments_path, :remote => true do |f| %>
   	<div class="row">
-  		<div class="col-lg-1 urgent-button">
+  		<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 urgent-button">
   			<%= f.button :submit, :class => "btn btn-primary", :disable_with => "Submitting…" %>
   		</div>
-	    <div class="col-lg-9 col-md-offset-1">
+	    <div class="col-lg-9 col-md-offset-1 col-md-9 col-sm-10 col-xs-9">
 	        <%= f.hidden_field :commentable_id, :as => :hidden, :value => comment.commentable_id %>
 	        <%= f.hidden_field :commentable_type, :as => :hidden, :value => comment.commentable_type %>
 	        <%= f.text_area :body, :rows => 6 , class: "form-control" %>      
