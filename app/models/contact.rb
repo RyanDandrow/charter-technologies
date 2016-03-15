@@ -60,6 +60,24 @@ class Contact < ActiveRecord::Base
 		end
 	end
 
+	ransacker :whole_name do |parent|
+	  Arel::Nodes::InfixOperation.new('||',
+	    Arel::Nodes::InfixOperation.new('||',
+	      parent.table[:name], Arel::Nodes.build_quoted(' ')
+	    ),
+	    parent.table[:last_name]
+	  )
+	end
+
+		ransacker :spouse_whole_name do |parent|
+	  Arel::Nodes::InfixOperation.new('||',
+	    Arel::Nodes::InfixOperation.new('||',
+	      parent.table[:spouse_first_name], Arel::Nodes.build_quoted(' ')
+	    ),
+	    parent.table[:spouse_last_name]
+	  )
+	end
+
 	private
 
 		def capitalize_name
