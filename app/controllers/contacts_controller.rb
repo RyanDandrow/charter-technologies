@@ -51,6 +51,14 @@ class ContactsController < ApplicationController
 		redirect_to contacts_path
 	end
 
+	def destroy_multiple
+	  Contact.destroy_all(id: params[:contacts_ids])
+	  respond_to do |format|
+	  	format.html { redirect_to contacts_path }
+	  	format.json { head :no_content }
+	  end
+	end
+
 	def export
 	  @data = Contact.order(:created_at)
 	  respond_to do |format|
