@@ -24,13 +24,14 @@
 				<td><%= table_cell_link contact.company, contact_path(contact) %></td>
 				<td class="hidden-xs hidden-sm"><%= table_cell_link contact.email, contact_path(contact) %></td>
 				<td class="hidden-xs hidden-sm"><%= table_cell_link contact.cell_phone, contact_path(contact) %></td>
-				<!-- <td><%= table_cell_link get_urg_text(contact.urg), contact_path(contact) %> </td> -->
 
 				<td class="<%= 'urgent' if contact.urg %> center-urgent">
 					 <%= get_urg_text(contact.urg) %>
 				</td>
-
-				<td><%= check_box_tag "contacts_ids[]", contact.id %></td>
+				
+				<td style="padding-top: 11px;">
+					<%= check_box_tag "contacts_ids[]", contact.id %>
+				</td>
 
 				<td class="delete">
 					<%= link_to(show_row_icon("trash"), contact_path(contact), :method => :delete, :data => { :confirm => "Are you sure you want to delete this contact?" }) %>
@@ -39,7 +40,7 @@
 		<% end %>
 	</table>
 
-  <%= submit_tag "Delete selected" %>
+  <%= submit_tag "Delete Selection", class: "btn btn-primary" %>
 <% end %>
 
 <div class="text-center">

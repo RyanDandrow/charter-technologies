@@ -56,6 +56,7 @@ class ContactsController < ApplicationController
 	  respond_to do |format|
 	  	format.html { redirect_to contacts_path }
 	  	format.json { head :no_content }
+	  flash[:notice] = 'Contacts were successfully deleted'
 	  end
 	end
 
