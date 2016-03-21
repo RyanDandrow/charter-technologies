@@ -4,6 +4,10 @@ class ContactsController < ApplicationController
 		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
     @search = Contact.search(params[:q])
     @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
+    @advanced_search = Contact.search(params[:q])
+    @advanced_search.build_condition if @advanced_search.conditions.empty?
+    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def show
@@ -13,6 +17,10 @@ class ContactsController < ApplicationController
 		@comments = @contact.comment_threads.order('created_at desc')
    	@new_comment = Comment.build_from(@contact, current_user.id, current_user.name,  "")
    	@contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
+    @advanced_search = Contact.search(params[:q])
+    @advanced_search.build_condition if @advanced_search.conditions.empty?
+    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def new
@@ -69,10 +77,9 @@ class ContactsController < ApplicationController
 	end
 
 	def export_options
-		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
-    @search = Contact.search(params[:q])
-    @search.build_condition if @search.conditions.empty?
-    @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+    @advanced_search = Contact.search(params[:q])
+    @advanced_search.build_condition if @advanced_search.conditions.empty?
+    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 	end
 
 	private

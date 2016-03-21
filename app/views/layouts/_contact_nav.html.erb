@@ -9,19 +9,52 @@
       </button>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
       <ul class="nav navbar-nav navbar-left">
         <li>
           <%= search_form_for @search do |f| %>
             <div class="form-inline button">
               <%= f.text_field :spouse_whole_name_or_whole_name_or_name_or_company_or_last_name_or_cell_phone_or_email_or_spouse_email_or_goes_by_or_spouse_first_name_or_spouse_last_name_or_spouse_goes_by_or_sf_id_cont, class: "form-control", placeholder: "Search Contacts:" %>
               <%= f.submit "Search", class: "btn btn-default" %>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Advanced Search</button>
             </div>
           <% end %>
         </li>
+        <li>
+          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="row button center-urgent">
+                  <%= search_form_for @advanced_search do |f| %>
+                    <%= f.condition_fields do |c| %>
+                      <div class="col-md-3 col-md-offset-1 form-group">
+                        <%= c.attribute_fields do |a| %>
+                          <%= a.attribute_select nil, class: "form-control" %>
+                        <% end %>
+                      </div>
+
+                      <div class="col-md-3 form-group">
+                        <%= c.predicate_select Hash.new, class: "form-control" %>
+                      </div>
+
+                      <div class="col-md-3 form-group">
+                        <%= c.value_fields do |v| %>
+                          <%= v.text_field :value, class: "form-control", placeholder: "Search Contacts:" %>
+                        <% end %>
+                      </div>
+                      
+                    <% end %>  <!-- condition fields -->
+                      <%= f.submit "Search", class: "btn btn-primary" %>
+                    </div>
+                  <% end %> <!-- search form -->
+                </div>
+              </div>
+            </div>
+
+        </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right push-down">
         <% if @contact %>
           <li><%= link_to(show_row_icon("trash"), contact_path(@contact), :method => :delete, :data => { :confirm => "Are you sure you want to delete this contact?" }) %></li>
           <li><%= link_to "#{show_icon "plus-sign"}New Contact".html_safe, new_contact_path, :data => { :confirm => "Are you sure you want to go back without saving this contact?" } %></li>

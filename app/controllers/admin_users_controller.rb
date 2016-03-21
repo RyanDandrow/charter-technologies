@@ -9,6 +9,10 @@ class AdminUsersController < ApplicationController
     @search = Contact.search(params[:q])
     @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
     @admin_users = AdminUser.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
+    @advanced_search = Contact.search(params[:q])
+    @advanced_search.build_condition if @advanced_search.conditions.empty?
+    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
