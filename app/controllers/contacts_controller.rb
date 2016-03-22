@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
 
+	  before_action :set_contact, only: [:create, :show, :update, :destroy]
+
 	def index
 		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
     @search = Contact.search(params[:q])
@@ -27,29 +29,43 @@ class ContactsController < ApplicationController
 		@contact = Contact.new
 	end
 
-	def create
-		@contact = Contact.new contact_params
+	# def create
+	# 	@contact = Contact.new contact_params
 
-		if @contact.save
-			flash[:notice] = 'Contact successfully created'
-			redirect_to @contact
-		else
-			flash.now[:error] = 'There was a problem trying to create a new contact'
-			render :action => :new
-		end
-	end
+	# 	if @contact.save
+	# 		flash[:notice] = 'Contact successfully created'
+	# 		redirect_to @contact
+	# 	else
+	# 		flash.now[:error] = 'There was a problem trying to create a new contact'
+	# 		render :action => :new
+	# 	end
+	# end
 
-	def update
-		@contact = Contact.find params[:id]
+  def create
+    @contact = Contact.new(contact_params)
 
-		if @contact.update_attributes contact_params
-			flash[:notice] = 'Contact has been successfully updated'
-			redirect_to contact_path
-		else
-			flash.now[:error] = 'There was a problem trying to update this contact'
-			render :action => :new
-		end
-	end
+    respond_to do |format|
+      if @contact.save
+        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.json { render :show, status: :created, location: @contact }
+      else
+        format.html { render :new }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @contact.update(contact_params)
+        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.json { render :show, status: :ok, location: @contact }
+      else
+        format.html { render :edit }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 	def destroy
 		@contact = Contact.find params[:id]
@@ -83,6 +99,10 @@ class ContactsController < ApplicationController
 	end
 
 	private
+
+    def set_contact
+      @contact = Contact.find(params[:id])
+    end
 
 		def contact_params
 			params.require(:contact).permit(:company, :goes_by, :cell_phone, :sf_id, :additional_info, :tax_id,
