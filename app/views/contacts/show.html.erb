@@ -182,7 +182,9 @@
 		          <%= f.fields_for :comps do |comp| %>
 		            <%= render 'comp_fields', :f => comp %>
 		          <% end %>
+							<div class="links button">
 		      			<%= link_to_add_association '<span class="glyphicon glyphicon-plus white add-comp-link"></span>'.html_safe, f, :comps, class: 'btn btn-primary btn-sm' %>
+		      		</div>
 		        </div>
 			    </div>
 		    </div>

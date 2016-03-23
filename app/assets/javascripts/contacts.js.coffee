@@ -24,3 +24,22 @@ $.rails.showConfirmDialog = (link) ->
       else
         swal 'Cancelled', 'Contact delete has been cancelled', 'error'
       return
+
+
+$ ->
+  check_to_hide_add_link = ->
+    if $("#comps .nested-fields").length is 3
+      $("#comps .links a").hide()
+    else
+      $("#comps .links a").show()
+    return
+  $("#comps").bind "cocoon:after-insert", ->
+    check_to_hide_add_link()
+    return
+
+  $("#comps").bind "cocoon:after-remove", ->
+    check_to_hide_add_link()
+    return
+
+  check_to_hide_add_link()
+  return
