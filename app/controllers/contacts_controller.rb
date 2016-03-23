@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 
-	  before_action :set_contact, only: [:create, :show, :update, :destroy]
+	  before_action :set_contact, only: [:show, :update, :destroy]
 
 	def index
 		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
