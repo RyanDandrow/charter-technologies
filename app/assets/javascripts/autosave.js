@@ -17,7 +17,7 @@
 
     this.autosaveInterval = window.setInterval(function() {
       autosaveForm.saveFormIfChanged()
-    }, 4000);
+    }, 5000);
   };
 
   AutosaveForm.prototype = {

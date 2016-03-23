@@ -29,18 +29,6 @@ class ContactsController < ApplicationController
 		@contact = Contact.new
 	end
 
-	# def create
-	# 	@contact = Contact.new contact_params
-
-	# 	if @contact.save
-	# 		flash[:notice] = 'Contact successfully created'
-	# 		redirect_to @contact
-	# 	else
-	# 		flash.now[:error] = 'There was a problem trying to create a new contact'
-	# 		render :action => :new
-	# 	end
-	# end
-
   def create
     @contact = Contact.new(contact_params)
 
@@ -61,7 +49,7 @@ class ContactsController < ApplicationController
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
@@ -93,6 +81,9 @@ class ContactsController < ApplicationController
 	end
 
 	def export_options
+    @search = Contact.search(params[:q])
+    @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
     @advanced_search = Contact.search(params[:q])
     @advanced_search.build_condition if @advanced_search.conditions.empty?
     @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
