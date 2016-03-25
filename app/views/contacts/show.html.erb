@@ -23,7 +23,7 @@
   
       <div class="<%= 'urgent' if @contact.urg %>">
 				<div class="<%= 'null' if @contact.company.blank?	 %>">
-		    	<div class="col-lg-5 col-md-4 col-sm-4">
+		    	<div class="col-lg-4 col-md-4 col-sm-4">
 		      	<div class="form-group">
 							<%= f.text_field :company_label, :value => @contact.company_label.blank? ? "Company:" : @contact.company_label, class: "form-label-3" %>
 		        	<%= f.text_field :company, class: "form-control", id: "company" %>
@@ -34,7 +34,7 @@
       </div> <!-- URGENT -->
 
 				<div class="<%= 'null' if @contact.tax_id.blank? %>">
-      		<div class="col-lg-2 col-md-2 col-sm-3">
+      		<div class="col-lg-2 col-md-2 col-sm-2">
         		<div class="form-group">
           		<%= f_text_field f, @contact, :tax_id, :class => "form-control", :id => "tax_id", :f_label => "Tax ID" %>
         		</div>
@@ -42,7 +42,7 @@
 				</div>
 
 				<div class="<%= 'null' if @contact.drivers_license.blank? %>">
-		    	<div class="col-lg-2 col-md-2 col-sm-3">
+		    	<div class="col-lg-2 col-md-2 col-sm-2">
 		      	<div class="form-group">
 		        	<%= f.text_field :drivers_license_label, :value => @contact.drivers_license_label.blank? ? "#{@contact.correct_name} DL#:" : @contact.drivers_license_label, class: "form-label" %>
 		        	<%= f.text_field :drivers_license, class: "form-control" %>
@@ -104,8 +104,8 @@
 		    	</div>
 		    </div>
 
-				<div class="<%= 'null' if @contact.spouse_drivers_license.blank?  %>">
-	    		<div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
+				<div class="<%= 'null' if @contact.spouse_drivers_license.blank? %>">
+	    		<div class="col-lg-2 col-md-2 col-sm-2">
 	     			<div class="form-group">
 							<%= f.text_field :spouse_drivers_license_label, :value => @contact.spouse_drivers_license_label.blank? ? "#{@contact.spouse_correct_name} DL#" : @contact.spouse_drivers_license_label, class: "form-label" %>
 	          	<%= f.text_field :spouse_drivers_license, class: "form-control" %>
@@ -167,11 +167,13 @@
 	    		</div>
 	    	</div>
 
-	    	<div class="col-lg-1 col-md-1 col-sm-2">
-	      	<div class="form-group">          
-	        	<%= f_text_field f, @contact, :sf_id, :class => "form-control", :id => "sf_id", :f_label => "SF ID" %>
-	      	</div>
-	    	</div>	    
+				<div class="<%= 'null' if @contact.sf_id.blank? %>">
+		    	<div class="col-lg-1 col-md-1 col-sm-2">
+		      	<div class="form-group">          
+		        	<%= f_text_field f, @contact, :sf_id, :class => "form-control", :id => "sf_id", :f_label => "SF ID" %>
+		      	</div>
+		    	</div>
+		    </div>
 	  	</div> <!-- ROW -->
 
 
@@ -210,17 +212,29 @@
 		    	</div>
 	    	</div>
 
-				<div class="<%= 'null' if @contact.ssn.blank? %>">
-	    		<div class="col-md-2 col-sm-3">
-	      		<div class="form-group">
-							<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
-
-	        		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
-	          		Social Security Number
-	        		</button>
-	      		</div>
-	    		</div>
-	    	</div>
+				<% if @contact.ssn.blank? %>
+					<div class="null">
+				    <div class="col-md-2 col-sm-3">
+				      <div class="form-group">
+								<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
+				          <br>
+			          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal">
+			            Social Security Number
+			          </button>
+				      </div>
+				    </div>
+			    </div>
+			  <% else %>
+			    <div class="col-md-2 col-sm-3">
+			      <div class="form-group">
+							<%= f.text_field :ssn_label, placeholder: "#{@contact.correct_name} SSN:", class: "form-label" %>
+			          <br>
+		          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+		            Social Security Number
+		          </button>
+			      </div>
+			    </div>
+			  <% end %>
 
 		    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		      <div class="modal-dialog" role="document">
@@ -404,7 +418,7 @@
 		      	</div>
 	    		</div> <!-- col-lg-2 col-md-2 -->
 
-					<div class="<%= 'null' if @contact.address_box_1.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_1.blank? && @contact.address_box_1_label.blank?  %>">
 						<div class="col-md-3 col-sm-4 col-md-offset-1">
 			    		<%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label-3" %>
 			    		<div class="form-group" id="addressBorder">
@@ -414,7 +428,7 @@
 			  		</div>
 			  	</div>
 
-					<div class="<%= 'null' if @contact.address_box_2.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_2.blank? && @contact.address_box_2_label.blank?  %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 							<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label-3" %>
 		      		<div class="form-group" id="addressBorder">
@@ -424,7 +438,7 @@
 			  		</div>
 			  	</div>
 			
-					<div class="<%= 'null' if @contact.address_box_3.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_3.blank? && @contact.address_box_3_label.blank?  %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 			    		<%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label-3" %>
 			    		<div class="form-group" id="addressBorder">
@@ -434,7 +448,7 @@
 			  		</div>
 			  	</div>
 
-					<div class="<%= 'null' if @contact.address_box_4.blank? %>">
+					<div class="<%= 'null' if @contact.address_box_4.blank? && @contact.address_box_4_label.blank? %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
 							<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label-3 null" %>
 			    		<div class="form-group" id="addressBorder">

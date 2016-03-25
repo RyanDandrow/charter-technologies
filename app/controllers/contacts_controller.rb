@@ -4,6 +4,7 @@ class ContactsController < ApplicationController
 
 	def index
 		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
     @search = Contact.search(params[:q])
     @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 
@@ -14,11 +15,12 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = Contact.find params[:id]
+
    	@search = Contact.search(params[:q])
    	@contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+
 		@comments = @contact.comment_threads.order('created_at desc')
    	@new_comment = Comment.build_from(@contact, current_user.id, current_user.name,  "")
-   	@contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
 
     @advanced_search = Contact.search(params[:q])
     @advanced_search.build_condition if @advanced_search.conditions.empty?
@@ -34,7 +36,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to @contact, notice: @contact.full_name + 'was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -46,7 +48,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to @contact, notice: @contact.full_name + ' was successfully deleted' }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :show }
@@ -92,7 +94,7 @@ class ContactsController < ApplicationController
 	private
 
     def set_contact
-      @contact = Contact.find(params[:id])
+      @contact = Contact.find params[:id]
     end
 
 		def contact_params
