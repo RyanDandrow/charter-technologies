@@ -447,3 +447,12 @@ div#content {
 .push-down {
   padding-top: 2.5px;
 }
+
+select {
+    height: 34px;
+}
+input, select{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
