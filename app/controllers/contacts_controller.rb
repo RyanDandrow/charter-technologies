@@ -3,14 +3,15 @@ class ContactsController < ApplicationController
 	  before_action :set_contact, only: [:show, :update, :destroy]
 
 	def index
-		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+    @per_page = params[:per_page] || Contact.per_page || 20
+		@contacts = Contact.order(sort_order(:name)).paginate(:page => params[:page], :per_page => @per_page)
 
     @search = Contact.search(params[:q])
-    @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+    @contacts = @search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => @per_page)
 
     @advanced_search = Contact.search(params[:q])
     @advanced_search.build_condition if @advanced_search.conditions.empty?
-    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => 10)
+    @contacts = @advanced_search.result.order(sort_order(:name)).paginate(:page => params[:page], :per_page => @per_page)
 	end
 
 	def show

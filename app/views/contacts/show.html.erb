@@ -420,40 +420,40 @@
 
 					<div class="<%= 'null' if @contact.address_box_1.blank? && @contact.address_box_1_label.blank?  %>">
 						<div class="col-md-3 col-sm-4 col-md-offset-1">
-			    		<%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label-3" %>
+			    		<%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label-3 important" %>
 			    		<div class="form-group" id="addressBorder">
-								<%= f.text_area :address_box_1, class: "form-control", :rows => 4,  placeholder: "#{@contact.company}, #{@contact.company_type}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-			      		<%= f.text_field :county_box1, placeholder: 'County:', class: "form-control" %>
+								<%= f.text_area :address_box_1, class: "form-control important", :rows => 4,  placeholder: "#{@contact.company}, #{@contact.company_type}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      		<%= f.text_field :county_box1, placeholder: 'County:', class: "form-control important" %>
 			    		</div>
 			  		</div>
 			  	</div>
 
 					<div class="<%= 'null' if @contact.address_box_2.blank? && @contact.address_box_2_label.blank?  %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
-							<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label-3" %>
+							<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label-3 important" %>
 		      		<div class="form-group" id="addressBorder">
-					  		<%= f.text_area :address_box_2, class: "form-control", :rows => 4,  placeholder: "#{@contact.full_name} & #{@contact.spouse_full_name}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-		        		<%= f.text_field :county_box2, placeholder: 'County:', class: "form-control" %>
+					  		<%= f.text_area :address_box_2, class: "form-control important", :rows => 4,  placeholder: "#{@contact.full_name} & #{@contact.spouse_full_name}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		        		<%= f.text_field :county_box2, placeholder: 'County:', class: "form-control important" %>
 			    		</div>
 			  		</div>
 			  	</div>
 			
 					<div class="<%= 'null' if @contact.address_box_3.blank? && @contact.address_box_3_label.blank?  %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
-			    		<%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label-3" %>
+			    		<%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label-3 important" %>
 			    		<div class="form-group" id="addressBorder">
-								<%= f.text_area :address_box_3, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-			      		<%= f.text_field :county_box3, placeholder: 'County:', class: "form-control" %>
+								<%= f.text_area :address_box_3, class: "form-control important", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      		<%= f.text_field :county_box3, placeholder: 'County:', class: "form-control important" %>
 			    		</div>
 			  		</div>
 			  	</div>
 
 					<div class="<%= 'null' if @contact.address_box_4.blank? && @contact.address_box_4_label.blank? %>">
 			  		<div class="col-md-3 col-sm-4 col-md-offset-1">
-							<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label-3 null" %>
+							<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label-3 important" %>
 			    		<div class="form-group" id="addressBorder">
-				    		<%= f.text_area :address_box_4, class: "form-control null", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-			      		<%= f.text_field :county_box4, placeholder: 'County:', class: "form-control null" %>
+				    		<%= f.text_area :address_box_4, class: "form-control important", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+			      		<%= f.text_field :county_box4, placeholder: 'County:', class: "form-control important" %>
 			    		</div>
 			  		</div>
 			  	</div>

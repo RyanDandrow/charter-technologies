@@ -200,12 +200,13 @@ div#content {
 /* FORMS */
 
 .form-control {
-	// width: 160px;
 	border: 1px solid;
   font-size: 12.5px;
-  // height: 80%;
-  border-radius: 0 !important;
   text-align: left;
+}
+
+.important {
+  border-radius: 0 !important;
 }
 
 .form-label {
