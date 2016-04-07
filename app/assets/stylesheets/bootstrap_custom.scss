@@ -456,3 +456,17 @@ input, select{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+
+/* footer */
+
+footer .alert {
+    position: fixed;
+    background: none;
+    border-style: none;
+    right: 0;
+    bottom: 0;
+    height: 25px;
+    width: 15%;
+    text-align: center;
+}
