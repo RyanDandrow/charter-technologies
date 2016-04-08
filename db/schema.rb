@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310194754) do
+ActiveRecord::Schema.define(version: 20160408190154) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -56,13 +56,11 @@ ActiveRecord::Schema.define(version: 20160310194754) do
     t.string   "comp"
     t.string   "comp_type"
     t.boolean  "done"
-    t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "comp_label"
+    t.integer  "contact_id"
   end
-
-  add_index "comps", ["contact_id"], name: "index_comps_on_contact_id"
 
   create_table "contacts", force: :cascade do |t|
     t.string   "goes_by"
@@ -103,7 +101,6 @@ ActiveRecord::Schema.define(version: 20160310194754) do
     t.string   "county_box4"
     t.string   "ssn"
     t.string   "spouse_ssn"
-    t.string   "urgent"
     t.string   "name"
     t.string   "spouse_drivers_license"
     t.text     "address_box_1"
@@ -133,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160310194754) do
     t.string   "company_type"
     t.string   "company"
     t.string   "spouse_name_label"
+    t.string   "state_select"
     t.string   "dl_state_select"
     t.string   "spouse_dl_state_select"
   end
