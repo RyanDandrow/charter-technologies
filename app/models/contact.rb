@@ -44,6 +44,24 @@ class Contact < ActiveRecord::Base
 	  end
 	end
 
+	def self.import(file)
+    counter = 0
+    CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+      contact = Contact.assign_from_row(row)
+      if contact.save
+        counter += 1
+      else
+        puts "#{} - #{contact.errors.full_messages.join(",")}"
+      end
+    end
+	end
+
+	def self.assign_from_row(row)
+		contact = Contact.where(name: row[:name], last_name: row[:last_name]).first_or_initialize
+		contact.assign_attributes row.to_hash.slice(:name, :last_name, :email, :urg, :company, :company_type, :drivers_license)
+		contact
+	end
+
 	def correct_name
 		if goes_by.blank?
 			name

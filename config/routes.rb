@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :contacts do
      collection do
       delete 'destroy_multiple'
+      post :import
      end
     end
       resources :comments, :only => [:create, :destroy] do

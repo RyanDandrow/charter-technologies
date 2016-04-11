@@ -49,7 +49,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: @contact.full_name + ' was successfully deleted' }
+        format.html { redirect_to @contact, notice: @contact.full_name + ' was successfully updated' }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :show }
@@ -74,6 +74,11 @@ class ContactsController < ApplicationController
 	  flash[:notice] = 'Contacts were successfully deleted'
 	  end
 	end
+
+  def import
+    count = Contact.import params[:file]
+    redirect_to contacts_path, notice: "Imported #{count} contacts"
+  end
 
 	def export
 	  @data = Contact.order(:created_at)
