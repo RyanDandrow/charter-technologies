@@ -5,17 +5,17 @@ class Contact < ActiveRecord::Base
 	validates_uniqueness_of :name, scope: [:last_name, :name_suffix]
 	validates_presence_of(:name, :last_name)
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, :allow_blank => true, format: { with: EMAIL_REGEX }
-	validates :spouse_email, :allow_blank => true, format: { with: EMAIL_REGEX }
-	validates :alt_email, :allow_blank => true, format: { with: EMAIL_REGEX }
-	validates_length_of :date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
-	validates_length_of :spouse_date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
-	validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
+	validates_uniqueness_of :email, allow_blank: true, format: { with: EMAIL_REGEX }
+	validates_uniqueness_of :spouse_email, allow_blank: true, format: { with: EMAIL_REGEX }
 	validates_uniqueness_of :sf_id, allow_blank: true, message: "is already in use"
-	validates_length_of :cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
-	validates_length_of :home_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
-	validates_length_of :spouse_cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
-	validates_length_of :company_phone, :minimum => 14, :maximum => 22, :allow_blank => true, message: "is invalid"
+	# validates :alt_email, :allow_blank => true, format: { with: EMAIL_REGEX }
+	# validates_length_of :date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
+	# validates_length_of :spouse_date_of_birth, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
+	# validates_length_of :tax_id, :minimum => 10, :maximum => 10, :allow_blank => true, message: "is invalid"
+	# validates_length_of :cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	# validates_length_of :home_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	# validates_length_of :spouse_cell_phone, :minimum => 14, :maximum => 14, :allow_blank => true, message: "is invalid"
+	# validates_length_of :company_phone, :minimum => 14, :maximum => 22, :allow_blank => true, message: "is invalid"
 
 
 	acts_as_commentable
@@ -54,11 +54,12 @@ class Contact < ActiveRecord::Base
         puts "#{} - #{contact.errors.full_messages.join(",")}"
       end
     end
+    counter
 	end
 
 	def self.assign_from_row(row)
 		contact = Contact.where(name: row[:name], last_name: row[:last_name]).first_or_initialize
-		contact.assign_attributes row.to_hash.slice(:name, :last_name, :email, :urg, :company, :company_type, :drivers_license)
+		contact.assign_attributes row.to_hash.slice(:name, :last_name, :name_suffix, :sf_id, :email, :urg, :company, :company_type, :drivers_license, :dl_state_select, :tax_id)
 		contact
 	end
 
