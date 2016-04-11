@@ -59,7 +59,7 @@ class Contact < ActiveRecord::Base
 
 	def self.assign_from_row(row)
 		contact = Contact.where(name: row[:name], last_name: row[:last_name]).first_or_initialize
-		contact.assign_attributes row.to_hash.slice(:name, :last_name, :name_suffix, :sf_id, :email_label, :email, :urg, :company, :company_type, :drivers_license, :dl_state_select, :tax_id, :spouse_drivers_license)
+		contact.assign_attributes row.to_hash.slice(:company_label, :company, :company_type, :tax_id, :drivers_license_label, :drivers_license, :dl_state_select, :spouse_drivers_license_label, :spouse_drivers_license, :spouse_dl_state_select, :sf_id, :name, :last_name, :name_suffix, :goes_by, :ssn, :date_of_birth, :spouse_name_label, :spouse_first_name, :spouse_last_name, :spouse_goes_by, :spouse_ssn_label, :spouse_ssn, :spouse_date_of_birth_label, :spouse_date_of_birth, :cell_phone_label, :cell_phone, :spouse_cell_phone_label, :spouse_cell_phone, :company_phone_label, :company_phone, :home_phone_label, :home_phone, :alt_phone_1_place, :alt_phone_1, :alt_phone_2_place, :alt_phone_2, :alt_phone_3_place, :alt_phone_3, :alt_phone_4_place, :alt_phone_4, :address_box_1_label, :address_box_1, :county_box1, :address_box_2_label, :address_box_2, :county_box2, :address_box_3_label, :address_box_3, :county_box3, :address_box_4_label, :address_box_4, :county_box4, :email_label, :email, :spouse_email_label, :spouse_email, :web_address_label, :web_address, :alt_email_label, :alt_email, :additional_info_label, :additional_info, :urg)
 		contact
 	end
 
