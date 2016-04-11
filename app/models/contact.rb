@@ -59,7 +59,7 @@ class Contact < ActiveRecord::Base
 
 	def self.assign_from_row(row)
 		contact = Contact.where(name: row[:name], last_name: row[:last_name]).first_or_initialize
-		contact.assign_attributes row.to_hash.slice(:name, :last_name, :name_suffix, :sf_id, :email, :urg, :company, :company_type, :drivers_license, :dl_state_select, :tax_id)
+		contact.assign_attributes row.to_hash.slice(:name, :last_name, :name_suffix, :sf_id, :email_label, :email, :urg, :company, :company_type, :drivers_license, :dl_state_select, :tax_id, :spouse_drivers_license)
 		contact
 	end
 

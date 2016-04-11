@@ -257,7 +257,7 @@
 	        	<div class="form-group">          
 	        		<div class="<%= 'null' if @contact.cell_phone.blank? %>">
 							<%= f.text_field :cell_phone_label, :value => @contact.cell_phone_label.blank? ? "#{@contact.correct_name} Cell:" : @contact.cell_phone_label, class: "form-label" %>
-	          	<%= f.text_field :cell_phone, class: "form-control", id: "phone3" %>
+	          	<%= f.text_field :cell_phone, class: "form-control", id: "phone1" %>
 	          	</div>
 						</div>
 
@@ -272,7 +272,7 @@
 						<div class="<%= 'null' if @contact.company_phone.blank?  %>">
 		      		<div class="form-group">
 		      			<%= f.text_field :company_phone_label, :value => @contact.company_phone_label.blank? ? "Company Phone:" : @contact.company_phone_label, class: "form-label" %>
-		        		<%= f.text_field :company_phone, class: "form-control", id: "phone1" %>
+		        		<%= f.text_field :company_phone, class: "form-control", id: "phone3" %>
 		      		</div>
 		      	</div>
 
@@ -369,7 +369,7 @@
     		<div class="<%= 'null' if @contact.email.blank? %>">
 		      <div class="col-md-5 col-sm-6 col-xs-5">
 		        <div class="form-group">
-							<%= f.text_field :email_label, :value => @contact.email_label.blank? ? "#{@contact.correct_name} Email:" : @contact.email_label, class: "form-label-3 null" %>
+							<%= f.text_field :email_label, :value => @contact.email_label.blank? ? "#{@contact.correct_name} Email:" : @contact.email_label, class: "form-label-3" %>
 		          <%= f.text_field :email, class: "form-control" %>
 		        </div>
 		      </div>   

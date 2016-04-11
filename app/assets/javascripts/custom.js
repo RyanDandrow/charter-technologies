@@ -42,7 +42,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('#phone1').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
+    $('#phone3').mask('(000)-000-0000 Ext.000', {placeholder: "(000)-000-0000 Ext.000"});
 });
 
 $(document).ready(function(){
@@ -54,7 +54,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('#phone3').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
+    $('#phone1').mask('(000)-000-0000', {placeholder: "(000)-000-0000"});
 });
 
 $(document).ready(function(){

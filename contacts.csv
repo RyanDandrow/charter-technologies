@@ -1,1 +1,1 @@
-name,last_name,name_suffix,sf_id,email,urg,company,company_type,drivers_license,dl_state_select,tax_idJoe,Johnson,Jr,904,james@yahoo.com,true,WEED 21,LLC,6826315912,NY,12-3456789John,Glen,Sr,686,John@yahoo.com,true,WEED 21,LLC,6826315919,NJ,98-7654321Ryan,Glen,II,904,Ryan@yahoo.com,false,WEED 21,LLC,6826315911,AL,11-2233445
+name,last_name,name_suffix,sf_id,email_label,email,urg,company,company_type,drivers_license,dl_state_select,tax_id,spouse_drivers_license
