@@ -91,8 +91,8 @@
 	    	<div class="col-lg-5 col-md-4 col-sm-4">
         	<%= f.label :name, 'Name:', class: "form-label" %>
         	<div class="form-group" id="highlight2">  
-          	<%= f.text_field :name, class: "form-control first" %>
-          	<%= f.text_field :last_name, class: "form-control last" %>
+          	<%= f.text_field :name, class: "form-control first", placeholder: "First Name:" %>
+          	<%= f.text_field :last_name, class: "form-control last", placeholder: "Last Name:" %>
           	<%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
         	</div>
 	    	</div>
@@ -173,8 +173,8 @@
 		    	<div class="col-lg-5 col-md-4 col-sm-4">
 						<%= f.text_field :spouse_name_label, :value => @contact.spouse_name_label.blank? ? "Spouse Name:" : @contact.spouse_name_label, class: "form-label" %>
 	        	<div class="form-group">
-	          	<%= f.text_field :spouse_first_name, class: "form-control first" %>
-	          	<%= f.text_field :spouse_last_name, class: "form-control last" %>
+	          	<%= f.text_field :spouse_first_name, class: "form-control first", placeholder: "First Name:" %>
+	          	<%= f.text_field :spouse_last_name, class: "form-control last", placeholder: "Last Name:" %>
 	        	</div>
 		    	</div>
 				</div>
