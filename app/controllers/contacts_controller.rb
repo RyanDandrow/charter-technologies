@@ -83,8 +83,8 @@ class ContactsController < ApplicationController
 	def export
 	  @data = Contact.order(:created_at)
 	  respond_to do |format|
-	    format.html { redirect_to contacts_path }
-	    format.csv { send_data @data.to_csv }
+	    format.html
+	    format.csv { send_data @data.to_csv, filename: "Contacts-#{Date.today}.csv" }
 	  end
 	end
 
