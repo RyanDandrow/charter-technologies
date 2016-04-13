@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408190154) do
+ActiveRecord::Schema.define(version: 20160413163014) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "name"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 20160408190154) do
     t.string   "state_select"
     t.string   "dl_state_select"
     t.string   "spouse_dl_state_select"
+    t.string   "middle_initial"
+    t.string   "spouse_middle_initial"
   end
 
 end

@@ -117,7 +117,7 @@ class ContactsController < ApplicationController
 											:drivers_license_label, :cell_phone_label, :spouse_cell_phone_label, :company_phone_label, 
 											:spouse_drivers_license_label, :date_of_birth_label, :spouse_date_of_birth_label, 
 											:urg, :ssn_label, :spouse_ssn_label, :additional_info_label, :spouse_name_label,
-											:spouse_dl_state_select, :dl_state_select,
+											:spouse_dl_state_select, :dl_state_select, :middle_initial, :spouse_middle_initial,
 											comps_attributes: [:id, :comp, :comp_type, :comp_label, :done, :_destroy])
 		end
 end

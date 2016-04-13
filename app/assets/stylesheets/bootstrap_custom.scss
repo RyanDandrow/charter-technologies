@@ -239,12 +239,17 @@ div#content {
 }
 
 .first {
-  width: 42%;
+  width: 35%;
+  display: inline;
+}
+
+.middle {
+  width: 13%;
   display: inline;
 }
 
 .last {
-  width: 42%;
+  width: 35%;
   display: inline;
 }
 
