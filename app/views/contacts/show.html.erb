@@ -25,7 +25,7 @@
 		      	<div class="form-group">
 							<%= f.text_field :company_label, :value => @contact.company_label.blank? ? "Company:" : @contact.company_label, class: "form-label-3" %>
 		        	<%= f.text_field :company, class: "form-control", id: "company", onkeyup: "this.setAttribute('value', this.value);" %>
-		        	<%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+		        	<%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], {}, {class: "form-control suffix"} %>
 		      	</div>
 		    	</div>
 	      </div> <!-- URGENT -->
@@ -39,16 +39,16 @@
 	    	<div class="col-lg-2 col-md-2 col-sm-2">
 	      	<div class="form-group">
 	        	<%= f.text_field :drivers_license_label, :value => @contact.drivers_license_label.blank? ? "#{@contact.correct_name} DL#:" : @contact.drivers_license_label, class: "form-label" %>
-	        	<%= f.text_field :drivers_license, class: "form-control", onkeyup: "this.setAttribute('value', this.value);" %>
-	        	<%= f.select :dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',	'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], class: "form-control dl_state" %>
+	        	<%= f.text_field :drivers_license, class: "form-control dl", onkeyup: "this.setAttribute('value', this.value);" %>
+	        	<%= f.select :dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',	'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'],{},  { class: "form-control dl_state" } %>
 	      	</div>
 	    	</div>
 
     		<div class="col-lg-2 col-md-2 col-sm-2">
      			<div class="form-group">
 						<%= f.text_field :spouse_drivers_license_label, :value => @contact.spouse_drivers_license_label.blank? ? "#{@contact.spouse_correct_name} DL#" : @contact.spouse_drivers_license_label, class: "form-label" %>
-          	<%= f.text_field :spouse_drivers_license, class: "form-control", onkeyup: "this.setAttribute('value', this.value);" %>
-          	<%= f.select :spouse_dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], class: "form-control dl_state" %>
+          	<%= f.text_field :spouse_drivers_license, class: "form-control dl", onkeyup: "this.setAttribute('value', this.value);" %>
+          	<%= f.select :spouse_dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], {}, { class: "form-control dl_state" } %>
        		</div>
     		</div>
 
@@ -73,12 +73,12 @@
 	    </div>
 
   	  <div class="row">
-	    	<div class="col-lg-5 col-md-4 col-sm-4">
+	    	<div class="col-lg-4 col-md-4 col-sm-4">
         	<%= f.label :name, 'Name:', class: "form-label" %>
         	<div class="form-group" id="highlight2">  
           	<%= f.text_field :name, class: "form-control first", placeholder: "First Name:" %>
           	<%= f.text_field :last_name, class: "form-control last", placeholder: "Last Name:" %>
-          	<%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
+          	<%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], {}, {class: "form-control name-suffix"} %>
         	</div>
 	    	</div>
 
@@ -89,29 +89,15 @@
 	      	</div>
 	    	</div>
 
-				<% if @contact.ssn.blank? %>
-					<div class="null">
-				    <div class="col-md-2 col-sm-3">
-				      <div class="form-group">
-								<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
-				          <br>
-			          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal">
-			            Social Security Number
-			          </button>
-				      </div>
-				    </div>
-			    </div>
-			  <% else %>
-			    <div class="col-md-2 col-sm-3">
-			      <div class="form-group">
-							<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
-			          <br>
-		          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
-		            Social Security Number
-		          </button>
-			      </div>
-			    </div>
-			  <% end %>
+		    <div class="col-md-2 col-sm-3">
+		      <div class="form-group">
+						<%= f.text_field :ssn_label, :value => @contact.ssn_label.blank? ? "#{@contact.correct_name} SSN:" : @contact.ssn_label, class: "form-label" %>
+		          <br>
+	          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+	            Social Security Number
+	          </button>
+		      </div>
+		    </div>
 
 		    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		      <div class="modal-dialog" role="document">
@@ -124,7 +110,7 @@
 			          <div class="row">
 			            <div class="col-md-2 col-sm-2 col-md-offset-3">
 			              <div class="form-inline">
-			                <%= f.text_field :ssn, class: "form-control", id: "social" %>
+			                <%= f.text_field :ssn, class: "form-control", id: "social", onkeyup: "this.setAttribute('value', this.value);" %>
 		                    <script type="text/javascript">
 		                      $(document).ready(function(){
 		                        $('#social').mask('000-00-0000', {placeholder: "000-00-0000"});
@@ -147,7 +133,7 @@
 	  	</div>  <!-- row -->
 
 	  	<div class="row">
-	    	<div class="col-lg-5 col-md-4 col-sm-4">
+	    	<div class="col-lg-4 col-md-4 col-sm-4">
 					<%= f.text_field :spouse_name_label, :value => @contact.spouse_name_label.blank? ? "Spouse Name:" : @contact.spouse_name_label, class: "form-label" %>
         	<div class="form-group">
           	<%= f.text_field :spouse_first_name, class: "form-control first", placeholder: "First Name:", onkeyup: "this.setAttribute('value', this.value);" %>
@@ -162,29 +148,15 @@
         	</div>
       	</div>
 
-				<% if @contact.spouse_ssn.blank? %>
-					<div class="null">
-				    <div class="col-md-2 col-sm-3">
-				      <div class="form-group">
-								<%= f.text_field :spouse_ssn_label, :value => @contact.spouse_ssn_label.blank? ? "#{@contact.spouse_correct_name} SSN:" : @contact.spouse_ssn_label, class: "form-label" %>
-				          <br>
-			          <button type="button" class="btn btn-default btn-sm null" data-toggle="modal" data-target="#myModal2">
-			            Social Security Number
-			          </button>
-				      </div>
-				    </div>
-			    </div>
-			  <% else %>
-			    <div class="col-md-2 col-sm-3">
-			      <div class="form-group">
-							<%= f.text_field :spouse_ssn_label, :value => @contact.spouse_ssn_label.blank? ? "#{@contact.spouse_correct_name} SSN:" : @contact.spouse_ssn_label, class: "form-label" %>
-			          <br>
-		          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
-		            Social Security Number
-		          </button>
-			      </div>
-			    </div>
-			  <% end %>
+		    <div class="col-md-2 col-sm-3">
+		      <div class="form-group">
+						<%= f.text_field :spouse_ssn_label, :value => @contact.spouse_ssn_label.blank? ? "#{@contact.spouse_correct_name} SSN:" : @contact.spouse_ssn_label, class: "form-label" %>
+		          <br>
+	          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal2">
+	            Social Security Number
+	          </button>
+		      </div>
+		    </div>
 
 	      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	        <div class="modal-dialog" role="document">
@@ -198,7 +170,7 @@
 	              <div class="row">
 	                <div class="col-md-3 col-sm-3 col-md-offset-3">
 	                  <div class="form-inline">
-	                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social-2" %>
+	                    <%= f.text_field :spouse_ssn, class: "form-control", id: "social-2", onkeyup: "this.setAttribute('value', this.value);" %>
                         <script type="text/javascript">
                           $(document).ready(function(){
                             $('#social-2').mask('000-00-0000', {placeholder: "000-00-0000"});
@@ -266,7 +238,7 @@
 				<div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 	    		<%= f.text_field :address_box_1_label, value: 'Address Box:', class: "form-label-3 important" %>
 	    		<div class="form-group" id="addressBorder">
-						<%= f.text_area :address_box_1, class: "form-control important", :rows => 4,  placeholder: "#{@contact.company}, #{@contact.company_type}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+						<%= f.text_area :address_box_1, class: "form-control important", :rows => 4,  placeholder: "#{@contact.company}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
 	      		<%= f.text_field :county_box1, placeholder: 'County:', class: "form-control important", onkeyup: "this.setAttribute('value', this.value);" %>
 	    		</div>
 	  		</div>

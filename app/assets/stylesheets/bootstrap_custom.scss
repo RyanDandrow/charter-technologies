@@ -82,6 +82,7 @@
 	color: #eee;
 }
 
+
 /* CONTENT GENERAL */
 
 div#content {
@@ -114,6 +115,7 @@ div#content {
 	padding: 0px;
 	vertical-align: baseline;
 }
+
 
 /* TABLES */
 
@@ -197,6 +199,7 @@ div#content {
 	margin-bottom: 30px;
 }
 
+
 /* FORMS */
 
 .form-control {
@@ -236,12 +239,12 @@ div#content {
 }
 
 .first {
-  width: 40%;
+  width: 42%;
   display: inline;
 }
 
 .last {
-  width: 40%;
+  width: 42%;
   display: inline;
 }
 
@@ -258,8 +261,13 @@ div#content {
 }
 
 .suffix {
+  display: inline;
+  width: 22%;
+}
 
-  width: 10%;
+.name-suffix {
+  display: inline;
+  width: 12%;
 }
 
 #myModal .modal-dialog  {
@@ -282,6 +290,11 @@ div#content {
 
 #company {
   width: 75%;
+  display: inline;
+}
+
+#additional-company {
+  width: 60%;
   display: inline;
 }
 
@@ -318,10 +331,7 @@ div#content {
 }
 
 
-
-
-
-
+/* Urgent highlighting for Contacts */
 
 .urgent {
 	color: #da0404;
@@ -374,11 +384,16 @@ div#content {
 	color: #D4DBDF;
 }
 
+
+/* Scroll window for Comments */
+
 .scroll {
 	height: 650px;
 	overflow: auto;
 }
 
+
+/* Null highlighting for Contacts */
 
 .null {
 	color: #D4DBDF;
@@ -429,12 +444,14 @@ div#content {
   margin-left: 15px;
 }
 
-#dl {
-  width: 75%;
+.dl {
+  width: 65%;
+  display: inline;
 }
 
-#dl_state {
-  width: 25%;
+.dl_state {
+  width: 30%;
+  display: inline;
 }
 
 #content .table .center-urgent {
@@ -446,15 +463,6 @@ div#content {
 
 .push-down {
   padding-top: 2.5px;
-}
-
-select {
-    height: 34px;
-}
-input, select{
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 }
 
 
@@ -471,6 +479,33 @@ footer .alert {
     text-align: center;
 }
 
+
+/* null input background color */
+
 input[value=""] {
     background-color: #D4DBDF;
+}
+
+
+/* File field tag customization */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }

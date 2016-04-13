@@ -1,9 +1,9 @@
 <div class='nested-fields'>
   <div class="col-md-4">
-    <%= f.text_field :comp_label, placeholder: "Additional Company:", class: "form-label" %>
+    <%= f.text_field :comp_label, value: "Additional Company:", class: "form-label" %>
     <div class="form-group">
-      <%= f.text_field :comp, class: "form-control first" %>
-		  <%= select_tag :comp_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control last" %>
+      <%= f.text_field :comp, class: "form-control first", id: "additional-company" %>
+		  <%= f.select :comp_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], {}, {class: "form-control suffix"} %>
       <%= link_to_remove_association '<span class="glyphicon glyphicon-trash"></span>'.html_safe, f, class: " btn btn-sm btn-primary suffix" %>
     </div>
   </div>

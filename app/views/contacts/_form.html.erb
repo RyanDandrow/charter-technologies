@@ -16,11 +16,11 @@
 
 	<div class="container">
 		<div class="row">
-	    <div class="col-lg-5 col-md-4 col-sm-4">
+	    <div class="col-lg-4 col-md-4 col-sm-4">
 	      <div class="form-group">          
 					<%= f.text_field :company_label, placeholder: 'Company:', class: "form-label-3" %>
 	        <%= f.text_field :company, class: "form-control", id: "company" %>
-	        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], class: "form-control suffix" %>
+	        <%= f.select :company_type, ['', 'LLC', 'DBA', 'INC', 'Unknown'], {}, {class: "form-control suffix"} %>
 	      </div>
 	    </div>
 
@@ -33,16 +33,16 @@
       <div class="col-lg-2 col-md-2 col-sm-3">
         <div class="form-group">
 		        <%= f.text_field :drivers_license_label, placeholder: "#{@contact.correct_name} DL#:", class: "form-label" %>
-		        <%= f.text_field :drivers_license, class: "form-control" %>
-            <%= f.select :dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], class: "form-control dl_state" %>
+		        <%= f.text_field :drivers_license, class: "form-control dl" %>
+            <%= f.select :dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], {}, {class: "form-control dl_state"} %>
         </div>
       </div>
 
 	    <div class="col-lg-2 col-md-2 col-sm-2 col-sx-2">
 	      <div class="form-group">
 						<%= f.text_field :spouse_drivers_license_label, placeholder: "#{@contact.spouse_correct_name} Spouse DL#", class: "form-label" %>
-	          <%= f.text_field :spouse_drivers_license, class: "form-control" %>
-            <%= f.select :spouse_dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], class: "form-control dl_state" %>
+	          <%= f.text_field :spouse_drivers_license, class: "form-control dl" %>
+            <%= f.select :spouse_dl_state_select, [' ', 'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE','DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'], {}, {class: "form-control dl_state"} %>
 	       </div>
 	    </div>
 
@@ -54,12 +54,12 @@
 	  </div> <!-- row -->
 
 	  <div class="row">
-	    <div class="col-lg-5 col-md-4 col-sm-4">
+	    <div class="col-lg-4 col-md-4 col-sm-4">
         <%= f.label :name, 'Name:', class: "form-label" %>
         <div class="form-group" id="highlight2">  
           <%= f.text_field :name, class: "form-control first", placeholder: "First Name:" %>
           <%= f.text_field :last_name, class: "form-control last", placeholder: "Last Name:" %>
-          <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], class: "suffix" %>
+          <%= f.select :name_suffix, ['', 'Sr', 'Jr', 'II', 'III'], {}, {class: "form-control name-suffix"} %>
         </div>
 	    </div>
 
@@ -114,7 +114,7 @@
 	  </div>  <!-- row -->
 
 	  <div class="row">
-	    <div class="col-lg-5 col-md-4 col-sm-4">
+	    <div class="col-lg-4 col-md-4 col-sm-4">
 					<%= f.text_field :spouse_name_label, :value => @contact.spouse_first_name.blank? ? "Spouse Name:" : @contact.spouse_first_name, class: "form-label" %>
         <div class="form-group">
           <%= f.text_field :spouse_first_name, class: "form-control first", placeholder: "First Name:" %>
@@ -219,32 +219,32 @@
 			<div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 		    <%= f.text_field :address_box_1_label, placeholder: 'Address Box:', class: "form-label" %>
 		    <div class="form-group" id="addressBorder">
-					<%= f.text_area :address_box_1, class: "form-control", :rows => 4,  placeholder: "Company Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-		      <%= f.text_field :county_box1, placeholder: 'County:', class: "form-control" %>
+					<%= f.text_area :address_box_1, class: "form-control important", :rows => 4,  placeholder: "Company Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		      <%= f.text_field :county_box1, placeholder: 'County:', class: "form-control important" %>
 		    </div>
 		  </div>
 
 		  <div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 				<%= f.text_field :address_box_2_label, placeholder: 'Address Box:', class: "form-label" %>
 	      <div class="form-group" id="addressBorder">
-				  <%= f.text_area :address_box_2, class: "form-control", :rows => 4,  placeholder: "Contact Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-	        <%= f.text_field :county_box2, placeholder: 'County:', class: "form-control" %>
+				  <%= f.text_area :address_box_2, class: "form-control important", :rows => 4,  placeholder: "Contact Name:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+	        <%= f.text_field :county_box2, placeholder: 'County:', class: "form-control important" %>
 		    </div>
 		  </div>
 
 		  <div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 		    <%= f.text_field :address_box_3_label, placeholder: 'Address Box:', class: "form-label" %>
 		    <div class="form-group" id="addressBorder">
-					<%= f.text_area :address_box_3, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-		      <%= f.text_field :county_box3, placeholder: 'County:', class: "form-control" %>
+					<%= f.text_area :address_box_3, class: "form-control important", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		      <%= f.text_field :county_box3, placeholder: 'County:', class: "form-control important" %>
 		    </div>
 		  </div>
 
 		  <div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 				<%= f.text_field :address_box_4_label, placeholder: 'Address Box:', class: "form-label" %>
 		    <div class="form-group" id="addressBorder">
-			    <%= f.text_area :address_box_4, class: "form-control", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
-		      <%= f.text_field :county_box4, placeholder: 'County:', class: "form-control" %>
+			    <%= f.text_area :address_box_4, class: "form-control important", :rows => 4,  placeholder: "Additional Address:\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+		      <%= f.text_field :county_box4, placeholder: 'County:', class: "form-control important" %>
 		    </div>
 		  </div>
 
@@ -292,7 +292,7 @@
     </div>  <!-- row -->
 		
 	  <div class="row">
-		  <div class="col-lg-1">
+		  <div class="col-lg-1 button">
 			  <div class="form-group">
 					<%= f_select f, @contact, :urg, get_urg_array, {:f_label => "Urgent:"} %>
 			  </div>
