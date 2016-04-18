@@ -3,8 +3,8 @@ function notify(message, level) {
   // display a notification under the page header
   $('<div class="alert alert-' + level + '">' + message + '</div>').
     appendTo('.footer').
-    delay(5000).
-    fadeOut(500, function() {
+    delay(1600).
+    fadeOut(800, function() {
       $(this).remove()
     });
 }
