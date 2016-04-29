@@ -29,12 +29,12 @@
                     <%= f.condition_fields do |c| %>
                       <div class="col-md-3 col-md-offset-1 form-group">
                         <%= c.attribute_fields do |a| %>
-                          <%= a.attribute_select nil, class: "form-control" %>
+                          <%= a.attribute_select({only: %i(name)}, class: "form-control" ) %>
                         <% end %>
                       </div>
 
                       <div class="col-md-3 form-group">
-                        <%= c.predicate_select Hash.new, class: "form-control" %>
+                        <%= c.predicate_select({only: %i(cont not_cont eq start)}, {class: "form-control" } ) %>
                       </div>
 
                       <div class="col-md-3 form-group">

@@ -240,7 +240,7 @@
 				<div class="col-md-3 col-sm-4 col-md-offset-1 urgent-button">
 	    		<%= f.text_field :address_box_1_label, value: 'Address Box:', class: "form-label-3 important" %>
 	    		<div class="form-group" id="addressBorder">
-						<%= f.text_area :address_box_1, class: "form-control important", :rows => 4,  placeholder: "#{@contact.company}\nAddress Line 1:\nAddress Line 2:\nAddress Line 3:" %>
+						<%= f.text_area :address_box_1, class: "form-control important", :rows => 4, :value => @contact.address_box_1.blank? ? "#{@contact.company}" : @contact.address_box_1 %>
 	      		<%= f.text_field :county_box1, placeholder: 'County:', class: "form-control important", onkeyup: "this.setAttribute('value', this.value);" %>
 	    		</div>
 	  		</div>

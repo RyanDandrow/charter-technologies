@@ -99,6 +99,12 @@ class Contact < ActiveRecord::Base
 	  )
 	end
 
+ UNRANSACKABLE_ATTRIBUTES = ["id", "updated_at", "created_at", "middle_initial", "spouse_middle_initial"]
+
+  def self.ransackable_attributes auth_object = nil
+    (column_names - UNRANSACKABLE_ATTRIBUTES) + _ransackers.keys
+  end
+
 	private
 
 		def capitalize_name

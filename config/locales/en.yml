@@ -20,4 +20,83 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  ransack:
+    predicates:
+      cont: Contains
+    attributes:
+      contact:
+        id: Contact ID
+        goes_by: Goes By
+        cell_phone: Cell Phone
+        sf_id: SF ID
+        additional_info: Additional Info
+        created_at: Created At
+        updated_at: Updated At
+        tax_id: Tax ID
+        drivers_license: Drivers License
+        spouse_goes_by: Spouse Goes By
+        date_of_birth: D.O.B
+        spouse_date_of_birth: Spouse D.O.B
+        alt_phone_1: Alternate Phone 1
+        alt_phone_1_place: Alternate Phone 1 Label
+        alt_phone_2: Alternate Phone 2
+        alt_phone_2_place: Alternate Phone 2 Label
+        alt_phone_3: Alternate Phone 3
+        alt_phone_3_place: Alternate Phone 3 Label
+        alt_phone_4: Alternate Phone 4
+        alt_phone_4_place: Alternate Phone 4 Label
+        company_phone: Company Phone
+        home_phone: Home Phone
+        spouse_cell_phone: Spouse Cell Phone
+        first_name: First Name
+        last_name: Last Name
+        name_suffix: Name Suffix
+        spouse_first_name: Spouse First Name
+        spouse_last_name: Spouse Last Name
+        email: Email
+        spouse_email: Spouse Email
+        alt_email: Alternate Email
+        alt_email_label: Alternate Email Label
+        web_address: Web Address
+        county_box1: County Box 1
+        county_box2: County Box 2
+        county_box3: County Box 3
+        county_box4: County Box 4
+        ssn: SSN
+        spouse_ssn: Spouse SSN
+        name: Name
+        spouse_drivers_license: Spouse Drivers License
+        address_box_1: Address Box 1
+        address_box_2: Address Box 2
+        address_box_3: Address Box 3
+        address_box_4: Address Box 4
+        address_box_1_label: Address Box 1 Label
+        address_box_2_label: Address Box 2 Label
+        address_box_3_label: Address Box 3 Label
+        address_box_4_label: Address Box 4 Label
+        company_label: Company Label
+        web_address_label: Web Address Label
+        home_phone_label: Home Phone Label
+        spouse_email_label: Spouse Email Label
+        email_label: Email Label
+        company_phone_label: Company Phone Label
+        drivers_license_label: Drivers License Label
+        cell_phone_label: Call Phone Label
+        spouse_cell_phone_label: Spouse Cell Phone Label
+        spouse_drivers_license_label: Spouse Drivers License Label
+        date_of_birth_label: D.O.B Label
+        spouse_date_of_birth_label: Spouse D.O.B Label
+        urg: Urgent
+        ssn_label: SSN Label
+        spouse_ssn_label: Spouse SSN Label
+        additional_info_label: Additional Info Label
+        company_type: Company Type
+        company: Company
+        spouse_name_label: Spouse Name Label
+        state_select: State Select
+        dl_state_select: DL State Select
+        spouse_dl_state_select: Spouse DL State Select
+        middle_initial: Middle Initial
+        spouse_middle_initial: Spouse Middle Initial
+        whole_name: Full Name
+        spouse_whole_name: Spouse Full Name
